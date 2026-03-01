@@ -60,7 +60,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
     // Reset view mode when modal opens
     useEffect(() => {
         if (isOpen) {
-            setViewMode('2d');
+            setViewMode('3d');
             setCurrentImageIndex(0);
         }
     }, [isOpen]);
@@ -105,7 +105,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         <>
             <AnimatePresence>
                 {isOpen && product && (
-                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 sm:p-12">
+                    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 sm:p-12">
                         {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}

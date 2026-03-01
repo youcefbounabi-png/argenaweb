@@ -79,6 +79,7 @@ export const Product3DViewer = ({ modelPath, className = 'w-full h-full' }: Prod
 
                 <Suspense fallback={null}>
                     <PresentationControls
+                        global
                         speed={1.2}
                         zoom={0.9}
                         rotation={[0, -Math.PI / 6, 0]}
