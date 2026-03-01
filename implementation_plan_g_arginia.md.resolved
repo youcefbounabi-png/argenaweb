@@ -1,0 +1,42 @@
+# Implementation Plan: G Arginia E-Commerce Startup
+
+Initialize a premium, high-performance e-commerce platform for **G Arginia** that inherits the technical excellence of the Akram Coaching project while implementing a unique "Liquid Glass" artboard design.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Directory Structure**: I will create a new directory `g-arginia/` in the current workspace. This ensures we keep the new project isolated while staying in the same environment as requested.
+> **Tech Choice**: We will use **Vite 6 + React 19** to match the performance profile of your existing site.
+
+## Proposed Changes
+
+### 1. Project Initialization
+- [NEW] Create `g-arginia/` directory.
+- Run `npm create vite@latest g-arginia -- --template react-ts`.
+- Install dependencies: `three`, `@react-three/fiber`, `@react-three/drei`, `gsap`, `motion/react`, `lucide-react`, `tailwindcss`, `@tailwindcss/vite`.
+
+### 2. Design System Integration
+- [NEW] `g-arginia/src/index.css`: Implement the "Liquid Glass" system:
+    - Custom colors: `--color-primary: #1C1917`, `--color-cta: #CA8A04`.
+    - Fonts: Cormorant (Headings), Montserrat (Body).
+    - Glassmorphism utilities and GSAP-ready transition classes.
+
+### 3. Core Architecture
+- [NEW] `g-arginia/src/components/3d/LiquidBackground.tsx`: A refined Three.js background mirroring the "Artboard" feel.
+- [NEW] `g-arginia/src/components/Layout.tsx`: A master layout component that handles the "Artboard" transitions using `GSAP` and `motion`.
+- [MODIFY] `g-arginia/src/App.tsx`: Set up the router and lazy-loaded pages for Home, Shop, and About.
+
+### 4. SEO & Performance
+- [MODIFY] `g-arginia/index.html`: Pre-populate with G Arginia branding, Open Graph tags, and structured JSON-LD data.
+- Ensure all images in the new project use `webp` or `avif` formats where possible.
+
+## Verification Plan
+
+### Automated Tests
+- Run `npm run build` in `g-arginia/` to ensure the project compiles without errors.
+- Run `npx lighthouse https://localhost:3000` (once dev server is running) to verify Performance and SEO metrics.
+
+### Manual Verification
+1.  **Visual Check**: Verify the "Cormorant" font and "Gold" accents load correctly.
+2.  **Navigation Check**: Verify the GSAP "Artboard" transitions between pages are smooth (150-300ms).
+3.  **Responsiveness**: Test on mobile (375px) to ensure the floating navbar and product grids are functional.

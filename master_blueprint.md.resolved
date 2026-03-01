@@ -1,0 +1,58 @@
+# Master Blueprint: G Arginia E-Commerce Startup
+
+This document outlines the technical requirements and "Master Prompts" to replicate the high-end performance, SEO, and design quality of the **Akram Coaching** project for your new e-commerce brand.
+
+---
+
+## 🏗️ The "Technical DNA" (Tech Stack)
+To match the current site's performance, the new project **must** use:
+- **Core**: React 19 + Vite 6 (for near-instant load times).
+- **Style**: Tailwind CSS 4 + `motion/react` (Framer Motion) + GSAP (for "artboard" animations).
+- **3D**: Three.js + React Three Fiber (for that premium interactive feel).
+- **AI**: Google Gemini API (for an intelligent shopping assistant).
+- **Commerce**: Chargily (local DZD) + PayPal (International) + Supabase (for database/admin).
+
+---
+
+## 📝 Sequence of Master Prompts (with UI/UX Pro Max)
+
+Copy and paste these prompts in order. These are optimized to use the **UI/UX Pro Max** design intelligence already present in this environment.
+
+### 🧠 Prompt 0: Organize Thoughts (Preparation)
+> "Before we start, let's organize our thoughts. Analyze the technical DNA of the current 'Akram Coaching' project (Vite 6, React 19, Three.js, GSAP). We are going to build a new e-commerce startup, **G Arginia**, that inherits this exact performance and SEO structure but with a unique 'Artboard' design. Confirm you have access to the `ui-ux-pro-max` skill and prepare to use it for all design decisions."
+
+### Phase 1: The Core Foundation
+> "Initialize a new high-end e-commerce project for the brand 'G Arginia' using **React 19, Vite 6, and Tailwind CSS 4**. The design should follow a unique 'Artboard' aesthetic. Set up a professional file structure that includes folders for `components/3d`, `pages`, `lib`, and `i18n`. Ensure the [index.html](file:///c:/Users/Laylo/Downloads/akram-coaching-main/akram-coaching-main/index.html) is pre-configured with SEO meta tags, Open Graph data, and JSON-LD structured data for a 'LocalBusiness' and 'Store'."
+
+### Phase 2: Design & Motion System
+> "Implement a 'Glassmorphism' design system. Create a global [index.css](file:///c:/Users/Laylo/Downloads/akram-coaching-main/akram-coaching-main/src/index.css) with custom red/dark gradients and a typography system using premium fonts (like Inter or Outfit). Use **GSAP** and **motion/react** to create a 'Master Layout' where page transitions feel like an artboard sliding in. Every button must have a spring-based hover animation and a subtle 'glow' effect."
+
+### Phase 3: High-End Features (3D & AI)
+> "Integrate **Three.js** via React Three Fiber to create a subtle, interactive 3D background (like a nebula or floating brand elements). Then, create an **AI Shopping Assistant** component powered by the **Google Gemini API**. The assistant should be able to answer product questions and guide users through the catalog, following the 'AKBOT' pattern from the coaching project."
+
+### Phase 4: E-Commerce & Analytics
+> "Set up the e-commerce logic. Integrate **Chargily Pay** for the Algerian market and **PayPal** for international sales. Implement a **Supabase** backend to track site visits and store product data. Create a professional 'Product Intake' flow that collects user information before checkout, similar to the coaching client intake form. Ensure all product cards have 'Add to Cart' animations using GSAP."
+
+---
+
+## 🎨 Brand Identity & Content Strategy
+To match the "Dr. Akram" authority, your startup needs:
+1.  **Founder's Story**: A section dedicated to the "Why" behind G Arginia. Use high-quality photography and "serif italic" typography for key quotes.
+2.  **Science-Backed Claims**: Just as Akram uses "Pharmaceutical Science," your brand should highlight the "Artisan" or "Technical" side of the product.
+3.  **Social Proof**: A "Transformations" or "Testimonials" gallery that uses the [CosmicTestimonials.tsx](file:///c:/Users/Laylo/Downloads/akram-coaching-main/akram-coaching-main/src/components/CosmicTestimonials.tsx) or [HoloTestimonials.tsx](file:///c:/Users/Laylo/Downloads/akram-coaching-main/akram-coaching-main/src/components/HoloTestimonials.tsx) pattern for visual pop.
+
+---
+
+## 🚀 SEO & Performance Checkpoints
+1. **LCP Optimization**: Use `fetchPriority="high"` on your main hero/product images.
+2. **Semantic HTML**: Use `<main>`, `<article>`, and `<nav>` tags strictly.
+3. **Structured Data**: Ensure every product page generates a `JSON-LD` Product Schema.
+4. **Code Splitting**: Lazy-load all 3D or heavy components to maintain a 90+ Lighthouse score.
+
+---
+
+## 🛠️ How to link GitHub
+1. Create a new repository on GitHub (e.g., `g-arginia-ecommerce`).
+2. Run `git init`, `git add .`, and `git commit -m "Initial High-End Setup"`.
+3. Link the remote: `git remote add origin [YOUR_REPO_URL]`.
+4. Push: `git push -u origin main`.
