@@ -53,11 +53,11 @@ export const FeaturedCollections: React.FC = () => {
                 <motion.div style={{ x }} className="flex gap-12 px-12 w-[300vw]">
                     {collections.map((collection, index) => (
                         <div key={index} className="w-[100vw] flex-shrink-0 flex items-center justify-center">
-                            <div className="relative w-full max-w-5xl aspect-[16/9] overflow-hidden group">
+                            <div className={`relative w-full max-w-5xl aspect-[16/9] overflow-hidden group ${collection.image.includes('packaging') ? 'bg-black' : ''}`}>
                                 <img
                                     src={collection.image}
                                     alt={collection.title}
-                                    className={`w-full h-full object-cover ${collection.image.includes('packaging') ? 'object-top' : 'object-center'} art-image group-hover:scale-105 transition-transform duration-1000`}
+                                    className={`w-full h-full ${collection.image.includes('packaging') ? 'object-contain' : 'object-cover'} art-image group-hover:scale-105 transition-transform duration-1000`}
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-12">
                                     <h3 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia]' : 'font-sans font-bold'} metallic-text text-6xl md:text-8xl mb-4`}>{collection.title}</h3>
