@@ -1,9 +1,8 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import MainLayout from './components/layout/MainLayout';
-import CheckoutModal from './components/ui/CheckoutModal';
-import { CartDrawer } from './components/ui/CartDrawer';
+import Footer from './components/layout/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { CartProvider, useCart } from './contexts/CartContext';
 
@@ -19,7 +18,7 @@ const PageLoader = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg">
     <motion.div
       animate={{ opacity: [0.2, 1, 0.2], filter: ['blur(4px)', 'blur(0px)', 'blur(4px)'] }}
-      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       className="font-mono text-xs text-silver tracking-[0.5em] uppercase"
     >
       Materializing...
@@ -27,26 +26,34 @@ const PageLoader = () => (
   </div>
 );
 
-// Inner app has access to CartContext
 const AppInner = () => {
-  const { addItem, isOpen: _cartOpen } = useCart();
+  const { addItem } = useCart();
+  const location = useLocation();
 
-  // CheckoutModal is now driven by the cart
-  // Kept for backward compat if needed in future
   return (
     <MainLayout>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<HomePage onAddToCart={addItem} />} />
-          <Route path="/shop" element={<ShopPage onAddToCart={addItem} />} />
-          <Route path="/available-soon" element={<AvailableSoonPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/custom-orders" element={<CustomOrdersPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Suspense>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
+          exit={{ opacity: 0, transition: { duration: 0.2, ease: [0.4, 0, 1, 1] } }}
+        >
+          <Suspense fallback={<PageLoader />}>
+            <Routes location={location}>
+              <Route path="/" element={<HomePage onAddToCart={addItem} />} />
+              <Route path="/shop" element={<ShopPage onAddToCart={addItem} />} />
+              <Route path="/available-soon" element={<AvailableSoonPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/custom-orders" element={<CustomOrdersPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
+          <Footer />
+        </motion.div>
+      </AnimatePresence>
     </MainLayout>
   );
 };
