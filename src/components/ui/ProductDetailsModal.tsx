@@ -60,7 +60,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
     // Reset view mode when modal opens
     useEffect(() => {
         if (isOpen) {
-            setViewMode('3d');
+            setViewMode('2d');
             setCurrentImageIndex(0);
         }
     }, [isOpen]);
@@ -81,7 +81,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         description: language === 'EN' ? 'Description' : 'الوصف',
         price: language === 'EN' ? 'Price' : 'السعر',
         colorRequired: language === 'EN' ? 'Please select a color' : 'الرجاء اختيار لون',
-        view2D: language === 'EN' ? '2D' : 'صورة',
+        view2D: language === 'EN' ? 'DISPLAY' : 'عرض',
         view3D: language === 'EN' ? '3D' : 'ثلاثي الأبعاد',
         loadingModel: language === 'EN' ? 'LOADING 3D MODEL...' : 'جارٍ تحميل النموذج...',
         colors: product.colors || []
