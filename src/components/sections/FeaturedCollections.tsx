@@ -57,7 +57,7 @@ export const FeaturedCollections: React.FC = () => {
                                 <img
                                     src={collection.image}
                                     alt={collection.title}
-                                    className={`w-full h-full ${collection.image.includes('packaging') ? 'object-contain' : 'object-cover'} art-image group-hover:scale-105 transition-transform duration-1000`}
+                                    className={`w-full h-full object-cover ${collection.image.includes('packaging') ? 'object-top' : 'object-center'} art-image group-hover:scale-105 transition-transform duration-1000`}
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-12">
                                     <h3 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia]' : 'font-sans font-bold'} metallic-text text-6xl md:text-8xl mb-4`}>{collection.title}</h3>
