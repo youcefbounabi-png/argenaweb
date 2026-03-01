@@ -5,6 +5,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useCart } from '../../contexts/CartContext';
 import { supabase } from '../../lib/supabase';
 import { WILAYAS } from '../../data/wilayas';
+import { COMMUNES } from '../../data/communes';
 
 interface CheckoutModalProps {
     isOpen: boolean;
@@ -22,6 +23,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
         email: '',
         phone: '',
         state: '',
+        commune: '',
         deliveryType: 'home' as 'home' | 'desk',
         review: ''
     });
@@ -49,7 +51,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
         const message = `*NEW ORDER - G ARGENA*\n\n` +
             `*Contact:* ${formData.email}\n` +
             `*Phone:* ${formData.phone}\n` +
-            `*Destination:* ${selectedWilaya?.name || formData.state} (${formData.deliveryType.toUpperCase()})\n` +
+            `*Destination:* ${selectedWilaya?.name || formData.state} - ${formData.commune} (${formData.deliveryType.toUpperCase()})\n` +
             `*Delivery Fee:* DA ${deliveryFee.toLocaleString()}\n\n` +
             `*Items:* \n${itemsList}\n\n` +
             `*Subtotal:* DA ${totalPrice.toLocaleString()}\n` +
@@ -79,6 +81,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
             email: formData.email,
             phone: formData.phone,
             state: formData.state,
+            commune: formData.commune,
             delivery_type: formData.deliveryType,
             delivery_fee: deliveryFee,
             items: orderItems,
@@ -94,7 +97,11 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData(prev => ({
+            ...prev,
+            [name]: value,
+            ...(name === 'state' ? { commune: '' } : {})
+        }));
     };
 
     const t = {
@@ -113,6 +120,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
         algiers: language === 'EN' ? 'Algiers' : 'الجزائر العاصمة',
         oran: language === 'EN' ? 'Oran' : 'وهران',
         constantine: language === 'EN' ? 'Constantine' : 'قسنطينة',
+        communeLabel: language === 'EN' ? 'Commune / District' : 'البلدية / المنطقة',
+        selectCommune: language === 'EN' ? 'Select Commune' : 'اختر البلدية',
         back: language === 'EN' ? 'BACK' : 'رجوع',
         deliveryMethod: language === 'EN' ? 'Delivery Method' : 'طريقة التوصيل',
         homeDelivery: language === 'EN' ? 'Home Delivery' : 'توصيل للمنزل',
@@ -229,6 +238,26 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                 </div>
 
                                 {formData.state && (
+                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
+                                        <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.communeLabel}</label>
+                                        <select
+                                            required
+                                            name="commune"
+                                            value={formData.commune}
+                                            onChange={handleInputChange}
+                                            className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
+                                        >
+                                            <option value="">{t.selectCommune}</option>
+                                            {selectedWilaya && COMMUNES[selectedWilaya.id]?.map((c: any) => (
+                                                <option key={c.name} value={c.name.toLowerCase()}>
+                                                    {language === 'EN' ? c.name : c.nameAr}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </motion.div>
+                                )}
+
+                                {formData.state && formData.commune && (
                                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-8 space-y-4">
                                         <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.deliveryMethod}</label>
                                         <div className="grid grid-cols-2 gap-4">
@@ -261,7 +290,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                     <button
                                         type="button"
                                         onClick={nextStep}
-                                        disabled={!formData.state}
+                                        disabled={!formData.state || !formData.commune}
                                         className={`flex-[2] group flex items-center justify-between font-mono text-xs border border-silver/30 px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-30 tracking-[0.2em] ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                     >
                                         {t.finalStep}
@@ -339,8 +368,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                         )}
                     </form>
                 </motion.div>
-            </div>
-        </AnimatePresence>
+            </div >
+        </AnimatePresence >
     );
 };
 
