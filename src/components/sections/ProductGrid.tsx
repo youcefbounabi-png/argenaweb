@@ -14,7 +14,7 @@ export const productsEN = [
         gallery: ['/pictures/gemini.png', '/pictures/lustbecausecaps (1).png'],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige'],
+        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White'],
         description: 'Fashion And Hot Sale Cotton Fabric Washed Baseball Cap And Hat Manufacturer with Custom Embroidery on Visor \nOne size can fit most people.\nWith 100% cotton to ensure the baseball cap is lightweight.\nNew Technology of Embroidery.'
     },
     {
@@ -25,7 +25,7 @@ export const productsEN = [
         gallery: ['/pictures/boston0.png', '/pictures/bostoncaps.png'],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige'],
+        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White'],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
     {
@@ -36,7 +36,7 @@ export const productsEN = [
         gallery: ['/pictures/blettermodel.png', '/pictures/blettercaps.png'],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige'],
+        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White'],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
@@ -47,7 +47,7 @@ export const productsEN = [
         gallery: ['/pictures/airforce.png', '/pictures/airforcecaps.png'],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige'],
+        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White'],
         description: 'Unisex Vintage Airforce Inspiration Cap. \n\nFeatures:\nClassic military-inspired aesthetic perfect for any casual look.\nLightweight and durable fabric for all-day comfort.\nSubtle embroidery and vintage wash finish.\nVersatile accessory for sun protection and everyday streetwear.'
     }
 ];
@@ -61,7 +61,7 @@ export const productsAR = [
         gallery: ['/pictures/gemini.png', '/pictures/lustbecausecaps (1).png'],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض'],
         description: 'قبعة بيسبول من القماش القطني المغسول عالية الجودة مع تطريز مخصص على الحافة.\nمقاس واحد يناسب الجميع بفضل التصميم المرن (للجنسين).\nمصنوعة من قطن 100٪ لضمان خفة القبعة وراحتها.\nتقنية تطريز حديثة ومميزة للارتقاء بمظهرك.'
     },
     {
@@ -72,7 +72,7 @@ export const productsAR = [
         gallery: ['/pictures/boston0.png', '/pictures/bostoncaps.png'],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض'],
         description: 'قبعة بيسبول للرجال والنساء، أزياء شبكية لحماية من الشمس للربيع والصيف، أنيقة وعصرية.\n\nالخصائص:\nاستمتع بحماية أنيقة من أشعة الشمس أثناء أنشطتك الخارجية.\nاستمتعي بأزياء متعددة الاستخدامات مع تصميمات تناسب الجنسين.\nأبرز مظهرك بتطريز الحروف العصري.\nحماية من الرياح والشمس بدون مجهود.\nمثالي للارتداء اليومي وأسلوب الشارع.'
     },
     {
@@ -83,7 +83,7 @@ export const productsAR = [
         gallery: ['/pictures/blettermodel.png', '/pictures/blettercaps.png'],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض'],
         description: 'قبعة بيسبول كلاسيكية ممزقة بحرف B للجنسين.\n\nالمميزات:\nقطن مغسول عالي الجودة لشعور مريح وعملي.\nحزام خلفي قابل للتعديل يناسب معظم أحجام الرأس بسلاسة.\nتفاصيل ممزقة كلاسيكية للحصول على حافة أصلية في أسلوب الشارع.\nمثالية للارتداء اليومي غير الرسمي، حماية من الشمس، وأسلوب سهل.'
     },
     {
@@ -94,7 +94,7 @@ export const productsAR = [
         gallery: ['/pictures/airforce.png', '/pictures/airforcecaps.png'],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض'],
         description: 'قبعة إير فورس بأسلوب كلاسيكي للجنسين.\n\nالمميزات:\nجمالية مستوحاة من الطراز العسكري الكلاسيكي، مثالية لأي إطلالة غير رسمية.\nقماش خفيف الوزن ومتين لراحة تدوم طوال اليوم.\nتطريز دقيق ولمسة نهائية قطنية مغسولة بأسلوب عتيق.\nإكسسوار متعدد الاستخدامات للحماية من الشمس وأزياء الشارع اليومية.'
     }
 ];
