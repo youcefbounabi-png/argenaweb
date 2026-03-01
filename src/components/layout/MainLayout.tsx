@@ -72,11 +72,13 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             {/* Ethereal Glow */}
             <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none z-0" />
 
-            <Header />
-            <main className="relative z-10 transition-opacity duration-500">
-                {children}
-            </main>
-            <Footer />
+            <div className={isLoading ? 'invisible' : 'visible'}>
+                <Header />
+                <main className="relative z-10 transition-opacity duration-500">
+                    {children}
+                </main>
+                <Footer />
+            </div>
 
             {/* Top-level UI overlays */}
             <CartDrawer />
