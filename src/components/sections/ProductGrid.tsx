@@ -21,7 +21,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown', 'Yellow', 'Grey'],
+        colors: ['Navy', 'Beige', 'White', 'Brown', 'Grey'],
         description: 'Fashion And Hot Sale Cotton Fabric Washed Baseball Cap And Hat Manufacturer with Custom Embroidery on Visor \nOne size can fit most people.\nWith 100% cotton to ensure the baseball cap is lightweight.\nNew Technology of Embroidery.'
     },
     {
@@ -41,7 +41,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Grey', 'Burgundy', 'Beige', 'White', 'Brown', 'Yellow'],
+        colors: ['Black', 'Charcoal', 'Grey', 'Burgundy', 'Beige', 'White', 'Brown'],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
     {
@@ -59,7 +59,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown', 'Yellow', 'Grey'],
+        colors: ['Black', 'Navy', 'Charcoal', 'Burgundy', 'Beige', 'Brown', 'Grey'],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
@@ -78,7 +78,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown', 'Yellow', 'Grey'],
+        colors: ['Black', 'Navy', 'Charcoal', 'Burgundy', 'Beige', 'Brown', 'Yellow', 'Grey'],
         description: 'Unisex Vintage Airforce Inspiration Cap. \n\nFeatures:\nClassic military-inspired aesthetic perfect for any casual look.\nLightweight and durable fabric for all-day comfort.\nSubtle embroidery and vintage wash finish.\nVersatile accessory for sun protection and everyday streetwear.'
     }
 ];
@@ -99,7 +99,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'خمري', 'بيج', 'أبيض', 'بني', 'أصفر', 'رمادي'],
+        colors: ['كحلي', 'بيج', 'أبيض', 'بني', 'رمادي'],
         description: 'قبعة بيسبول قطنية مريحة بجودة عالية مع تطريز مميز.\nمقاس قابل للتعديل يناسب الجميع.\nخفيفة الوزن ومناسبة للاستعمال اليومي.'
     },
     {
@@ -119,7 +119,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'رمادي', 'عنابي', 'بيج', 'أبيض', 'بني', 'أصفر'],
+        colors: ['أسود', 'رمادي غامق', 'رمادي', 'عنابي', 'بيج', 'أبيض', 'بني'],
         description: 'قبعة ممزقة عصرية للرجال والنساء.\nتوفر حماية من الشمس ومناسبة لفصلي الربيع والصيف.\nتصميم مميز يلائم إطلالتك اليومية.'
     },
     {
@@ -137,7 +137,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'خمري', 'بيج', 'أبيض', 'بني', 'أصفر', 'رمادي'],
+        colors: ['أسود', 'كحلي', 'رمادي غامق', 'خمري', 'بيج', 'بني', 'رمادي'],
         description: 'قبعة ممزقة بحرف B للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     },
     {
@@ -156,7 +156,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'خمري', 'بيج', 'أبيض', 'بني', 'أصفر', 'رمادي'],
+        colors: ['أسود', 'كحلي', 'رمادي غامق', 'خمري', 'بيج', 'بني', 'أصفر', 'رمادي'],
         description: 'قبعة إير فورس بستايل عسكري كلاسيكي.\nقماش خفيف ومريح للاستعمال اليومي.\nتصميم بسيط وعملي يناسب الجميع.'
     }
 ];
