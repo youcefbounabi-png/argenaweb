@@ -11,7 +11,7 @@ export const TestimonialsPage: React.FC = () => {
         title2: language === 'EN' ? 'Witnesses' : '',
         subtitle: language === 'EN'
             ? 'A collection of voices from the archive. Those who have experienced the ethereal.'
-            : 'أصوات حقيقية من تجربوا ما تقدمه أرجانا.',
+            : 'أصوات حقيقية من تجربوا ما تقدمه ارجينا.',
         testimonialsBlock: language === 'EN' ? 'TESTIMONIAL' : 'شهادة',
         testimonials: language === 'EN' ? [
             {
@@ -48,7 +48,7 @@ export const TestimonialsPage: React.FC = () => {
             {
                 name: 'طارق م.',
                 location: 'وهران',
-                review: 'فخامة حقيقية بأسلوب عصري. الإكسسوارات الفضية تسرق الأنظار. أرجانا هي المستقبل.',
+                review: 'فخامة حقيقية بأسلوب عصري. الإكسسوارات الفضية تسرق الأنظار. ارجينا هي المستقبل.',
                 date: '2024.11.15'
             },
             {

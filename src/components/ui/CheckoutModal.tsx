@@ -151,7 +151,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
         placeOrder: language === 'EN' ? 'PLACE ORDER' : 'تأكيد الطلب',
 
         step4Title: language === 'EN' ? 'Order Received' : 'تم تسجيل طلبك بنجاح!',
-        step4Desc: language === 'EN' ? 'Will be in contact with you shortly. Thank you for ordering from us.' : 'راح نتصل بيك في أقرب وقت لتأكيد الطلب. شكراً لثقتك في أرجانا!',
+        step4Desc: language === 'EN' ? 'Will be in contact with you shortly. Thank you for ordering from us.' : 'راح نتصل بيك في أقرب وقت لتأكيد الطلب. شكراً لثقتك في ارجينا!',
         close: language === 'EN' ? 'RETURN TO ARCHIVE' : 'العودة للمتجر'
     };
 

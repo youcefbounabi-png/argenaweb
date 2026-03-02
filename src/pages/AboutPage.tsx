@@ -17,7 +17,7 @@ export const AboutPage: React.FC = () => {
             : 'فلسفتنا تعتمد على البساطة، الجودة العالية، والبحث عن التميز في عالم الموضة وتفاصيلها.',
         p3: language === 'EN'
             ? 'Founded with intent. Materialized in the shadow.'
-            : 'تصاميمنا وليدة الشغف، ومصنوعة بكل إتقان.'
+            : 'حنا هنا باش نطلعو النيفو تاع الـ Streetwear في بلادنا.'
     };
 
     return (

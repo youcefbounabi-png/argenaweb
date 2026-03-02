@@ -17,7 +17,8 @@ export const productsEN = [
             '/pictures/lust0 (1).jpeg',
             '/pictures/lust0 (2).jpeg',
             '/pictures/lust0 (3).jpeg',
-            '/pictures/lust0 (4).jpeg'
+            '/pictures/lust0 (4).jpeg',
+            '/pictures/lustlastpic.jpeg'
         ],
         category: 'Headwear',
         available: true,
@@ -55,11 +56,12 @@ export const productsEN = [
             '/pictures/bletter (1).jpeg',
             '/pictures/bletter (2).jpeg',
             '/pictures/bletter (3).jpeg',
-            '/pictures/bletter (4).jpeg'
+            '/pictures/bletter (4).jpeg',
+            '/pictures/blettergrey.jpeg'
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Charcoal', 'Burgundy', 'Beige', 'Brown', 'Grey'],
+        colors: ['Black', 'Navy', 'Charcoal', 'Burgundy', 'Beige', 'Brown', 'Grey', 'Dark Grey'],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
@@ -78,7 +80,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Charcoal', 'Burgundy', 'Beige', 'Brown', 'Yellow', 'Grey'],
+        colors: ['Charcoal', 'Burgundy', 'Beige', 'Yellow', 'Grey', 'Dark Blue', 'Light Blue'],
         description: 'Unisex Vintage Airforce Inspiration Cap. \n\nFeatures:\nClassic military-inspired aesthetic perfect for any casual look.\nLightweight and durable fabric for all-day comfort.\nSubtle embroidery and vintage wash finish.\nVersatile accessory for sun protection and everyday streetwear.'
     }
 ];
@@ -95,7 +97,8 @@ export const productsAR = [
             '/pictures/lust0 (1).jpeg',
             '/pictures/lust0 (2).jpeg',
             '/pictures/lust0 (3).jpeg',
-            '/pictures/lust0 (4).jpeg'
+            '/pictures/lust0 (4).jpeg',
+            '/pictures/lustlastpic.jpeg'
         ],
         category: 'أغطية الرأس',
         available: true,
@@ -133,11 +136,12 @@ export const productsAR = [
             '/pictures/bletter (1).jpeg',
             '/pictures/bletter (2).jpeg',
             '/pictures/bletter (3).jpeg',
-            '/pictures/bletter (4).jpeg'
+            '/pictures/bletter (4).jpeg',
+            '/pictures/blettergrey.jpeg'
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'رمادي غامق', 'خمري', 'بيج', 'بني', 'رمادي'],
+        colors: ['أسود', 'كحلي', 'رمادي غامق', 'خمري', 'بيج', 'بني', 'رمادي', 'رمادي داكن'],
         description: 'قبعة ممزقة بحرف B للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     },
     {
@@ -156,7 +160,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'رمادي غامق', 'خمري', 'بيج', 'بني', 'أصفر', 'رمادي'],
+        colors: ['رمادي غامق', 'خمري', 'بيج', 'أصفر', 'رمادي', 'أزرق غامق', 'أزرق فاتح'],
         description: 'قبعة إير فورس بستايل عسكري كلاسيكي.\nقماش خفيف ومريح للاستعمال اليومي.\nتصميم بسيط وعملي يناسب الجميع.'
     }
 ];

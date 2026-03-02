@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
     const t = {
         nav: language === 'EN' ? '(Navigation)' : '(التنقل)',
         shop: language === 'EN' ? 'Shop' : 'المتجر',
-        about: language === 'EN' ? 'About' : 'عن أرجانا',
+        about: language === 'EN' ? 'About' : 'عن ارجينا',
         customOrders: language === 'EN' ? 'Custom Orders' : 'طلبات خاصة',
         testimonials: language === 'EN' ? 'Testimonials' : 'آراء الزبائن',
         contact: language === 'EN' ? 'Contact' : 'تواصل معنا',
