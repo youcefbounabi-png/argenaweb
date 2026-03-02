@@ -18,6 +18,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
     const [selectedColor, setSelectedColor] = useState<string>('');
     const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isImageExpanded, setIsImageExpanded] = useState(false);
 
     // Ref for the modal card so we can compute the portal button's position
     const modalCardRef = useRef<HTMLDivElement>(null);
@@ -101,9 +102,11 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         onClose();
     };
 
-    return (
+    if (!isOpen || !product) return null;
+
+    const modalContent = (
         <>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isOpen && product && (
                     <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 sm:p-12">
                         {/* Backdrop */}
@@ -157,8 +160,10 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
 
                         {/* Modal */}
                         <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
                             className="relative w-full max-w-4xl max-h-[90vh] flex flex-col pt-12 md:p-6"
                             data-lenis-prevent
                         >
@@ -184,43 +189,49 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                             </button>
                                         </div>
 
-                                        <div className="relative aspect-[4/5] overflow-hidden bg-silver-dark/20 flex flex-col">
+                                        <div className="relative aspect-[4/5] overflow-hidden bg-black flex flex-col group/img-container">
                                             {viewMode === '2d' ? (
-                                                <>
-                                                    <div className="flex-1 w-full relative h-0">
-                                                        <img
-                                                            src={product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image}
-                                                            alt={product.title}
-                                                            className={`w-full h-full object-cover ${(product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image).includes('blettermodel') ? 'object-top' : ''}`}
-                                                        />
-                                                    </div>
-                                                    {product.gallery && product.gallery.length > 1 && (
-                                                        <div className="flex gap-2 p-2 bg-black/40 overflow-x-auto shrink-0" style={{ scrollbarWidth: 'none' }}>
-                                                            {product.gallery.map((img: string, idx: number) => (
-                                                                <button
-                                                                    key={idx}
-                                                                    onClick={() => setCurrentImageIndex(idx)}
-                                                                    className={`relative w-16 h-16 flex-shrink-0 border transition-all duration-300 ${currentImageIndex === idx ? 'border-white opacity-100' : 'border-transparent opacity-50 hover:opacity-100 hover:border-white/50'}`}
-                                                                >
-                                                                    <img src={img} alt={`${product.title} view ${idx + 1}`} className="w-full h-full object-cover" />
-                                                                </button>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                </>
+                                                <div className="flex-1 w-full relative h-full">
+                                                    <img
+                                                        src={product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image}
+                                                        alt={product.title}
+                                                        onClick={() => setIsImageExpanded(true)}
+                                                        className={`w-full h-full object-cover cursor-zoom-in transition-transform duration-700 hover:scale-105 ${(product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image).includes('blettermodel') ? 'object-top' : ''}`}
+                                                    />
+                                                </div>
                                             ) : (
                                                 <Suspense fallback={
                                                     <div className="w-full h-full flex items-center justify-center">
                                                         <p className="font-mono text-[9px] tracking-[0.3em] text-silver/40 animate-pulse">{t.loadingModel}</p>
                                                     </div>
                                                 }>
-                                                    {/* pointer-events wrapper: the 3D canvas must NOT capture events from outside its own div */}
                                                     <div style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}>
                                                         <Product3DViewer className="w-full h-full" modelPath={MODEL_MAP[product.id]} />
                                                     </div>
                                                 </Suspense>
                                             )}
                                         </div>
+
+                                        {/* Gallery Thumbnails */}
+                                        {viewMode === '2d' && product.gallery && product.gallery.length > 1 && (
+                                            <div className="flex gap-2 p-2 bg-black/40 overflow-x-auto shrink-0" style={{ scrollbarWidth: 'none' }}>
+                                                {product.gallery.map((img: string, idx: number) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => {
+                                                            if (currentImageIndex === idx) {
+                                                                setIsImageExpanded(true);
+                                                            } else {
+                                                                setCurrentImageIndex(idx);
+                                                            }
+                                                        }}
+                                                        className={`relative w-16 h-16 flex-shrink-0 border transition-all duration-300 ${currentImageIndex === idx ? 'border-white opacity-100' : 'border-transparent opacity-50 hover:opacity-100 hover:border-white/50'}`}
+                                                    >
+                                                        <img src={img} alt={`${product.title} view ${idx + 1}`} className="w-full h-full object-cover" />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Details Section */}
@@ -274,8 +285,47 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                     </div>
                 )}
             </AnimatePresence>
+
+            {/* Expanded Image Modal */}
+            <AnimatePresence>
+                {isImageExpanded && (
+                    <div className="fixed inset-0 z-[20000] flex items-center justify-center p-4">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsImageExpanded(false)}
+                            className="absolute inset-0 bg-black/95 backdrop-blur-2xl cursor-zoom-out"
+                        />
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            onClick={() => setIsImageExpanded(false)}
+                            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[20001]"
+                        >
+                            <X size={32} />
+                        </motion.button>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="relative max-w-7xl max-h-[90vh] z-10 select-none"
+                        >
+                            <img
+                                src={product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image}
+                                alt={product.title}
+                                className="w-full h-full object-contain shadow-2xl"
+                            />
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </>
     );
+
+    return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 };
+
 
 export default ProductDetailsModal;
