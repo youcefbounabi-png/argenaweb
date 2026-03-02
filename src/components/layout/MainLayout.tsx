@@ -41,7 +41,11 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
     useEffect(() => {
         const lenis = new Lenis({ autoRaf: true });
-        return () => lenis.destroy();
+        (window as any).lenis = lenis;
+        return () => {
+            lenis.destroy();
+            delete (window as any).lenis;
+        };
     }, []);
 
     return (

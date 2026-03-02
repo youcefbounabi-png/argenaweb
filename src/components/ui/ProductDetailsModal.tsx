@@ -65,7 +65,19 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
             setViewMode('2d');
             setCurrentImageIndex(0);
             setIsImageExpanded(false);
+
+            // Stop lenis scrolling
+            document.body.style.overflow = 'hidden';
+            (window as any).lenis?.stop();
+        } else {
+            document.body.style.overflow = '';
+            (window as any).lenis?.start();
         }
+
+        return () => {
+            document.body.style.overflow = '';
+            (window as any).lenis?.start();
+        };
     }, [isOpen]);
 
     if (!isOpen || !product) return null;
@@ -110,7 +122,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         <>
             <AnimatePresence mode="wait">
                 {isOpen && product && (
-                    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 sm:p-12">
+                    <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 sm:p-12" data-lenis-prevent>
                         {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}

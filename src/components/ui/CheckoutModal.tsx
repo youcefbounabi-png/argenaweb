@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -34,6 +34,20 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
 
     const nextStep = () => setStep(s => s + 1);
     const prevStep = () => setStep(s => s - 1);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            (window as any).lenis?.stop();
+        } else {
+            document.body.style.overflow = '';
+            (window as any).lenis?.start();
+        }
+        return () => {
+            document.body.style.overflow = '';
+            (window as any).lenis?.start();
+        };
+    }, [isOpen]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -145,7 +159,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
 
     return (
         <AnimatePresence>
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-12">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-12" data-lenis-prevent>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

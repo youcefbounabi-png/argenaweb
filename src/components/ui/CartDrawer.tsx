@@ -9,6 +9,21 @@ export const CartDrawer: React.FC = () => {
     const { language } = useLanguage();
 
     const isAR = language === 'AR';
+
+    React.useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            (window as any).lenis?.stop();
+        } else {
+            document.body.style.overflow = '';
+            (window as any).lenis?.start();
+        }
+        return () => {
+            document.body.style.overflow = '';
+            (window as any).lenis?.start();
+        };
+    }, [isOpen]);
+
     const t = {
         title: isAR ? 'سلتك' : 'Your Cart',
         empty: isAR ? 'سلتك فارغة.' : 'Your cart is empty.',
@@ -42,6 +57,7 @@ export const CartDrawer: React.FC = () => {
                         exit={{ opacity: 0 }}
                         onClick={closeCart}
                         className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[150]"
+                        data-lenis-prevent
                     />
 
                     {/* Drawer */}
@@ -52,6 +68,7 @@ export const CartDrawer: React.FC = () => {
                         transition={{ type: 'tween', ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
                         className={`fixed top-0 h-full w-full max-w-sm bg-[#050505] z-[160] flex flex-col ${isAR ? 'right-auto left-0 border-r border-silver/20 text-right' : 'left-auto right-0 border-l border-silver/20'}`}
                         dir={isAR ? 'rtl' : 'ltr'}
+                        data-lenis-prevent
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-silver/20">
