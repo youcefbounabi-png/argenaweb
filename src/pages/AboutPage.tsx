@@ -7,17 +7,17 @@ export const AboutPage: React.FC = () => {
     const { language } = useLanguage();
 
     const t = {
-        title1: language === 'EN' ? 'The' : 'الهوية',
+        title1: language === 'EN' ? 'The' : 'قصتنا',
         title2: language === 'EN' ? 'Identity' : '',
         p1: language === 'EN'
             ? 'Argana is more than a label. It is a visual system designed to bridge the gap between ancient elegance and dystopian utility.'
-            : 'أرجانا أكثر من مجرد علامة تجارية — إنها منظومة بصرية تجمع بين رونق الماضي وجرأة الحاضر.',
+            : 'أرجانا ليست مجرد ملابس — إنها علامة تجمع بين الأناقة الكلاسيكية وستايل الشارع العصري.',
         p2: language === 'EN'
             ? 'Our philosophy is rooted in monochromatic minimalism, technical craftsmanship, and the pursuit of ethereal beauty within urban chaos.'
-            : 'فلسفتنا تقوم على البساطة أحادية اللون، والحرفية الدقيقة، والبحث المتواصل عن الجمال في قلب ضجيج المدينة.',
+            : 'فلسفتنا تعتمد على البساطة، الجودة العالية، والبحث عن التميز في عالم الموضة وتفاصيلها.',
         p3: language === 'EN'
             ? 'Founded with intent. Materialized in the shadow.'
-            : 'وُلدت بإرادة. وتجسّدت في الخفاء.'
+            : 'تصاميمنا وليدة الشغف، ومصنوعة بكل إتقان.'
     };
 
     return (

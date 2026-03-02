@@ -10,9 +10,9 @@ export const ContactPage: React.FC = () => {
     const [ticketOpen, setTicketOpen] = useState(false);
 
     const t = {
-        title: language === 'EN' ? 'Contact' : 'تواصل',
-        subtitle: language === 'EN' ? 'Establish Communication' : 'تأسيس اتصال',
-        openTicket: language === 'EN' ? 'OPEN TICKET' : 'فتح تذكرة'
+        title: language === 'EN' ? 'Contact' : 'اتصل بنا',
+        subtitle: language === 'EN' ? 'Establish Communication' : 'خلينا على اتصال',
+        openTicket: language === 'EN' ? 'OPEN TICKET' : 'طلب الدعم'
     };
 
     const contacts = [

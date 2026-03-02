@@ -31,18 +31,18 @@ export const FeaturedCollections: React.FC = () => {
         }
     ] : [
         {
-            title: "التشكيلة الأساسية",
-            desc: "قطع لن تغيب عن خزانتك أبداً.",
+            title: "المجموعة الأساسية",
+            desc: "قطع أساسية لا غنى عنها.",
             image: "/pictures/gemini.png"
         },
         {
-            title: "تغليف الأرشيف",
-            desc: "كل تفاصيل التغليف أجزء من تجربة نقلها بعناية.",
+            title: "تغليف خاص",
+            desc: "تغليف مميز لضمان وتأكيد الجودة.",
             image: "/pictures/unnamed.jpg"
         },
         {
-            title: "أغطية الرأس",
-            desc: "قبعات متينة وأخرى ممزقة بعمد وفن.",
+            title: "القبعات",
+            desc: "قبعات بتصاميم عصرية ومميزة.",
             image: "/pictures/e89573dfa0c1da28e6fc73bc3df96c7f.webp"
         }
     ];

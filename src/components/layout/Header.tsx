@@ -19,11 +19,11 @@ export const Header: React.FC = () => {
         shop: language === 'EN' ? 'Shop' : 'المتجر',
         about: language === 'EN' ? 'About' : 'عن أرجانا',
         customOrders: language === 'EN' ? 'Custom Orders' : 'طلبات خاصة',
-        testimonials: language === 'EN' ? 'Testimonials' : 'الشهود',
+        testimonials: language === 'EN' ? 'Testimonials' : 'آراء الزبائن',
         contact: language === 'EN' ? 'Contact' : 'تواصل معنا',
         socials: language === 'EN' ? '(Socials)' : '(التواصل الاجتماعي)',
         cart: language === 'EN' ? 'Cart' : 'السلة',
-        studio: language === 'EN' ? 'Studio' : 'ستوديو',
+        studio: language === 'EN' ? 'Studio' : 'استوديو',
         instagram: language === 'EN' ? 'Instagram' : 'إنستغرام'
     };
 

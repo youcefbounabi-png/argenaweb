@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
                     <p className={`font-mono text-[10px] md:text-xs text-silver uppercase tracking-widest leading-relaxed ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
                         {language === 'EN'
                             ? 'A curated collection of streetwear and accessories. Redefining urban aesthetics through a monochromatic lens.'
-                            : 'تشكيلة مختارة بعناية من ملابس الشارع والإكسسوارات. نعيد صياغة الجماليات الحضرية بعيون مختلفة.'}
+                            : 'مجموعة مميزة من ملابس الشارع والإكسسوارات. تصاميم عصرية بجودة عالية.'}
                     </p>
                 </motion.div>
 
@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
                     transition={{ duration: 1, delay: 2.8 }}
                 >
                     <Link to="/shop" className={`group flex items-center gap-3 font-mono text-[10px] md:text-xs uppercase tracking-widest border border-silver/30 px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-500 ${language === 'AR' ? 'uppercase-none font-sans font-medium flex-row-reverse' : ''}`}>
-                        {language === 'EN' ? 'Explore Collection' : 'استكشف المجموعة'}
+                        {language === 'EN' ? 'Explore Collection' : 'اكتشف المجموعة'}
                         <ArrowRight size={14} className={`transition-transform duration-300 ${language === 'AR' ? 'rotate-180 group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`} />
                     </Link>
                 </motion.div>

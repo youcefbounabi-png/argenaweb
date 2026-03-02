@@ -105,40 +105,40 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
     };
 
     const t = {
-        step1: language === 'EN' ? 'STEP 01/03 — CONTACT' : 'الخطوة 01/03 — جهة الاتصال',
-        who: language === 'EN' ? 'Who is ordering?' : 'من يطلب؟',
-        email: language === 'EN' ? 'Email Address' : 'البريد الإلكتروني',
-        enterEmail: language === 'EN' ? 'ENTER EMAIL' : 'أدخل البريد الإلكتروني',
+        step1: language === 'EN' ? 'STEP 01/03 — CONTACT' : 'الخطوة 01/03 — معلومات الاتصال',
+        who: language === 'EN' ? 'Who is ordering?' : 'معلومات المشتري',
+        email: language === 'EN' ? 'Email Address' : 'الإيميل (البريد الإلكتروني)',
+        enterEmail: language === 'EN' ? 'ENTER EMAIL' : 'أدخل الإيميل',
         phone: language === 'EN' ? 'Phone Number' : 'رقم الهاتف',
         enterPhone: language === 'EN' ? 'ENTER PHONE' : 'أدخل رقم الهاتف',
-        continue1: language === 'EN' ? 'CONTINUE TO SHIPPING' : 'متابعة إلى الشحن',
+        continue1: language === 'EN' ? 'CONTINUE TO SHIPPING' : 'التالي',
 
-        step2: language === 'EN' ? 'STEP 02/03 — DESTINATION' : 'الخطوة 02/03 — الوجهة',
-        where: language === 'EN' ? 'Where is it going?' : 'إلى أين تتجه؟',
-        stateLabel: language === 'EN' ? 'State / region (Algeria)' : 'الولاية / المنطقة (الجزائر)',
-        selectState: language === 'EN' ? 'Select State' : 'اختر الولاية',
+        step2: language === 'EN' ? 'STEP 02/03 — DESTINATION' : 'الخطوة 02/03 — التوصيل',
+        where: language === 'EN' ? 'Where is it going?' : 'عنوان التوصيل',
+        stateLabel: language === 'EN' ? 'State / region (Algeria)' : 'الولاية',
+        selectState: language === 'EN' ? 'Select State' : 'اختر ولايتك',
         algiers: language === 'EN' ? 'Algiers' : 'الجزائر العاصمة',
         oran: language === 'EN' ? 'Oran' : 'وهران',
         constantine: language === 'EN' ? 'Constantine' : 'قسنطينة',
-        communeLabel: language === 'EN' ? 'Commune / District' : 'البلدية / المنطقة',
-        selectCommune: language === 'EN' ? 'Select Commune' : 'اختر البلدية',
+        communeLabel: language === 'EN' ? 'Commune / District' : 'البلدية',
+        selectCommune: language === 'EN' ? 'Select Commune' : 'اختر بلديتك',
         back: language === 'EN' ? 'BACK' : 'رجوع',
         deliveryMethod: language === 'EN' ? 'Delivery Method' : 'طريقة التوصيل',
         homeDelivery: language === 'EN' ? 'Home Delivery' : 'توصيل للمنزل',
         deskDelivery: language === 'EN' ? 'Desk / Office' : 'توصيل للمكتب',
-        deliveryFeeLabel: language === 'EN' ? 'Delivery Fee' : 'رسوم التوصيل',
+        deliveryFeeLabel: language === 'EN' ? 'Delivery Fee' : 'سعر التوصيل',
         free: language === 'EN' ? 'FREE' : 'مجاني',
-        finalStep: language === 'EN' ? 'FINAL STEP' : 'الخطوة النهائية',
+        finalStep: language === 'EN' ? 'FINAL STEP' : 'التالي',
 
-        step3: language === 'EN' ? 'STEP 03/03 — FEEDBACK' : 'الخطوة 03/03 — ملاحظات',
-        leaveReview: language === 'EN' ? 'Leave a Review' : 'اترك تقييماً',
-        howFind: language === 'EN' ? 'How did you find us? (Optional)' : 'كيف وجدتنا؟ (اختياري)',
-        tellUs: language === 'EN' ? 'TELL US ABOUT YOUR EXPERIENCE...' : 'أخبرنا عن تجربتك...',
-        placeOrder: language === 'EN' ? 'PLACE ORDER' : 'إرسال الطلب',
+        step3: language === 'EN' ? 'STEP 03/03 — FEEDBACK' : 'الخطوة 03/03 — الطلب',
+        leaveReview: language === 'EN' ? 'Leave a Review' : 'ملاحظات إضافية',
+        howFind: language === 'EN' ? 'How did you find us? (Optional)' : 'عندك ملاحظة للطلب؟ (اختياري)',
+        tellUs: language === 'EN' ? 'TELL US ABOUT YOUR EXPERIENCE...' : 'اكتب ملاحظتك هنا...',
+        placeOrder: language === 'EN' ? 'PLACE ORDER' : 'تأكيد الطلب',
 
-        step4Title: language === 'EN' ? 'Order Received' : 'تم استلام الطلب',
-        step4Desc: language === 'EN' ? 'Will be in contact with you shortly. Thank you for ordering from us.' : 'سنتواصل معك قريباً. شكراً لطلبك منا.',
-        close: language === 'EN' ? 'RETURN TO ARCHIVE' : 'العودة للأرشيف'
+        step4Title: language === 'EN' ? 'Order Received' : 'تم تسجيل طلبك بنجاح!',
+        step4Desc: language === 'EN' ? 'Will be in contact with you shortly. Thank you for ordering from us.' : 'راح نتصل بيك في أقرب وقت لتأكيد الطلب. شكراً لثقتك في أرجانا!',
+        close: language === 'EN' ? 'RETURN TO ARCHIVE' : 'العودة للمتجر'
     };
 
     if (!isOpen) return null;

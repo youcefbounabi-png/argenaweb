@@ -14,15 +14,15 @@ export const Footer: React.FC = () => {
         joinCult: language === 'EN' ? 'Join the Cult' : 'انضم إلينا',
         subscribeText: language === 'EN'
             ? 'Subscribe to receive updates, access to exclusive deals, and more.'
-            : 'اشترك لتلقي التحديثات والوصول إلى العروض الحصرية والمزيد.',
+            : 'اشترك ليصلك جديدنا وعروضنا الحصرية.',
         emailPlaceholder: language === 'EN' ? 'EMAIL ADDRESS' : 'البريد الإلكتروني',
         submit: language === 'EN' ? 'Submit' : 'إرسال',
         navHeading: language === 'EN' ? '(Navigation)' : '(التنقل)',
         legalHeading: language === 'EN' ? '(Legal)' : '(قانوني)',
         home: language === 'EN' ? 'Home' : 'الرئيسية',
-        shopAll: language === 'EN' ? 'Shop All' : 'تسوق الكل',
+        shopAll: language === 'EN' ? 'Shop All' : 'كل المنتجات',
         about: language === 'EN' ? 'About' : 'عن أرجانا',
-        testim: language === 'EN' ? 'Testimonials' : 'الشهود',
+        testim: language === 'EN' ? 'Testimonials' : 'آراء الزبائن',
         customOrder: language === 'EN' ? 'Custom Orders' : 'طلبات خاصة',
         terms: language === 'EN' ? 'Terms of Service' : 'شروط الخدمة',
         privacy: language === 'EN' ? 'Privacy Policy' : 'سياسة الخصوصية',

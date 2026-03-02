@@ -84,9 +84,9 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         description: language === 'EN' ? 'Description' : 'الوصف',
         price: language === 'EN' ? 'Price' : 'السعر',
         colorRequired: language === 'EN' ? 'Please select a color' : 'الرجاء اختيار لون',
-        view2D: language === 'EN' ? 'DISPLAY' : 'عرض',
-        view3D: language === 'EN' ? '3D' : 'ثلاثي الأبعاد',
-        loadingModel: language === 'EN' ? 'LOADING 3D MODEL...' : 'جارٍ تحميل النموذج...',
+        view2D: language === 'EN' ? 'DISPLAY' : 'صور',
+        view3D: language === 'EN' ? '3D' : '3D',
+        loadingModel: language === 'EN' ? 'LOADING 3D MODEL...' : 'جاري التحميل...',
         colors: product.colors || []
     };
 

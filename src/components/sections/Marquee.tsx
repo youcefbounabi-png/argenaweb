@@ -17,7 +17,7 @@ export const Marquee: React.FC = () => {
                     <span key={i} className={`mx-8 flex items-center gap-8 ${language === 'AR' ? 'font-sans font-bold text-lg' : ''}`}>
                         <Logo className="text-xl" forceImageOnly={true} />
                         <span className="w-2 h-2 rounded-full bg-black" />
-                        <span>{language === 'EN' ? 'Ethereal Beauty' : 'جمال أثيري'}</span>
+                        <span>{language === 'EN' ? 'Ethereal Beauty' : 'أناقة الشارع'}</span>
                         <span className="w-2 h-2 rounded-full bg-black" />
                     </span>
                 ))}
