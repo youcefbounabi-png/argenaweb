@@ -99,12 +99,12 @@ export const Header: React.FC = () => {
                             letterSpacing: language === 'AR' ? '0' : '0.12em',
                         }}
                     >
-                        <Link to="/" style={{ fontSize: '1rem', color: '#aaa' }}>{t.studio}</Link>
-                        <Link to="/shop" className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.shop}</Link>
-                        <Link to="/about" className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.about}</Link>
-                        <Link to="/custom-orders" className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.customOrders}</Link>
-                        <Link to="/testimonials" className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.testimonials}</Link>
-                        <Link to="/contact" className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.contact}</Link>
+                        <Link to={`/${language.toLowerCase()}/`} style={{ fontSize: '1rem', color: '#aaa' }}>{t.studio}</Link>
+                        <Link to={`/${language.toLowerCase()}/shop`} className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.shop}</Link>
+                        <Link to={`/${language.toLowerCase()}/about`} className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.about}</Link>
+                        <Link to={`/${language.toLowerCase()}/custom-orders`} className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.customOrders}</Link>
+                        <Link to={`/${language.toLowerCase()}/testimonials`} className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.testimonials}</Link>
+                        <Link to={`/${language.toLowerCase()}/contact`} className="metallic-text" style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>{t.contact}</Link>
                     </nav>
 
                     {/* Bottom controls */}
@@ -165,7 +165,7 @@ export const Header: React.FC = () => {
 
                     {/* Logo Section - Visible on all devices */}
                     <div className="flex flex-col">
-                        <Link to="/" className="hover:text-white transition-colors flex flex-wrap md:flex-nowrap items-center gap-2 md:gap-4 group">
+                        <Link to={`/${language.toLowerCase()}/`} className="hover:text-white transition-colors flex flex-wrap md:flex-nowrap items-center gap-2 md:gap-4 group">
                             <div className="filter drop-shadow-[0_0_30px_rgba(255,255,255,1)] group-hover:drop-shadow-[0_0_50px_rgba(255,255,255,1)] transition-all duration-500 opacity-100 mix-blend-normal isolate">
                                 <Logo className="text-5xl h-12 md:text-7xl md:h-28 lg:h-32 w-auto text-white scale-125 origin-left" forceImageOnly={true} />
                             </div>
@@ -177,11 +177,11 @@ export const Header: React.FC = () => {
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
                         <p className="text-white/50 mb-2">{t.nav}</p>
-                        <Link to="/shop" className={`block hover:text-silver transition-colors ${location.pathname === '/shop' ? 'text-silver' : ''}`}>{t.shop}</Link>
-                        <Link to="/about" className={`block hover:text-silver transition-colors ${location.pathname === '/about' ? 'text-silver' : ''}`}>{t.about}</Link>
-                        <Link to="/custom-orders" className={`block hover:text-silver transition-colors ${location.pathname === '/custom-orders' ? 'text-silver' : ''}`}>{t.customOrders}</Link>
-                        <Link to="/testimonials" className={`block hover:text-silver transition-colors ${location.pathname === '/testimonials' ? 'text-silver' : ''}`}>{t.testimonials}</Link>
-                        <Link to="/contact" className={`block hover:text-silver transition-colors ${location.pathname === '/contact' ? 'text-silver' : ''}`}>{t.contact}</Link>
+                        <Link to={`/${language.toLowerCase()}/shop`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/shop') ? 'text-silver' : ''}`}>{t.shop}</Link>
+                        <Link to={`/${language.toLowerCase()}/about`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/about') ? 'text-silver' : ''}`}>{t.about}</Link>
+                        <Link to={`/${language.toLowerCase()}/custom-orders`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/custom-orders') ? 'text-silver' : ''}`}>{t.customOrders}</Link>
+                        <Link to={`/${language.toLowerCase()}/testimonials`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/testimonials') ? 'text-silver' : ''}`}>{t.testimonials}</Link>
+                        <Link to={`/${language.toLowerCase()}/contact`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/contact') ? 'text-silver' : ''}`}>{t.contact}</Link>
                     </div>
 
                     {/* Desktop Socials */}

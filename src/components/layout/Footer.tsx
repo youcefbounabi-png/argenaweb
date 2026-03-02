@@ -87,13 +87,13 @@ export const Footer: React.FC = () => {
                 <div className={`grid grid-cols-2 gap-8 font-mono text-xs uppercase tracking-widest ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
                     <div>
                         <p className="text-silver mb-4">{t.navHeading}</p>
-                        <ul className="space-y-2">
-                            <li><Link to="/" className="hover:text-silver transition-colors">{t.home}</Link></li>
-                            <li><Link to="/shop" className="hover:text-silver transition-colors">{t.shopAll}</Link></li>
-                            <li><Link to="/about" className="hover:text-silver transition-colors">{t.about}</Link></li>
-                            <li><Link to="/testimonials" className="hover:text-silver transition-colors">{t.testim}</Link></li>
-                            <li><Link to="/custom-orders" className="hover:text-silver transition-colors">{t.customOrder}</Link></li>
-                        </ul>
+                        <div className="flex flex-col gap-4 text-xs font-mono uppercase tracking-widest text-silver">
+                            <Link to={`/${language.toLowerCase()}/`} className="hover:text-white transition-colors block">{t.home}</Link>
+                            <Link to={`/${language.toLowerCase()}/shop`} className="hover:text-white transition-colors block">{t.shopAll}</Link>
+                            <Link to={`/${language.toLowerCase()}/about`} className="hover:text-white transition-colors block">{t.about}</Link>
+                            <Link to={`/${language.toLowerCase()}/testimonials`} className="hover:text-white transition-colors block">{t.testim}</Link>
+                            <Link to={`/${language.toLowerCase()}/custom-orders`} className="hover:text-white transition-colors block">{t.customOrder}</Link>
+                        </div>
                     </div>
                     <div>
                         <p className="text-silver mb-4">{t.legalHeading}</p>

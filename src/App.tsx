@@ -27,6 +27,23 @@ const PageLoader = () => (
   </div>
 );
 
+// Extract internal routes into a separate component so they can be nested under /:lang or /
+const AppRoutes = () => {
+  const { addItem } = useCart();
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage onAddToCart={addItem} />} />
+      <Route path="/shop" element={<ShopPage onAddToCart={addItem} />} />
+      <Route path="/available-soon" element={<AvailableSoonPage />} />
+      <Route path="/testimonials" element={<TestimonialsPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/custom-orders" element={<CustomOrdersPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+};
+
 const AppInner = () => {
   const { addItem } = useCart();
   const location = useLocation();
@@ -42,14 +59,10 @@ const AppInner = () => {
         >
           <Suspense fallback={<PageLoader />}>
             <Routes location={location}>
-              <Route path="/" element={<HomePage onAddToCart={addItem} />} />
-              <Route path="/shop" element={<ShopPage onAddToCart={addItem} />} />
-              <Route path="/available-soon" element={<AvailableSoonPage />} />
-              <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/custom-orders" element={<CustomOrdersPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              {/* Optional language prefix routes */}
+              <Route path="/:lang/*" element={<AppRoutes />} />
+              {/* Fallback routes without prefix */}
+              <Route path="/*" element={<AppRoutes />} />
             </Routes>
           </Suspense>
           <Footer />

@@ -25,7 +25,7 @@ export const AvailableSoonPage: React.FC = () => {
                         : 'الملابس التقنية والإكسسوارات الفضية قيد الإنتاج حالياً. الإصدار القادم سيتحقق قريباً.'}
                 </p>
                 <Link
-                    to="/shop"
+                    to={`/${language.toLowerCase()}/shop`}
                     className={`group flex items-center justify-center gap-3 font-mono text-[10px] md:text-xs uppercase tracking-widest border border-silver/30 px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-500 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                 >
                     {language === 'EN' ? <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform duration-300" /> : <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-300" />}
