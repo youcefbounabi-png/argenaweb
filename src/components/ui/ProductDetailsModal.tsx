@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, ArrowLeft, Layers, Image } from 'lucide-react';
+import { X, ArrowRight, ArrowLeft, Layers, Image, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Product3DViewer = lazy(() => import('../3d/Product3DViewer'));
@@ -19,6 +19,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
     const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isImageExpanded, setIsImageExpanded] = useState(false);
+    const touchStartX = useRef<number | null>(null);
 
     // Ref for the modal card so we can compute the portal button's position
     const modalCardRef = useRef<HTMLDivElement>(null);
@@ -42,21 +43,21 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         return () => window.removeEventListener('resize', update);
     }, [isOpen]);
 
+    const galleryLength = product?.gallery?.length ?? 0;
+
+    const prevImage = () => setCurrentImageIndex(i => (i - 1 + galleryLength) % galleryLength);
+    const nextImage = () => setCurrentImageIndex(i => (i + 1) % galleryLength);
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                onClose();
-            }
+            if (e.key === 'Escape') { onClose(); return; }
+            if (!isOpen || viewMode !== '2d') return;
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
         };
-
-        if (isOpen) {
-            window.addEventListener('keydown', handleKeyDown);
-        }
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [isOpen, onClose]);
+        if (isOpen) window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [isOpen, onClose, viewMode, galleryLength]);
 
     // Reset view mode when modal opens
     useEffect(() => {
@@ -71,9 +72,9 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
 
     // GLB model map — add new entries here when more models are ready
     const MODEL_MAP: Record<number, string> = {
-        1: '/3dboston.glb',        // B letter distressed cap
+        1: '/3djustbecause.glb',   // Lust Because cap — uses B-letter 3D design
         2: '/3dboston.glb',        // Boston distressed cap
-        3: '/3djustbecause.glb',   // Just Because cap
+        3: '/3djustbecause.glb',   // B letter distressed cap
         4: '/3dairforce.glb',      // Vintage Airforce cap
     };
 
@@ -165,16 +166,16 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
                             transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-                            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col pt-12 md:p-6"
+                            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col pt-12 md:p-6"
                             data-lenis-prevent
                         >
                             <div ref={modalCardRef} className="relative w-full h-full bg-bg border border-silver/20 rounded-t-2xl md:rounded-xl shadow-2xl overflow-hidden flex flex-col">
 
                                 {/* Scrollable Content */}
-                                <div className={`w-full h-full p-8 md:p-12 overflow-y-auto custom-scrollbar flex flex-col md:gap-12 ${language === 'AR' ? 'md:flex-row-reverse' : 'md:flex-row'}`} dir={language === 'AR' ? 'rtl' : 'ltr'}>
+                                <div className={`w-full h-full p-6 md:p-10 overflow-y-auto custom-scrollbar flex flex-col gap-8 md:gap-6 ${language === 'AR' ? 'md:flex-row-reverse' : 'md:flex-row'}`} dir={language === 'AR' ? 'rtl' : 'ltr'}>
 
-                                    {/* Image / 3D Section */}
-                                    <div className="flex-1 flex flex-col gap-3">
+                                    {/* Image / 3D Section — fixed 50% width */}
+                                    <div className="md:w-1/2 w-full flex-shrink-0 flex flex-col gap-3">
                                         <div className="flex items-center gap-2 font-mono text-[10px] tracking-widest">
                                             <button
                                                 onClick={() => setViewMode('2d')}
@@ -190,16 +191,26 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                             </button>
                                         </div>
 
-                                        <div className="relative aspect-[4/5] overflow-hidden bg-black flex flex-col group/img-container">
+                                        {/* Main image — aspect ratio keeps column stable */}
+                                        <div
+                                            className="relative aspect-[4/5] overflow-hidden bg-black group/img-container"
+                                            onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+                                            onTouchEnd={(e) => {
+                                                if (touchStartX.current === null) return;
+                                                const delta = e.changedTouches[0].clientX - touchStartX.current;
+                                                if (Math.abs(delta) > 40) { delta < 0 ? nextImage() : prevImage(); }
+                                                touchStartX.current = null;
+                                            }}
+                                        >
                                             {viewMode === '2d' ? (
-                                                <div className="flex-1 w-full relative h-full">
+                                                <>
                                                     <img
                                                         src={product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image}
                                                         alt={product.title}
                                                         onClick={() => setIsImageExpanded(true)}
                                                         className={`w-full h-full object-cover cursor-zoom-in transition-transform duration-700 hover:scale-105 ${(product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image).includes('blettermodel') ? 'object-top' : ''}`}
                                                     />
-                                                    {/* Hint for expansion */}
+                                                    {/* Expand hint */}
                                                     <div
                                                         onClick={() => setIsImageExpanded(true)}
                                                         className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 cursor-zoom-in pointer-events-none"
@@ -208,7 +219,37 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                             <Image size={20} className="text-white" />
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    {/* Prev / Next arrows — only shown when there are multiple images */}
+                                                    {galleryLength > 1 && (
+                                                        <>
+                                                            <button
+                                                                onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                                                                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 border border-white/20 text-white opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 hover:bg-black/80"
+                                                                aria-label="Previous image"
+                                                            >
+                                                                <ChevronLeft size={18} />
+                                                            </button>
+                                                            <button
+                                                                onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                                                                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 border border-white/20 text-white opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 hover:bg-black/80"
+                                                                aria-label="Next image"
+                                                            >
+                                                                <ChevronRight size={18} />
+                                                            </button>
+                                                            {/* Dot indicators */}
+                                                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                                                {product.gallery.map((_: string, idx: number) => (
+                                                                    <button
+                                                                        key={idx}
+                                                                        onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
+                                                                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/40'
+                                                                            }`}
+                                                                    />
+                                                                ))}
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </>
                                             ) : (
                                                 <Suspense fallback={
                                                     <div className="w-full h-full flex items-center justify-center">
@@ -222,17 +263,20 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                             )}
                                         </div>
 
-                                        {/* Gallery Thumbnails */}
+                                        {/* Thumbnail strip — fixed height, horizontally scrollable, never grows */}
                                         {viewMode === '2d' && product.gallery && product.gallery.length > 1 && (
-                                            <div className="flex gap-2 p-2 bg-black/40 overflow-x-auto shrink-0" style={{ scrollbarWidth: 'none' }}>
+                                            <div
+                                                className="flex gap-2 h-16 overflow-x-auto flex-nowrap"
+                                                style={{ scrollbarWidth: 'none' }}
+                                            >
                                                 {product.gallery.map((img: string, idx: number) => (
                                                     <button
                                                         key={idx}
-                                                        onClick={() => {
-                                                            setCurrentImageIndex(idx);
-                                                            setIsImageExpanded(true);
-                                                        }}
-                                                        className={`relative w-16 h-16 flex-shrink-0 border transition-all duration-300 cursor-zoom-in ${currentImageIndex === idx ? 'border-white opacity-100' : 'border-transparent opacity-50 hover:opacity-100 hover:border-white/50'}`}
+                                                        onClick={() => setCurrentImageIndex(idx)}
+                                                        className={`relative w-16 h-16 flex-shrink-0 border-2 transition-all duration-300 overflow-hidden ${currentImageIndex === idx
+                                                            ? 'border-white opacity-100'
+                                                            : 'border-transparent opacity-40 hover:opacity-80 hover:border-white/40'
+                                                            }`}
                                                     >
                                                         <img src={img} alt={`${product.title} view ${idx + 1}`} className="w-full h-full object-cover" />
                                                     </button>
@@ -241,8 +285,8 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                         )}
                                     </div>
 
-                                    {/* Details Section */}
-                                    <div className={`flex-1 flex flex-col justify-between ${language === 'AR' ? 'text-right' : ''}`}>
+                                    {/* Details Section — fixed 50% width */}
+                                    <div className={`md:w-1/2 w-full flex-shrink-0 flex flex-col justify-between ${language === 'AR' ? 'text-right' : ''}`}>
                                         <div>
                                             <p className="font-mono text-xs uppercase tracking-widest text-silver mb-4">({String(product.id).padStart(3, '0')}) {product.category}</p>
                                             <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl text-white mb-6`}>{product.title}</h2>

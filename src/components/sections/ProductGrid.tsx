@@ -11,7 +11,14 @@ export const productsEN = [
         title: 'lust because cap',
         price: 'DA 2,400',
         image: '/pictures/gemini01.png',
-        gallery: ['/pictures/gemini.png', '/pictures/lustbecausecaps (1).png'],
+        gallery: [
+            '/pictures/gemini.png',
+            '/pictures/lustbecausecaps (1).png',
+            '/pictures/lust0 (1).jpeg',
+            '/pictures/lust0 (2).jpeg',
+            '/pictures/lust0 (3).jpeg',
+            '/pictures/lust0 (4).jpeg'
+        ],
         category: 'Headwear',
         available: true,
         colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown'],
@@ -22,10 +29,19 @@ export const productsEN = [
         title: 'boston disstressed cap',
         price: 'DA 2,400',
         image: '/pictures/boston0.png',
-        gallery: ['/pictures/boston0.png', '/pictures/bostoncaps.png'],
+        gallery: [
+            '/pictures/boston0.png',
+            '/pictures/bostoncaps.png',
+            '/pictures/bost1.jpeg',
+            '/pictures/bost2.jpeg',
+            '/pictures/bost3.jpeg',
+            '/pictures/bost4.jpeg',
+            '/pictures/bost5.jpeg',
+            '/pictures/bost6.jpeg'
+        ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown'],
+        colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Grey', 'Burgundy', 'Beige', 'White', 'Brown'],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
     {
@@ -33,7 +49,14 @@ export const productsEN = [
         title: 'B letter distressed cap',
         price: 'DA 2,400',
         image: '/pictures/blettermodel.png',
-        gallery: ['/pictures/blettermodel.png', '/pictures/blettercaps.png'],
+        gallery: [
+            '/pictures/blettermodel.png',
+            '/pictures/blettercaps.png',
+            '/pictures/bletter (1).jpeg',
+            '/pictures/bletter (2).jpeg',
+            '/pictures/bletter (3).jpeg',
+            '/pictures/bletter (4).jpeg'
+        ],
         category: 'Headwear',
         available: true,
         colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown'],
@@ -44,7 +67,16 @@ export const productsEN = [
         title: 'vintage airforce cap',
         price: 'DA 2,200',
         image: '/pictures/airforce.png',
-        gallery: ['/pictures/airforce.png', '/pictures/airforcecaps.png'],
+        gallery: [
+            '/pictures/airforce.png',
+            '/pictures/airforcecaps.png',
+            '/pictures/airfor0 (1).jpeg',
+            '/pictures/airfor0 (2).jpeg',
+            '/pictures/airfor0 (3).jpeg',
+            '/pictures/airfor0 (4).jpeg',
+            '/pictures/airfor0 (5).jpeg',
+            '/pictures/airfor0 (6).jpeg'
+        ],
         category: 'Headwear',
         available: true,
         colors: ['Black', 'Navy', 'Olive', 'Charcoal', 'Burgundy', 'Beige', 'White', 'Brown'],
@@ -55,13 +87,20 @@ export const productsEN = [
 export const productsAR = [
     {
         id: 1,
-        title: 'قبعة "Lust Because"',
+        title: 'قبعة «لست بيكوز»',
         price: '2,400 د.ج',
         image: '/pictures/gemini01.png',
-        gallery: ['/pictures/gemini.png', '/pictures/lustbecausecaps (1).png'],
+        gallery: [
+            '/pictures/gemini.png',
+            '/pictures/lustbecausecaps (1).png',
+            '/pictures/lust0 (1).jpeg',
+            '/pictures/lust0 (2).jpeg',
+            '/pictures/lust0 (3).jpeg',
+            '/pictures/lust0 (4).jpeg'
+        ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض', 'بني'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'خمري', 'بيج', 'أبيض', 'بني'],
         description: 'قبعة بيسبول من القماش القطني المغسول عالية الجودة مع تطريز مخصص على الحافة.\nمقاس واحد يناسب الجميع بفضل التصميم المرن (للجنسين).\nمصنوعة من قطن 100٪ لضمان خفة القبعة وراحتها.\nتقنية تطريز حديثة ومميزة للارتقاء بمظهرك.'
     },
     {
@@ -69,10 +108,19 @@ export const productsAR = [
         title: 'قبعة بوسطن الممزقة',
         price: '2,400 د.ج',
         image: '/pictures/boston0.png',
-        gallery: ['/pictures/boston0.png', '/pictures/bostoncaps.png'],
+        gallery: [
+            '/pictures/boston0.png',
+            '/pictures/bostoncaps.png',
+            '/pictures/bost1.jpeg',
+            '/pictures/bost2.jpeg',
+            '/pictures/bost3.jpeg',
+            '/pictures/bost4.jpeg',
+            '/pictures/bost5.jpeg',
+            '/pictures/bost6.jpeg'
+        ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض', 'بني'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'رمادي', 'عنابي', 'بيج', 'أبيض', 'بني'],
         description: 'قبعة بيسبول للرجال والنساء، أزياء شبكية لحماية من الشمس للربيع والصيف، أنيقة وعصرية.\n\nالخصائص:\nاستمتع بحماية أنيقة من أشعة الشمس أثناء أنشطتك الخارجية.\nاستمتعي بأزياء متعددة الاستخدامات مع تصميمات تناسب الجنسين.\nأبرز مظهرك بتطريز الحروف العصري.\nحماية من الرياح والشمس بدون مجهود.\nمثالي للارتداء اليومي وأسلوب الشارع.'
     },
     {
@@ -80,10 +128,17 @@ export const productsAR = [
         title: 'قبعة حرف B الممزقة',
         price: '2,400 د.ج',
         image: '/pictures/blettermodel.png',
-        gallery: ['/pictures/blettermodel.png', '/pictures/blettercaps.png'],
+        gallery: [
+            '/pictures/blettermodel.png',
+            '/pictures/blettercaps.png',
+            '/pictures/bletter (1).jpeg',
+            '/pictures/bletter (2).jpeg',
+            '/pictures/bletter (3).jpeg',
+            '/pictures/bletter (4).jpeg'
+        ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض', 'بني'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'خمري', 'بيج', 'أبيض', 'بني'],
         description: 'قبعة بيسبول كلاسيكية ممزقة بحرف B للجنسين.\n\nالمميزات:\nقطن مغسول عالي الجودة لشعور مريح وعملي.\nحزام خلفي قابل للتعديل يناسب معظم أحجام الرأس بسلاسة.\nتفاصيل ممزقة كلاسيكية للحصول على حافة أصلية في أسلوب الشارع.\nمثالية للارتداء اليومي غير الرسمي، حماية من الشمس، وأسلوب سهل.'
     },
     {
@@ -91,10 +146,19 @@ export const productsAR = [
         title: 'قبعة إير فورس كلاسيكية',
         price: '2,200 د.ج',
         image: '/pictures/airforce.png',
-        gallery: ['/pictures/airforce.png', '/pictures/airforcecaps.png'],
+        gallery: [
+            '/pictures/airforce.png',
+            '/pictures/airforcecaps.png',
+            '/pictures/airfor0 (1).jpeg',
+            '/pictures/airfor0 (2).jpeg',
+            '/pictures/airfor0 (3).jpeg',
+            '/pictures/airfor0 (4).jpeg',
+            '/pictures/airfor0 (5).jpeg',
+            '/pictures/airfor0 (6).jpeg'
+        ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'عنابي', 'بيج', 'أبيض', 'بني'],
+        colors: ['أسود', 'كحلي', 'زيتي', 'رمادي غامق', 'خمري', 'بيج', 'أبيض', 'بني'],
         description: 'قبعة إير فورس بأسلوب كلاسيكي للجنسين.\n\nالمميزات:\nجمالية مستوحاة من الطراز العسكري الكلاسيكي، مثالية لأي إطلالة غير رسمية.\nقماش خفيف الوزن ومتين لراحة تدوم طوال اليوم.\nتطريز دقيق ولمسة نهائية قطنية مغسولة بأسلوب عتيق.\nإكسسوار متعدد الاستخدامات للحماية من الشمس وأزياء الشارع اليومية.'
     }
 ];

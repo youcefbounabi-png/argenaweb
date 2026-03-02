@@ -11,7 +11,7 @@ export const TestimonialsPage: React.FC = () => {
         title2: language === 'EN' ? 'Witnesses' : '',
         subtitle: language === 'EN'
             ? 'A collection of voices from the archive. Those who have experienced the ethereal.'
-            : 'مجموعة من الأصوات من الأرشيف. أولئك الذين جربوا الأثيري.',
+            : 'أصوات حقيقية من تجربوا ما تقدمه أرجانا.',
         testimonialsBlock: language === 'EN' ? 'TESTIMONIAL' : 'شهادة',
         testimonials: language === 'EN' ? [
             {
@@ -42,25 +42,25 @@ export const TestimonialsPage: React.FC = () => {
             {
                 name: 'أمينة ب.',
                 location: 'الجزائر العاصمة',
-                review: 'جودة القبعة لا مثيل لها. تبدو كقطعة فنية أكثر من مجرد غطاء للرأس.',
+                review: 'جودة القبعة لا توصف — تحسّ وكأنك ترتدي قطعة فنية لا مجرد غطاء للرأس.',
                 date: '2024.12.01'
             },
             {
                 name: 'طارق م.',
                 location: 'وهران',
-                review: 'الفخامة الديستوبية في أبهى صورها. تفاصيل الإكسسوارات الفضية خيالية. أرجانا هي المستقبل.',
+                review: 'فخامة حقيقية بأسلوب عصري. الإكسسوارات الفضية تسرق الأنظار. أرجانا هي المستقبل.',
                 date: '2024.11.15'
             },
             {
                 name: 'ياسمين ح.',
                 location: 'قسنطينة',
-                review: 'أخيراً علامة تجارية تفهم التقاطع بين الجماليات القديمة وثقافة الشارع الحديثة.',
+                review: 'أخيراً علامة تفهم كيف تمزج بين جماليات الماضي وروح الشارع اليوم.',
                 date: '2024.11.28'
             },
             {
                 name: 'رياض ك.',
                 location: 'عنابة',
-                review: 'تجربة فتح العلبة وحدها كانت كافية بالنسبة لي. طابع "الأثيري" حاضر في كل ما يفعلونه.',
+                review: '\u062a\u062c\u0631\u0628\u0629 \u0641\u062a\u062d \u0627\u0644\u0639\u0644\u0628\u0629 \u0648\u062d\u062f\u0647\u0627 \u0643\u0627\u0646\u062a \u062a\u0633\u062a\u062d\u0642. \u0627\u0644\u0627\u0647\u062a\u0645\u0627\u0645 \u0628\u0627\u0644\u062a\u0641\u0627\u0635\u064a\u0644 \u0648\u0627\u0636\u062d \u0641\u064a \u0643\u0644 \u0634\u064a\u0621.',
                 date: '2024.12.05'
             }
         ]
@@ -79,31 +79,33 @@ export const TestimonialsPage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {t.testimonials.map((testim, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        whileHover={{ scale: 1.02, y: -10 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: i * 0.1 }}
-                        className="p-12 border border-silver/10 bg-silver-dark/5 flex flex-col justify-between aspect-[4/3] group transition-all duration-500 hover:border-white/40 hover:bg-silver-dark/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] cursor-pointer"
-                    >
-                        <div>
-                            <p className={`font-mono text-[10px] text-silver tracking-widest mb-6 ${language === 'AR' ? 'text-right' : 'text-left'}`}>
-                                ({String(i + 1).padStart(3, '0')}) {t.testimonialsBlock}
-                            </p>
-                            <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia]' : 'font-sans font-bold leading-loose'} text-2xl md:text-3xl text-white group-hover:metallic-text mb-8 italic`}>
-                                "{testim.review}"
-                            </h2>
-                        </div>
-                        <div className={`flex ${language === 'AR' ? 'flex-row-reverse' : 'flex-row'} justify-between items-end border-t border-silver/20 pt-8 mt-8 font-mono text-xs uppercase tracking-widest`}>
-                            <div className={language === 'AR' ? 'text-right' : 'text-left'}>
-                                <p className="font-bold mb-1 text-white">{testim.name}</p>
-                                <p className="text-silver">{testim.location}</p>
+                    // Wrapper: 1px padding + rotating conic-gradient = the animated border
+                    <div key={i} className="testimonial-wrapper">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            whileHover={{ scale: 1.02, y: -10 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: i * 0.1 }}
+                            className="p-12 bg-[#050505] flex flex-col justify-between aspect-[4/3] group transition-all duration-500 cursor-pointer"
+                        >
+                            <div>
+                                <p className={`font-mono text-[10px] text-silver tracking-widest mb-6 ${language === 'AR' ? 'text-right' : 'text-left'}`}>
+                                    ({String(i + 1).padStart(3, '0')}) {t.testimonialsBlock}
+                                </p>
+                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia]' : 'font-sans font-bold leading-loose'} text-2xl md:text-3xl text-white group-hover:metallic-text mb-8 italic`}>
+                                    "{testim.review}"
+                                </h2>
                             </div>
-                            <p className="text-silver/50">{testim.date}</p>
-                        </div>
-                    </motion.div>
+                            <div className={`flex ${language === 'AR' ? 'flex-row-reverse' : 'flex-row'} justify-between items-end border-t border-silver/20 pt-8 mt-8 font-mono text-xs uppercase tracking-widest`}>
+                                <div className={language === 'AR' ? 'text-right' : 'text-left'}>
+                                    <p className="font-bold mb-1 text-white">{testim.name}</p>
+                                    <p className="text-silver">{testim.location}</p>
+                                </div>
+                                <p className="text-silver/50">{testim.date}</p>
+                            </div>
+                        </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

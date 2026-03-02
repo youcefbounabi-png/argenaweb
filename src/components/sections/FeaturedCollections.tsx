@@ -10,8 +10,8 @@ export const FeaturedCollections: React.FC = () => {
         target: targetRef,
     });
 
-    const xVal = language === 'AR' ? "66.66%" : "-66.66%";
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", xVal]);
+    const xVal = language === 'AR' ? "200vw" : "-200vw";
+    const x = useTransform(scrollYProgress, [0, 0.95], ["0vw", xVal]);
 
     const collections = language === 'EN' ? [
         {
@@ -31,37 +31,37 @@ export const FeaturedCollections: React.FC = () => {
         }
     ] : [
         {
-            title: "المجموعة الأساسية",
-            desc: "قطع أساسية لخزانة الملابس الحديثة.",
+            title: "التشكيلة الأساسية",
+            desc: "قطع لن تغيب عن خزانتك أبداً.",
             image: "/pictures/gemini.png"
         },
         {
             title: "تغليف الأرشيف",
-            desc: "معدات مصنفة محكمة الغلق لضمان الأصالة.",
+            desc: "كل تفاصيل التغليف أجزء من تجربة نقلها بعناية.",
             image: "/pictures/unnamed.jpg"
         },
         {
             title: "أغطية الرأس",
-            desc: "قبعات مهيكلة وممزقة.",
+            desc: "قبعات متينة وأخرى ممزقة بعمد وفن.",
             image: "/pictures/e89573dfa0c1da28e6fc73bc3df96c7f.webp"
         }
     ];
 
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-bg">
-            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-                <motion.div style={{ x }} className="flex gap-12 px-12 w-[300vw]">
+        <section ref={targetRef} className="relative h-[350vh] bg-bg">
+            <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden">
+                <motion.div style={{ x }} className="flex w-max px-0">
                     {collections.map((collection, index) => (
-                        <div key={index} className="w-[100vw] flex-shrink-0 flex items-center justify-center">
+                        <div key={index} className="w-screen flex-shrink-0 flex items-center justify-center p-6 md:p-12">
                             <div className="relative w-full max-w-5xl aspect-[16/9] overflow-hidden group">
                                 <img
                                     src={collection.image}
                                     alt={collection.title}
                                     className="w-full h-full object-cover art-image group-hover:scale-105 transition-transform duration-1000"
                                 />
-                                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-12">
-                                    <h3 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia]' : 'font-sans font-bold'} metallic-text text-6xl md:text-8xl mb-4`}>{collection.title}</h3>
-                                    <p className={`font-mono text-xs uppercase tracking-widest text-silver max-w-sm ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
+                                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8 md:p-12">
+                                    <h3 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia]' : 'font-sans font-bold'} metallic-text text-5xl md:text-8xl mb-4`}>{collection.title}</h3>
+                                    <p className={`font-mono text-[10px] md:text-xs uppercase tracking-widest text-silver max-w-xs md:max-w-sm ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
                                         {collection.desc}
                                     </p>
                                 </div>

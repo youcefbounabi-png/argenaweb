@@ -152,6 +152,39 @@
   transition: filter 0.5s ease;
 }
 
+/* Testimonial Cards — Synchronized Travelling Border Glow */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes testimonial-border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Testimonial Cards — Synchronized Travelling Border Glow */
+/* Wrapper technique: 1px padding + animated conic-gradient background.
+   The inner card covers the centre with a solid bg, leaving only the
+   1px padding ring visible as a rotating light border. */
+.testimonial-wrapper {
+  padding: 1px;
+  --border-angle: 0deg;
+  background: conic-gradient(from var(--border-angle),
+      #1f1f1f 0deg,
+      #1f1f1f 250deg,
+      rgba(255, 255, 255, 0.0) 265deg,
+      rgba(255, 255, 255, 0.5) 285deg,
+      rgba(255, 255, 255, 1.0) 300deg,
+      rgba(255, 255, 255, 0.5) 315deg,
+      rgba(255, 255, 255, 0.0) 335deg,
+      #1f1f1f 350deg,
+      #1f1f1f 360deg);
+  animation: testimonial-border-spin 6s linear infinite;
+}
+
 .art-image:hover {
   filter: grayscale(0%) contrast(1);
 }

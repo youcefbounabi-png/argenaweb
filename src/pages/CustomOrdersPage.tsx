@@ -13,16 +13,16 @@ export const CustomOrdersPage: React.FC = () => {
         title2: language === 'EN' ? 'Orders' : 'خاصة',
         desc: language === 'EN'
             ? 'Bespoke craftsmanship for those who seek the unique. Materializing your vision into reality.'
-            : 'حرفية مخصصة لأولئك الذين يبحثون عن الفريد. تجسيد رؤيتك في الواقع.',
+            : 'حرفية خالصة لمن يبحث عن التميّز. نحوّل رؤيتك إلى شيء حقيقي تلمسه.',
         studioProt: language === 'EN' ? 'Studio Protocol' : 'بروتوكول الاستوديو',
         step1Title: language === 'EN' ? '01. Consultation' : '01. استشارة',
         step1Desc: language === 'EN'
             ? 'Dialogue between creator and client to define the visual intent and material requirements.'
-            : 'حوار بين المبدع والعميل لتحديد القصد البصري والمتطلبات المادية.',
+            : 'حوار بينك وبيننا لتحديد توجهك البصري ومتطلباتك من البداية.',
         step2Title: language === 'EN' ? '02. Materialization' : '02. تجسيد',
         step2Desc: language === 'EN'
             ? 'Handcrafted selection of technical fabrics or premium silver hardware to match the bespoke blueprint.'
-            : 'اختيار يدوي للأقمشة التقنية أو الإكسسوارات الفضية الفاخرة لتتناسب مع المخطط المخصص.',
+            : 'اختيار يدوي للأقمشة والإكسسوارات لتتوافق مع مخططك الخاص.',
         startProto: language === 'EN' ? 'START THE PROTOCOL' : 'ابدأ البروتوكول'
     };
 

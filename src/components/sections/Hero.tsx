@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
                     <p className={`font-mono text-[10px] md:text-xs text-silver uppercase tracking-widest leading-relaxed ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
                         {language === 'EN'
                             ? 'A curated collection of streetwear and accessories. Redefining urban aesthetics through a monochromatic lens.'
-                            : 'مجموعة منسقة من ملابس الشارع والإكسسوارات. إعادة تعريف الجماليات الحضرية من خلال عدسة أحادية اللون.'}
+                            : 'تشكيلة مختارة بعناية من ملابس الشارع والإكسسوارات. نعيد صياغة الجماليات الحضرية بعيون مختلفة.'}
                     </p>
                 </motion.div>
 
