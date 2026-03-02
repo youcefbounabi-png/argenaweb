@@ -80,7 +80,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Charcoal', 'Burgundy', 'Beige', 'Yellow', 'Grey', 'Dark Blue', 'Light Blue'],
+        colors: ['Burgundy', 'Beige', 'Yellow', 'Grey', 'Dark Blue', 'Light Blue'],
         description: 'Unisex Vintage Airforce Inspiration Cap. \n\nFeatures:\nClassic military-inspired aesthetic perfect for any casual look.\nLightweight and durable fabric for all-day comfort.\nSubtle embroidery and vintage wash finish.\nVersatile accessory for sun protection and everyday streetwear.'
     }
 ];
@@ -160,7 +160,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['رمادي غامق', 'خمري', 'بيج', 'أصفر', 'رمادي', 'أزرق غامق', 'أزرق فاتح'],
+        colors: ['خمري', 'بيج', 'أصفر', 'رمادي', 'أزرق غامق', 'أزرق فاتح'],
         description: 'قبعة إير فورس بستايل عسكري كلاسيكي.\nقماش خفيف ومريح للاستعمال اليومي.\nتصميم بسيط وعملي يناسب الجميع.'
     }
 ];
