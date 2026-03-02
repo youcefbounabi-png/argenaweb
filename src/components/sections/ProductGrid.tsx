@@ -61,7 +61,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Navy', 'Charcoal', 'Burgundy', 'Beige', 'Brown', 'Grey', 'Dark Grey'],
+        colors: ['Black', 'Burgundy', 'Beige', 'Brown', 'Dark Grey'],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
@@ -141,7 +141,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'كحلي', 'رمادي غامق', 'خمري', 'بيج', 'بني', 'رمادي', 'رمادي داكن'],
+        colors: ['أسود', 'خمري', 'بيج', 'بني', 'رمادي داكن'],
         description: 'قبعة ممزقة بحرف B للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     },
     {
