@@ -42,7 +42,7 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Charcoal', 'Grey', 'Burgundy', 'Beige', 'White', 'Brown'],
+        colors: ['Black', 'Grey', 'Burgundy', 'Beige', 'Brown', 'Light Pink', 'Light Blue'],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
     {
@@ -122,7 +122,7 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'رمادي غامق', 'رمادي', 'عنابي', 'بيج', 'أبيض', 'بني'],
+        colors: ['أسود', 'رمادي', 'عنابي', 'بيج', 'بني', 'وردي فاتح', 'أزرق فاتح'],
         description: 'قبعة ممزقة عصرية للرجال والنساء.\nتوفر حماية من الشمس ومناسبة لفصلي الربيع والصيف.\nتصميم مميز يلائم إطلالتك اليومية.'
     },
     {
