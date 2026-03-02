@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import SEO from '../components/ui/SEO';
 
 export const AboutPage: React.FC = () => {
     const { language } = useLanguage();
@@ -21,6 +22,12 @@ export const AboutPage: React.FC = () => {
 
     return (
         <div className={`min-h-screen pt-48 pb-32 px-6 md:px-12 max-w-[1600px] mx-auto ${language === 'AR' ? 'text-right' : ''}`}>
+            <SEO
+                title={language === 'EN' ? 'About Our Identity' : 'هويتنا'}
+                description={language === 'EN'
+                    ? 'Learn about Argena Streetwear. A visual system designed to bridge the gap between ancient elegance and dystopian utility.'
+                    : 'تعرف على أرجانا - منظومة بصرية تجمع بين رونق الماضي وجرأة الحاضر.'}
+            />
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-24 items-start ${language === 'AR' ? 'md:flex-row-reverse' : ''}`}>
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Instagram, Send } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { TicketModal } from '../components/ui/TicketModal';
+import SEO from '../components/ui/SEO';
 
 export const ContactPage: React.FC = () => {
     const { language } = useLanguage();
@@ -22,6 +23,10 @@ export const ContactPage: React.FC = () => {
 
     return (
         <>
+            <SEO
+                title="Contact"
+                description="Establish communication with Argena Streetwear. Contact us for support, inquiries, or custom orders."
+            />
             <div className="min-h-screen pt-48 pb-32 px-6 md:px-12 max-w-[1600px] mx-auto flex flex-col items-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

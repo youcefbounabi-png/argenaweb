@@ -5,6 +5,7 @@ import MainLayout from './components/layout/MainLayout';
 import Footer from './components/layout/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { CartProvider, useCart } from './contexts/CartContext';
+import { HelmetProvider } from 'react-helmet-async';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -61,11 +62,13 @@ const AppInner = () => {
 function App() {
   return (
     <LanguageProvider>
-      <CartProvider>
-        <Router>
-          <AppInner />
-        </Router>
-      </CartProvider>
+      <HelmetProvider>
+        <CartProvider>
+          <Router>
+            <AppInner />
+          </Router>
+        </CartProvider>
+      </HelmetProvider>
     </LanguageProvider>
   );
 }
