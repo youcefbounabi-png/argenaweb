@@ -69,7 +69,6 @@ export const productsEN = [
         image: '/pictures/airforce.png',
         gallery: [
             '/pictures/airforce.png',
-            '/pictures/airforcecaps.png',
             '/pictures/airfor0 (1).jpeg',
             '/pictures/airfor0 (2).jpeg',
             '/pictures/airfor0 (3).jpeg',
@@ -148,7 +147,6 @@ export const productsAR = [
         image: '/pictures/airforce.png',
         gallery: [
             '/pictures/airforce.png',
-            '/pictures/airforcecaps.png',
             '/pictures/airfor0 (1).jpeg',
             '/pictures/airfor0 (2).jpeg',
             '/pictures/airfor0 (3).jpeg',
