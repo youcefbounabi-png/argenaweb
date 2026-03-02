@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { createPortal } from 'react-dom';
 import { useCustomCursor } from '../../hooks/useCustomCursor';
 
 // ─── Dust Particle Canvas ────────────────────────────────────────────────────
@@ -111,7 +112,7 @@ const DustCanvas = () => {
                 position: 'fixed',
                 inset: 0,
                 pointerEvents: 'none',
-                zIndex: 9998,
+                zIndex: 2000000,
             }}
         />
     );
@@ -176,10 +177,7 @@ export const CustomCursor = () => {
 
     if (isMobile) return null;
 
-    const finalX = position.x + magnetOffset.x;
-    const finalY = position.y + magnetOffset.y;
-
-    return (
+    const cursorContent = (
         <>
             {/* Dust particle trail — always follows raw mouse (no magnet) */}
             <DustCanvas />
@@ -187,10 +185,10 @@ export const CustomCursor = () => {
             {/* Dot — follows magnetic position */}
             <motion.div
                 className="custom-cursor-dot"
-                style={{ zIndex: 10000, pointerEvents: 'none' }}
+                style={{ zIndex: 2000000, pointerEvents: 'none' }}
                 animate={{
-                    x: finalX - 4,
-                    y: finalY - 4,
+                    x: position.x + magnetOffset.x - 4,
+                    y: position.y + magnetOffset.y - 4,
                     scale: isSticky ? 0 : isMagnetic ? 1.4 : 1,
                 }}
                 transition={{ type: 'spring', stiffness: 600, damping: 35, mass: 0.5 }}
@@ -199,10 +197,10 @@ export const CustomCursor = () => {
             {/* Ring — follows magnetic position with slight lag */}
             <motion.div
                 className="custom-cursor-ring"
-                style={{ zIndex: 9999, pointerEvents: 'none' }}
+                style={{ zIndex: 1999999, pointerEvents: 'none' }}
                 animate={{
-                    x: finalX - 16,
-                    y: finalY - 16,
+                    x: position.x + magnetOffset.x - 16,
+                    y: position.y + magnetOffset.y - 16,
                     scale: isMagnetic ? 1.8 : isHovering ? 1.5 : isSticky ? 2 : 1,
                     rotate: isHovering || isMagnetic ? 135 : 45,
                     borderColor: isMagnetic
@@ -224,4 +222,6 @@ export const CustomCursor = () => {
             />
         </>
     );
+
+    return typeof document !== 'undefined' ? createPortal(cursorContent, document.body) : null;
 };

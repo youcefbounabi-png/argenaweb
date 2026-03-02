@@ -63,6 +63,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         if (isOpen) {
             setViewMode('2d');
             setCurrentImageIndex(0);
+            setIsImageExpanded(false);
         }
     }, [isOpen]);
 
@@ -198,6 +199,15 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                         onClick={() => setIsImageExpanded(true)}
                                                         className={`w-full h-full object-cover cursor-zoom-in transition-transform duration-700 hover:scale-105 ${(product.gallery && product.gallery.length > 0 ? product.gallery[currentImageIndex] : product.image).includes('blettermodel') ? 'object-top' : ''}`}
                                                     />
+                                                    {/* Hint for expansion */}
+                                                    <div
+                                                        onClick={() => setIsImageExpanded(true)}
+                                                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 cursor-zoom-in pointer-events-none"
+                                                    >
+                                                        <div className="bg-black/40 backdrop-blur-md p-3 rounded-full border border-white/20">
+                                                            <Image size={20} className="text-white" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             ) : (
                                                 <Suspense fallback={
@@ -219,13 +229,10 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                     <button
                                                         key={idx}
                                                         onClick={() => {
-                                                            if (currentImageIndex === idx) {
-                                                                setIsImageExpanded(true);
-                                                            } else {
-                                                                setCurrentImageIndex(idx);
-                                                            }
+                                                            setCurrentImageIndex(idx);
+                                                            setIsImageExpanded(true);
                                                         }}
-                                                        className={`relative w-16 h-16 flex-shrink-0 border transition-all duration-300 ${currentImageIndex === idx ? 'border-white opacity-100' : 'border-transparent opacity-50 hover:opacity-100 hover:border-white/50'}`}
+                                                        className={`relative w-16 h-16 flex-shrink-0 border transition-all duration-300 cursor-zoom-in ${currentImageIndex === idx ? 'border-white opacity-100' : 'border-transparent opacity-50 hover:opacity-100 hover:border-white/50'}`}
                                                     >
                                                         <img src={img} alt={`${product.title} view ${idx + 1}`} className="w-full h-full object-cover" />
                                                     </button>
@@ -289,7 +296,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
             {/* Expanded Image Modal */}
             <AnimatePresence>
                 {isImageExpanded && (
-                    <div className="fixed inset-0 z-[20000] flex items-center justify-center p-4">
+                    <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
