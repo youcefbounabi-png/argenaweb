@@ -319,7 +319,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                             {t.colors.length > 0 && (
                                                 <div className="mb-12">
                                                     <h3 className={`font-mono text-xs text-silver tracking-widest uppercase mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.selectColor}</h3>
-                                                    <div className="flex flex-wrap gap-3">
+                                                    <div className="flex flex-wrap gap-3 mb-3">
                                                         {t.colors.map((colorObj: { name: string; quantity: number }) => (
                                                             <button
                                                                 key={colorObj.name}
@@ -331,6 +331,21 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                             </button>
                                                         ))}
                                                     </div>
+                                                    <AnimatePresence>
+                                                        {selectedColor && t.colors.find(c => c.name === selectedColor)?.quantity! > 0 && t.colors.find(c => c.name === selectedColor)?.quantity! <= 3 && (
+                                                            <motion.p
+                                                                initial={{ opacity: 0, height: 0 }}
+                                                                animate={{ opacity: 1, height: 'auto' }}
+                                                                exit={{ opacity: 0, height: 0 }}
+                                                                className={`font-mono text-[10px] text-silver/60 tracking-widest uppercase flex items-center gap-2 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}
+                                                            >
+                                                                <span className="w-1.5 h-1.5 rounded-full bg-silver/60 animate-pulse"></span>
+                                                                {language === 'EN'
+                                                                    ? `Only ${t.colors.find(c => c.name === selectedColor)?.quantity} pieces remaining`
+                                                                    : `بقي ${t.colors.find(c => c.name === selectedColor)?.quantity} قطع فقط`}
+                                                            </motion.p>
+                                                        )}
+                                                    </AnimatePresence>
                                                 </div>
                                             )}
                                         </div>
