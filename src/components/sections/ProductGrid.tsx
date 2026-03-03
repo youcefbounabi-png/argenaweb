@@ -49,14 +49,14 @@ export const productsEN = [
         category: 'Headwear',
         available: true,
         colors: [
-            { name: 'Black', quantity: 1 },
-            { name: 'Grey', quantity: 1 },
-            { name: 'Burgundy', quantity: 1 },
-            { name: 'Beige', quantity: 2 },
-            { name: 'Brown', quantity: 3 },
-            { name: 'Light Pink', quantity: 1 },
-            { name: 'Light Blue', quantity: 1 },
-            { name: 'Red', quantity: 2 }
+            { name: 'Black', quantity: 12 },
+            { name: 'Grey', quantity: 12 },
+            { name: 'Burgundy', quantity: 12 },
+            { name: 'Beige', quantity: 12 },
+            { name: 'Brown', quantity: 12 },
+            { name: 'Light Pink', quantity: 12 },
+            { name: 'Light Blue', quantity: 12 },
+            { name: 'Red', quantity: 12 }
         ],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
@@ -157,14 +157,14 @@ export const productsAR = [
         category: 'أغطية الرأس',
         available: true,
         colors: [
-            { name: 'أسود', quantity: 1 },
-            { name: 'رمادي', quantity: 1 },
-            { name: 'عنابي', quantity: 1 },
-            { name: 'بيج', quantity: 2 },
-            { name: 'بني', quantity: 3 },
-            { name: 'وردي فاتح', quantity: 1 },
-            { name: 'أزرق فاتح', quantity: 1 },
-            { name: 'أحمر', quantity: 2 }
+            { name: 'أسود', quantity: 12 },
+            { name: 'رمادي', quantity: 12 },
+            { name: 'عنابي', quantity: 12 },
+            { name: 'بيج', quantity: 12 },
+            { name: 'بني', quantity: 12 },
+            { name: 'وردي فاتح', quantity: 12 },
+            { name: 'أزرق فاتح', quantity: 12 },
+            { name: 'أحمر', quantity: 12 }
         ],
         description: 'قبعة ممزقة عصرية للرجال والنساء.\nتوفر حماية من الشمس ومناسبة لفصلي الربيع والصيف.\nتصميم مميز يلائم إطلالتك اليومية.'
     },
