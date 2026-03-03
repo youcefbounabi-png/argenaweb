@@ -302,7 +302,12 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                         <div>
                                             <p className="font-mono text-xs uppercase tracking-widest text-silver mb-4">({String(product.id).padStart(3, '0')}) {product.category}</p>
                                             <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl text-white mb-6`}>{product.title}</h2>
-                                            <p className="font-mono text-xl text-white mb-8 border-b border-silver/20 pb-8">{product.price}</p>
+                                            <div className="flex items-baseline gap-4 mb-8 border-b border-silver/20 pb-8">
+                                                <p className="font-mono text-2xl text-white font-bold">{product.price}</p>
+                                                {product.originalPrice && (
+                                                    <p className="font-mono text-lg text-silver/70 line-through decoration-silver/70 decoration-2">{product.originalPrice}</p>
+                                                )}
+                                            </div>
 
                                             <div className="mb-8">
                                                 <h3 className={`font-mono text-xs text-silver tracking-widest uppercase mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.description}</h3>

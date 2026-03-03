@@ -10,6 +10,7 @@ export const productsEN = [
         id: 1,
         title: 'lust because cap',
         price: 'DA 2,400',
+        originalPrice: 'DA 3,200',
         image: '/pictures/gemini01.png',
         gallery: [
             '/pictures/gemini.png',
@@ -35,6 +36,7 @@ export const productsEN = [
         id: 2,
         title: 'boston disstressed cap',
         price: 'DA 2,400',
+        originalPrice: 'DA 3,200',
         image: '/pictures/boston0.png',
         gallery: [
             '/pictures/boston0.png',
@@ -64,6 +66,7 @@ export const productsEN = [
         id: 3,
         title: 'B letter distressed cap',
         price: 'DA 2,400',
+        originalPrice: 'DA 3,200',
         image: '/pictures/blettermodel.png',
         gallery: [
             '/pictures/blettermodel.png',
@@ -89,6 +92,7 @@ export const productsEN = [
         id: 4,
         title: 'vintage airforce cap',
         price: 'DA 2,200',
+        originalPrice: 'DA 2,900',
         image: '/pictures/airforce.png',
         gallery: [
             '/pictures/airforce.png',
@@ -118,6 +122,7 @@ export const productsAR = [
         id: 1,
         title: 'قبعة «لست بيكوز»',
         price: '2,400 د.ج',
+        originalPrice: '3,200 د.ج',
         image: '/pictures/gemini01.png',
         gallery: [
             '/pictures/gemini.png',
@@ -143,6 +148,7 @@ export const productsAR = [
         id: 2,
         title: 'قبعة بوسطن الممزقة',
         price: '2,400 د.ج',
+        originalPrice: '3,200 د.ج',
         image: '/pictures/boston0.png',
         gallery: [
             '/pictures/boston0.png',
@@ -172,6 +178,7 @@ export const productsAR = [
         id: 3,
         title: 'قبعة حرف B الممزقة',
         price: '2,400 د.ج',
+        originalPrice: '3,200 د.ج',
         image: '/pictures/blettermodel.png',
         gallery: [
             '/pictures/blettermodel.png',
@@ -197,6 +204,7 @@ export const productsAR = [
         id: 4,
         title: 'قبعة إير فورس كلاسيكية',
         price: '2,200 د.ج',
+        originalPrice: '2,900 د.ج',
         image: '/pictures/airforce.png',
         gallery: [
             '/pictures/airforce.png',
@@ -312,7 +320,12 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                     <p className="text-silver mb-2">({String(index + 1).padStart(3, '0')}) {product.category}</p>
                                     <h3 className="text-sm font-bold group-hover:text-silver transition-colors">{product.title}</h3>
                                 </div>
-                                <p className="bg-white text-black px-3 py-1 rounded-full">{product.available ? product.price : t.soonBadge}</p>
+                                <div className="flex items-center gap-2 bg-white text-black px-3 py-1 rounded-full">
+                                    {product.available && product.originalPrice && (
+                                        <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium">{product.originalPrice}</span>
+                                    )}
+                                    <span className="font-bold">{product.available ? product.price : t.soonBadge}</span>
+                                </div>
                             </div>
                         </motion.div>
                     );
