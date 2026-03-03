@@ -14,12 +14,7 @@ export const TestimonialsPage: React.FC = () => {
             : 'أصوات حقيقية من تجربوا ما تقدمه ارجينا.',
         testimonialsBlock: language === 'EN' ? 'TESTIMONIAL' : 'شهادة',
         testimonials: language === 'EN' ? [
-            {
-                name: 'AMINA B.',
-                location: 'ALGIERS',
-                review: 'The quality of the herringbone dad hat is unmatched. It feels like a piece of art rather than just headwear.',
-                date: '2024.12.01'
-            },
+            review: 'The quality is fire, no cap! khedma nqiya bzaf w the fit is just perfect. Definitely worth every dinar. Keep it up guys!',
             {
                 name: 'TAREK M.',
                 location: 'ORAN',
