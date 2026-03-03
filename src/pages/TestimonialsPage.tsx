@@ -23,19 +23,19 @@ export const TestimonialsPage: React.FC = () => {
             {
                 name: 'TAREK M.',
                 location: 'ORAN',
-                review: 'Dystopian luxury at its finest. The silver hardware details are insane. Argana is the future.',
+                review: "Reçu ma casquette aujourd'hui, gateau wallah! Le tissu est hyper solide. Je recommande 100%",
                 date: '2024.11.15'
             },
             {
                 name: 'YASMINE H.',
                 location: 'CONSTANTINE',
-                review: 'Finally a brand that understands the intersection of ancient aesthetics and modern street culture.',
+                review: "Une tuerie ! C’est devenu ma casquette préférée déjà",
                 date: '2024.11.28'
             },
             {
                 name: 'RIAD K.',
                 location: 'ANNABA',
-                review: 'The unboxing experience alone was enough for me. The "Ethereal" theme is carried through everything they do.',
+                review: "Wallah best purchase ever I love the vibe and quality is 10/10 w l’emballage ja bzaf chbeb. More success inchaAllah !",
                 date: '2024.12.05'
             }
         ] : [
