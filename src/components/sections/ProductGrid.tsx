@@ -23,11 +23,11 @@ export const productsEN = [
         category: 'Headwear',
         available: true,
         colors: [
-            { name: 'Navy', quantity: 11 },
+            { name: 'Dark Blue', quantity: 11 },
             { name: 'Beige', quantity: 2 },
             { name: 'White', quantity: 3 },
             { name: 'Brown', quantity: 2 },
-            { name: 'Grey', quantity: 0 }
+            { name: 'Grey', quantity: 1 }
         ],
         description: 'Fashion And Hot Sale Cotton Fabric Washed Baseball Cap And Hat Manufacturer with Custom Embroidery on Visor \nOne size can fit most people.\nWith 100% cotton to ensure the baseball cap is lightweight.\nNew Technology of Embroidery.'
     },
@@ -49,14 +49,14 @@ export const productsEN = [
         category: 'Headwear',
         available: true,
         colors: [
-            { name: 'Black', quantity: 0 },
+            { name: 'Black', quantity: 1 },
             { name: 'Grey', quantity: 1 },
-            { name: 'Burgundy', quantity: 0 },
+            { name: 'Burgundy', quantity: 1 },
             { name: 'Beige', quantity: 2 },
             { name: 'Brown', quantity: 3 },
             { name: 'Light Pink', quantity: 1 },
             { name: 'Light Blue', quantity: 1 },
-            { name: 'Red', quantity: 1 }
+            { name: 'Red', quantity: 2 }
         ],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
@@ -131,11 +131,11 @@ export const productsAR = [
         category: 'أغطية الرأس',
         available: true,
         colors: [
-            { name: 'كحلي', quantity: 11 },
+            { name: 'أزرق غامق', quantity: 11 },
             { name: 'بيج', quantity: 2 },
             { name: 'أبيض', quantity: 3 },
             { name: 'بني', quantity: 2 },
-            { name: 'رمادي', quantity: 0 }
+            { name: 'رمادي', quantity: 1 }
         ],
         description: 'قبعة بيسبول قطنية مريحة بجودة عالية مع تطريز مميز.\nمقاس قابل للتعديل يناسب الجميع.\nخفيفة الوزن ومناسبة للاستعمال اليومي.'
     },
@@ -157,14 +157,14 @@ export const productsAR = [
         category: 'أغطية الرأس',
         available: true,
         colors: [
-            { name: 'أسود', quantity: 0 },
+            { name: 'أسود', quantity: 1 },
             { name: 'رمادي', quantity: 1 },
-            { name: 'عنابي', quantity: 0 },
+            { name: 'عنابي', quantity: 1 },
             { name: 'بيج', quantity: 2 },
             { name: 'بني', quantity: 3 },
             { name: 'وردي فاتح', quantity: 1 },
             { name: 'أزرق فاتح', quantity: 1 },
-            { name: 'أحمر', quantity: 1 }
+            { name: 'أحمر', quantity: 2 }
         ],
         description: 'قبعة ممزقة عصرية للرجال والنساء.\nتوفر حماية من الشمس ومناسبة لفصلي الربيع والصيف.\nتصميم مميز يلائم إطلالتك اليومية.'
     },
@@ -325,7 +325,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                 product={selectedProduct}
                 onAddToCart={(p) => {
                     addItem(p);
-                    if (onAddToCart) onAddToCart(p);
                 }}
             />
         </section>
