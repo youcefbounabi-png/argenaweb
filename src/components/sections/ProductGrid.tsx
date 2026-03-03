@@ -22,7 +22,13 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Navy', 'Beige', 'White', 'Brown', 'Grey'],
+        colors: [
+            { name: 'Navy', quantity: 11 },
+            { name: 'Beige', quantity: 2 },
+            { name: 'White', quantity: 3 },
+            { name: 'Brown', quantity: 2 },
+            { name: 'Grey', quantity: 0 }
+        ],
         description: 'Fashion And Hot Sale Cotton Fabric Washed Baseball Cap And Hat Manufacturer with Custom Embroidery on Visor \nOne size can fit most people.\nWith 100% cotton to ensure the baseball cap is lightweight.\nNew Technology of Embroidery.'
     },
     {
@@ -42,7 +48,16 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Grey', 'Burgundy', 'Beige', 'Brown', 'Light Pink', 'Light Blue'],
+        colors: [
+            { name: 'Black', quantity: 0 },
+            { name: 'Grey', quantity: 1 },
+            { name: 'Burgundy', quantity: 0 },
+            { name: 'Beige', quantity: 2 },
+            { name: 'Brown', quantity: 3 },
+            { name: 'Light Pink', quantity: 1 },
+            { name: 'Light Blue', quantity: 1 },
+            { name: 'Red', quantity: 1 }
+        ],
         description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
     },
     {
@@ -61,7 +76,13 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Black', 'Burgundy', 'Beige', 'Brown', 'Dark Grey'],
+        colors: [
+            { name: 'Black', quantity: 7 },
+            { name: 'Burgundy', quantity: 2 },
+            { name: 'Beige', quantity: 1 },
+            { name: 'Brown', quantity: 2 },
+            { name: 'Grey', quantity: 1 }
+        ],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
@@ -80,7 +101,14 @@ export const productsEN = [
         ],
         category: 'Headwear',
         available: true,
-        colors: ['Burgundy', 'Beige', 'Yellow', 'Grey', 'Dark Blue', 'Light Blue'],
+        colors: [
+            { name: 'Burgundy', quantity: 2 },
+            { name: 'Beige', quantity: 2 },
+            { name: 'Yellow', quantity: 2 },
+            { name: 'Grey', quantity: 2 },
+            { name: 'Dark Blue', quantity: 2 },
+            { name: 'Light Blue', quantity: 2 }
+        ],
         description: 'Unisex Vintage Airforce Inspiration Cap. \n\nFeatures:\nClassic military-inspired aesthetic perfect for any casual look.\nLightweight and durable fabric for all-day comfort.\nSubtle embroidery and vintage wash finish.\nVersatile accessory for sun protection and everyday streetwear.'
     }
 ];
@@ -102,7 +130,13 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['كحلي', 'بيج', 'أبيض', 'بني', 'رمادي'],
+        colors: [
+            { name: 'كحلي', quantity: 11 },
+            { name: 'بيج', quantity: 2 },
+            { name: 'أبيض', quantity: 3 },
+            { name: 'بني', quantity: 2 },
+            { name: 'رمادي', quantity: 0 }
+        ],
         description: 'قبعة بيسبول قطنية مريحة بجودة عالية مع تطريز مميز.\nمقاس قابل للتعديل يناسب الجميع.\nخفيفة الوزن ومناسبة للاستعمال اليومي.'
     },
     {
@@ -122,7 +156,16 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'رمادي', 'عنابي', 'بيج', 'بني', 'وردي فاتح', 'أزرق فاتح'],
+        colors: [
+            { name: 'أسود', quantity: 0 },
+            { name: 'رمادي', quantity: 1 },
+            { name: 'عنابي', quantity: 0 },
+            { name: 'بيج', quantity: 2 },
+            { name: 'بني', quantity: 3 },
+            { name: 'وردي فاتح', quantity: 1 },
+            { name: 'أزرق فاتح', quantity: 1 },
+            { name: 'أحمر', quantity: 1 }
+        ],
         description: 'قبعة ممزقة عصرية للرجال والنساء.\nتوفر حماية من الشمس ومناسبة لفصلي الربيع والصيف.\nتصميم مميز يلائم إطلالتك اليومية.'
     },
     {
@@ -141,7 +184,13 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['أسود', 'خمري', 'بيج', 'بني', 'رمادي داكن'],
+        colors: [
+            { name: 'أسود', quantity: 7 },
+            { name: 'خمري', quantity: 2 },
+            { name: 'بيج', quantity: 1 },
+            { name: 'بني', quantity: 2 },
+            { name: 'رمادي داكن', quantity: 1 }
+        ],
         description: 'قبعة ممزقة بحرف B للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     },
     {
@@ -160,7 +209,14 @@ export const productsAR = [
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: ['خمري', 'بيج', 'أصفر', 'رمادي', 'أزرق غامق', 'أزرق فاتح'],
+        colors: [
+            { name: 'خمري', quantity: 2 },
+            { name: 'بيج', quantity: 2 },
+            { name: 'أصفر', quantity: 2 },
+            { name: 'رمادي', quantity: 2 },
+            { name: 'أزرق غامق', quantity: 2 },
+            { name: 'أزرق فاتح', quantity: 2 }
+        ],
         description: 'قبعة إير فورس بستايل عسكري كلاسيكي.\nقماش خفيف ومريح للاستعمال اليومي.\nتصميم بسيط وعملي يناسب الجميع.'
     }
 ];

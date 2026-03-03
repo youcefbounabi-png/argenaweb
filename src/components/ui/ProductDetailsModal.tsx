@@ -99,7 +99,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         view2D: language === 'EN' ? 'DISPLAY' : 'صور',
         view3D: language === 'EN' ? '3D' : '3D',
         loadingModel: language === 'EN' ? 'LOADING 3D MODEL...' : 'جاري التحميل...',
-        colors: product.colors || []
+        colors: (product.colors || []) as { name: string; quantity: number }[]
     };
 
     const handleAddToCart = () => {
@@ -315,13 +315,14 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                 <div className="mb-12">
                                                     <h3 className={`font-mono text-xs text-silver tracking-widest uppercase mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.selectColor}</h3>
                                                     <div className="flex flex-wrap gap-3">
-                                                        {t.colors.map((color: string) => (
+                                                        {t.colors.map((colorObj: { name: string; quantity: number }) => (
                                                             <button
-                                                                key={color}
-                                                                onClick={() => setSelectedColor(color)}
-                                                                className={`px-6 py-3 border font-mono text-xs uppercase tracking-widest transition-all ${selectedColor === color ? 'border-white bg-white text-black' : 'border-silver/30 text-silver hover:border-white hover:text-white'}`}
+                                                                key={colorObj.name}
+                                                                onClick={() => setSelectedColor(colorObj.name)}
+                                                                disabled={colorObj.quantity === 0}
+                                                                className={`px-6 py-3 border font-mono text-xs uppercase tracking-widest transition-all ${selectedColor === colorObj.name ? 'border-white bg-white text-black' : 'border-silver/30 text-silver hover:border-white hover:text-white'} ${colorObj.quantity === 0 ? 'opacity-30 cursor-not-allowed grayscale' : ''}`}
                                                             >
-                                                                {color}
+                                                                {colorObj.name} ({colorObj.quantity})
                                                             </button>
                                                         ))}
                                                     </div>

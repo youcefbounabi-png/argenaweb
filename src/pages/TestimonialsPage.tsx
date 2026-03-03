@@ -15,26 +15,26 @@ export const TestimonialsPage: React.FC = () => {
         testimonialsBlock: language === 'EN' ? 'TESTIMONIAL' : 'شهادة',
         testimonials: language === 'EN' ? [
             {
-                name: 'ELARA VANCE',
-                location: 'BERLIN',
+                name: 'AMINA B.',
+                location: 'ALGIERS',
                 review: 'The quality of the herringbone dad hat is unmatched. It feels like a piece of art rather than just headwear.',
                 date: '2024.12.01'
             },
             {
-                name: 'KAIRO S.',
-                location: 'TOKYO',
+                name: 'TAREK M.',
+                location: 'ORAN',
                 review: 'Dystopian luxury at its finest. The silver hardware details are insane. Argana is the future.',
                 date: '2024.11.15'
             },
             {
-                name: 'MAYA R.',
-                location: 'NYC',
+                name: 'YASMINE H.',
+                location: 'CONSTANTINE',
                 review: 'Finally a brand that understands the intersection of ancient aesthetics and modern street culture.',
                 date: '2024.11.28'
             },
             {
-                name: 'JULIAN D.',
-                location: 'PARIS',
+                name: 'RIAD K.',
+                location: 'ANNABA',
                 review: 'The unboxing experience alone was enough for me. The "Ethereal" theme is carried through everything they do.',
                 date: '2024.12.05'
             }
