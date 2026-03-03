@@ -14,7 +14,12 @@ export const TestimonialsPage: React.FC = () => {
             : 'أصوات حقيقية من تجربوا ما تقدمه ارجينا.',
         testimonialsBlock: language === 'EN' ? 'TESTIMONIAL' : 'شهادة',
         testimonials: language === 'EN' ? [
-            review: 'The quality is fire, no cap! khedma nqiya bzaf w the fit is just perfect. Definitely worth every dinar. Keep it up guys!',
+            {
+                name: 'AMINA B.',
+                location: 'ALGIERS',
+                review: 'The quality is fire, no cap! khedma nqiya bzaf w the fit is just perfect. Definitely worth every dinar. Keep it up guys!',
+                date: '2024.12.01'
+            },
             {
                 name: 'TAREK M.',
                 location: 'ORAN',
