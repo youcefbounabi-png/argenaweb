@@ -18,50 +18,50 @@ export const TestimonialsPage: React.FC = () => {
                 name: 'AMINA B.',
                 location: 'ALGIERS',
                 review: 'The quality is fire, no cap! khedma nqiya bzaf w the fit is just perfect. Definitely worth every dinar. Keep it up guys!',
-                date: '2024.12.01'
+                date: '2025.12.01'
             },
             {
                 name: 'TAREK M.',
                 location: 'ORAN',
                 review: "Reçu ma casquette aujourd'hui, gateau wallah! Le tissu est hyper solide. Je recommande 100%",
-                date: '2024.11.15'
+                date: '2026.01.15'
             },
             {
                 name: 'YASMINE H.',
                 location: 'CONSTANTINE',
                 review: "Une tuerie ! C’est devenu ma casquette préférée déjà",
-                date: '2024.11.28'
+                date: '2026.02.10'
             },
             {
                 name: 'RIAD K.',
                 location: 'ANNABA',
                 review: "Wallah best purchase ever I love the vibe and quality is 10/10 w l’emballage ja bzaf chbeb. More success inchaAllah !",
-                date: '2024.12.05'
+                date: '2026.02.25'
             }
         ] : [
             {
                 name: 'أمينة ب.',
                 location: 'الجزائر العاصمة',
                 review: 'جودة القبعة لا توصف — تحسّ وكأنك ترتدي قطعة فنية لا مجرد غطاء للرأس.',
-                date: '2024.12.01'
+                date: '2025.12.01'
             },
             {
                 name: 'طارق م.',
                 location: 'وهران',
                 review: 'فخامة حقيقية بأسلوب عصري. الإكسسوارات الفضية تسرق الأنظار. ارجينا هي المستقبل.',
-                date: '2024.11.15'
+                date: '2026.01.15'
             },
             {
                 name: 'ياسمين ح.',
                 location: 'قسنطينة',
                 review: 'أخيراً علامة تفهم كيف تمزج بين جماليات الماضي وروح الشارع اليوم.',
-                date: '2024.11.28'
+                date: '2026.02.10'
             },
             {
                 name: 'رياض ك.',
                 location: 'عنابة',
                 review: '\u062a\u062c\u0631\u0628\u0629 \u0641\u062a\u062d \u0627\u0644\u0639\u0644\u0628\u0629 \u0648\u062d\u062f\u0647\u0627 \u0643\u0627\u0646\u062a \u062a\u0633\u062a\u062d\u0642. \u0627\u0644\u0627\u0647\u062a\u0645\u0627\u0645 \u0628\u0627\u0644\u062a\u0641\u0627\u0635\u064a\u0644 \u0648\u0627\u0636\u062d \u0641\u064a \u0643\u0644 \u0634\u064a\u0621.',
-                date: '2024.12.05'
+                date: '2026.02.25'
             }
         ]
     };
