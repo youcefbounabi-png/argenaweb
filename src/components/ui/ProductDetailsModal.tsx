@@ -100,6 +100,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         view3D: language === 'EN' ? '3D' : '3D',
         loadingModel: language === 'EN' ? 'LOADING 3D MODEL...' : 'جاري التحميل...',
         payOnDelivery: language === 'EN' ? 'PAY ON DELIVERY' : 'الدفع عند الاستلام',
+        deliveryTime: language === 'EN' ? 'DELIVERY: 2-3 DAYS' : 'التوصيل: 2-3 أيام',
         orderViaWhatsApp: language === 'EN' ? 'Prefer to order via message? Click here' : 'هل تفضل الطلب عبر رسالة؟ اضغط هنا',
         colors: (product.colors || []) as { name: string; quantity: number }[]
     };
@@ -311,10 +312,13 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                 )}
                                             </div>
 
-                                            <div className="flex items-center gap-2 mb-8 border-b border-silver/20 pb-8">
+                                            <div className="flex flex-wrap items-center gap-2 mb-8 border-b border-silver/20 pb-8">
                                                 <span className={`inline-flex items-center px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-mono text-[10px] tracking-widest uppercase ${language === 'AR' ? 'font-sans font-bold uppercase-none text-xs' : ''}`}>
-                                                    <CheckCircle2 size={12} className="mr-1.5" />
+                                                    <CheckCircle2 size={12} className={language === 'AR' ? 'ml-1.5' : 'mr-1.5'} />
                                                     {t.payOnDelivery}
+                                                </span>
+                                                <span className={`inline-flex items-center px-3 py-1 rounded-full border border-silver/30 bg-silver/5 text-silver font-mono text-[10px] tracking-widest uppercase ${language === 'AR' ? 'font-sans font-bold uppercase-none text-xs' : ''}`}>
+                                                    {t.deliveryTime}
                                                 </span>
                                             </div>
 

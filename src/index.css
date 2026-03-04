@@ -148,8 +148,8 @@
 
 /* Image Grayscale to Color */
 .art-image {
-  filter: grayscale(100%) contrast(1.2);
-  transition: filter 0.5s ease;
+  filter: grayscale(0%) contrast(1.05);
+  transition: filter 0.5s ease, transform 1s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 /* Testimonial Cards — Synchronized Travelling Border Glow */
@@ -186,5 +186,5 @@
 }
 
 .art-image:hover {
-  filter: grayscale(0%) contrast(1);
+  filter: grayscale(0%) contrast(1.1) brightness(1.05);
 }

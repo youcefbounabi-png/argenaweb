@@ -11,9 +11,9 @@ export const productsEN = [
         title: 'lust because cap',
         price: 'DA 2,400',
         originalPrice: 'DA 3,200',
-        image: '/pictures/gemini01.png',
+        image: '/pictures/lust0 (1).png',
         gallery: [
-            '/pictures/gemini.png',
+            '/pictures/gemini01.png',
             '/pictures/lustbecausecaps (1).png',
             '/pictures/lust0 (1).jpeg',
             '/pictures/lust0 (2).jpeg',
@@ -37,7 +37,7 @@ export const productsEN = [
         title: 'boston disstressed cap',
         price: 'DA 2,400',
         originalPrice: 'DA 3,200',
-        image: '/pictures/boston0.png',
+        image: '/pictures/bostoncaps.png',
         gallery: [
             '/pictures/boston0.png',
             '/pictures/bostoncaps.png',
@@ -67,7 +67,7 @@ export const productsEN = [
         title: 'B letter distressed cap',
         price: 'DA 2,400',
         originalPrice: 'DA 3,200',
-        image: '/pictures/blettermodel.png',
+        image: '/pictures/blettercaps.png',
         gallery: [
             '/pictures/blettermodel.png',
             '/pictures/blettercaps.png',
@@ -93,7 +93,7 @@ export const productsEN = [
         title: 'vintage airforce cap',
         price: 'DA 2,200',
         originalPrice: 'DA 2,900',
-        image: '/pictures/airforce.png',
+        image: '/pictures/airforcelast.png',
         gallery: [
             '/pictures/airforce.png',
             '/pictures/airfor0 (1).jpeg',
@@ -123,9 +123,9 @@ export const productsAR = [
         title: 'قبعة «لست بيكوز»',
         price: '2,400 د.ج',
         originalPrice: '3,200 د.ج',
-        image: '/pictures/gemini01.png',
+        image: '/pictures/lust0 (1).png',
         gallery: [
-            '/pictures/gemini.png',
+            '/pictures/gemini01.png',
             '/pictures/lustbecausecaps (1).png',
             '/pictures/lust0 (1).jpeg',
             '/pictures/lust0 (2).jpeg',
@@ -149,7 +149,7 @@ export const productsAR = [
         title: 'قبعة بوسطن الممزقة',
         price: '2,400 د.ج',
         originalPrice: '3,200 د.ج',
-        image: '/pictures/boston0.png',
+        image: '/pictures/bostoncaps.png',
         gallery: [
             '/pictures/boston0.png',
             '/pictures/bostoncaps.png',
@@ -179,7 +179,7 @@ export const productsAR = [
         title: 'قبعة حرف B الممزقة',
         price: '2,400 د.ج',
         originalPrice: '3,200 د.ج',
-        image: '/pictures/blettermodel.png',
+        image: '/pictures/blettercaps.png',
         gallery: [
             '/pictures/blettermodel.png',
             '/pictures/blettercaps.png',
@@ -205,7 +205,7 @@ export const productsAR = [
         title: 'قبعة إير فورس كلاسيكية',
         price: '2,200 د.ج',
         originalPrice: '2,900 د.ج',
-        image: '/pictures/airforce.png',
+        image: '/pictures/airforcelast.png',
         gallery: [
             '/pictures/airforce.png',
             '/pictures/airfor0 (1).jpeg',
@@ -303,30 +303,41 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                     alt={product.title}
                                     className={`w-full h-full object-cover art-image ${product.image.includes('blettermodel') ? 'object-top' : 'object-center'}`}
                                 />
-                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
+                                <div className="absolute inset-0 hidden md:flex bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 items-center justify-center gap-4">
                                     <button
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             handleProductClick(product);
                                         }}
-                                        className={`font-mono text-[10px] uppercase tracking-widest border border-white px-6 py-3 rounded-full backdrop-blur-sm bg-black/30 text-white transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-white hover:text-black ${language === 'AR' ? 'uppercase-none font-sans font-bold text-sm' : ''}`}
+                                        className={`font-mono text-[10px] uppercase tracking-widest border border-white px-6 py-3 rounded-full backdrop-blur-sm bg-black/30 text-white transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-white hover:text-black shadow-[0_4px_14px_0_rgba(0,0,0,0.39)] ${language === 'AR' ? 'uppercase-none font-sans font-bold text-sm' : ''}`}
                                     >
                                         {product.available ? t.addToCart : t.comingSoon}
                                     </button>
                                 </div>
                             </div>
                             <div className={`flex justify-between items-start font-mono text-xs uppercase tracking-widest border-t border-silver/20 pt-4 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
-                                <div>
+                                <div className="flex-1 pr-2">
                                     <p className="text-silver mb-2">({String(index + 1).padStart(3, '0')}) {product.category}</p>
-                                    <h3 className="text-sm font-bold group-hover:text-silver transition-colors">{product.title}</h3>
+                                    <h3 className="text-sm font-bold group-hover:text-silver transition-colors break-words">{product.title}</h3>
                                 </div>
-                                <div className="flex items-center gap-2 bg-white text-black px-3 py-1 rounded-full">
-                                    {product.available && product.originalPrice && (
-                                        <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium">{product.originalPrice}</span>
-                                    )}
-                                    <span className="font-bold">{product.available ? product.price : t.soonBadge}</span>
+                                <div className="flex flex-col md:flex-row items-end md:items-center gap-2 flex-shrink-0">
+                                    <div className="flex items-center gap-2 bg-white text-black px-3 py-1 rounded-full">
+                                        {product.available && product.originalPrice && (
+                                            <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium hidden sm:inline">{product.originalPrice}</span>
+                                        )}
+                                        <span className="font-bold">{product.available ? product.price : t.soonBadge}</span>
+                                    </div>
                                 </div>
                             </div>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleProductClick(product);
+                                }}
+                                className={`w-full mt-4 md:hidden font-mono text-[10px] uppercase tracking-widest border border-silver/30 px-6 py-3 rounded-full text-white hover:bg-white hover:text-black transition-colors shadow-sm ${language === 'AR' ? 'uppercase-none font-sans font-bold text-sm' : ''}`}
+                            >
+                                {product.available ? t.addToCart : t.comingSoon}
+                            </button>
                         </motion.div>
                     );
                 })}
