@@ -20,7 +20,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
 
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-        email: '',
+        fullName: '',
         phone: '',
         state: '',
         commune: '',
@@ -63,7 +63,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
         const totalWithDelivery = totalPrice + deliveryFee;
 
         const message = `*NEW ORDER - G ARGENA*\n\n` +
-            `*Contact:* ${formData.email}\n` +
+            `*Customer:* ${formData.fullName}\n` +
             `*Phone:* ${formData.phone}\n` +
             `*Destination:* ${selectedWilaya?.name || formData.state} - ${formData.commune} (${formData.deliveryType.toUpperCase()})\n` +
             `*Delivery Fee:* DA ${deliveryFee.toLocaleString()}\n\n` +
@@ -84,15 +84,15 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
             },
             body: JSON.stringify({
                 name: "Customer Order",
-                email: formData.email,
-                subject: `[ORDER] - New Order from ${formData.phone}`,
+                email: "order@argena.com", // Fallback since we don't collect email anymore
+                subject: `[ORDER] - New Order from ${formData.fullName} (${formData.phone})`,
                 message: message
             }),
         }).catch(err => console.error('Email Send Error:', err));
 
         // Async save to Supabase
         supabase.from('orders').insert([{
-            email: formData.email,
+            full_name: formData.fullName,
             phone: formData.phone,
             state: formData.state,
             commune: formData.commune,
@@ -104,6 +104,20 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
         }]).then(({ error }) => {
             if (error) console.error('Supabase Order Save Error:', error);
         });
+
+        // Fire Meta Pixel Purchase Event
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+            (window as any).fbq('track', 'Purchase', {
+                value: totalWithDelivery,
+                currency: 'DZD',
+                contents: orderItems.map(item => ({
+                    id: item.id,
+                    quantity: item.quantity,
+                    item_price: parseInt(item.price.replace(/[^\d]/g, '')) || 0,
+                })),
+                content_type: 'product'
+            });
+        }
 
         clearCart();
         nextStep(); // Move to success screen
@@ -121,8 +135,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
     const t = {
         step1: language === 'EN' ? 'STEP 01/03 — CONTACT' : 'الخطوة 01/03 — معلومات الاتصال',
         who: language === 'EN' ? 'Who is ordering?' : 'معلومات المشتري',
-        email: language === 'EN' ? 'Email Address' : 'الإيميل (البريد الإلكتروني)',
-        enterEmail: language === 'EN' ? 'ENTER EMAIL' : 'أدخل الإيميل',
+        fullName: language === 'EN' ? 'Full Name' : 'الاسم الكامل',
+        enterFullName: language === 'EN' ? 'ENTER FULL NAME' : 'أدخل اسمك الكامل',
         phone: language === 'EN' ? 'Phone Number' : 'رقم الهاتف',
         enterPhone: language === 'EN' ? 'ENTER PHONE' : 'أدخل رقم الهاتف',
         continue1: language === 'EN' ? 'CONTINUE TO SHIPPING' : 'التالي',
@@ -193,14 +207,14 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                 <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-white mb-8`}>{t.who}</h2>
                                 <div className="space-y-6">
                                     <div>
-                                        <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.email}</label>
+                                        <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.fullName}</label>
                                         <input
                                             required
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
+                                            type="text"
+                                            name="fullName"
+                                            value={formData.fullName}
                                             onChange={handleInputChange}
-                                            placeholder={t.enterEmail}
+                                            placeholder={t.enterFullName}
                                             className={`w-full bg-transparent border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
                                         />
                                     </div>
@@ -220,7 +234,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                 <button
                                     type="button"
                                     onClick={nextStep}
-                                    disabled={!formData.email || !formData.phone}
+                                    disabled={!formData.fullName || !formData.phone}
                                     className={`mt-12 w-full group flex items-center justify-between font-mono text-xs tracking-[0.3em] border border-silver/30 px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-30 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                 >
                                     {t.continue1}

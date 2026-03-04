@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, ArrowLeft, Layers, Image, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ArrowRight, ArrowLeft, Layers, Image, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Product3DViewer = lazy(() => import('../3d/Product3DViewer'));
@@ -99,6 +99,8 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
         view2D: language === 'EN' ? 'DISPLAY' : 'صور',
         view3D: language === 'EN' ? '3D' : '3D',
         loadingModel: language === 'EN' ? 'LOADING 3D MODEL...' : 'جاري التحميل...',
+        payOnDelivery: language === 'EN' ? 'PAY ON DELIVERY' : 'الدفع عند الاستلام',
+        orderViaWhatsApp: language === 'EN' ? 'Prefer to order via message? Click here' : 'هل تفضل الطلب عبر رسالة؟ اضغط هنا',
         colors: (product.colors || []) as { name: string; quantity: number }[]
     };
 
@@ -302,11 +304,18 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                         <div>
                                             <p className="font-mono text-xs uppercase tracking-widest text-silver mb-4">({String(product.id).padStart(3, '0')}) {product.category}</p>
                                             <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl text-white mb-6`}>{product.title}</h2>
-                                            <div className="flex items-baseline gap-4 mb-8 border-b border-silver/20 pb-8">
+                                            <div className="flex items-baseline gap-4 mb-4">
                                                 <p className="font-mono text-2xl text-white font-bold">{product.price}</p>
                                                 {product.originalPrice && (
                                                     <p className="font-mono text-lg text-silver/70 line-through decoration-silver/70 decoration-2">{product.originalPrice}</p>
                                                 )}
+                                            </div>
+
+                                            <div className="flex items-center gap-2 mb-8 border-b border-silver/20 pb-8">
+                                                <span className={`inline-flex items-center px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-mono text-[10px] tracking-widest uppercase ${language === 'AR' ? 'font-sans font-bold uppercase-none text-xs' : ''}`}>
+                                                    <CheckCircle2 size={12} className="mr-1.5" />
+                                                    {t.payOnDelivery}
+                                                </span>
                                             </div>
 
                                             <div className="mb-8">
@@ -353,7 +362,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                         <button
                                             onClick={handleAddToCart}
                                             disabled={t.colors.length > 0 && !selectedColor}
-                                            className={`w-full group flex items-center justify-between font-mono text-xs border border-white px-8 py-4 rounded-full bg-white text-black hover:bg-silver transition-all duration-500 tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
+                                            className={`w-full group flex items-center justify-between font-mono text-xs border border-white px-8 py-4 rounded-full bg-white text-black hover:bg-silver transition-all duration-500 tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                         >
                                             {t.colors.length > 0 && !selectedColor ? t.colorRequired : t.addToCart}
                                             {t.colors.length > 0 && !selectedColor ? null :
@@ -362,6 +371,16 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                     : <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" />)
                                             }
                                         </button>
+
+                                        <a
+                                            href={`https://wa.me/213556967562?text=${encodeURIComponent(`Hello, I want to order ${product.title} ${selectedColor ? `(Color: ${selectedColor})` : ''} - Price: ${product.price}`)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`w-full flex items-center justify-center gap-2 font-mono text-xs border border-silver/30 px-8 py-3 rounded-full text-silver hover:text-white hover:border-white/50 transition-all duration-300 tracking-[0.1em] ${language === 'AR' ? 'uppercase-none font-sans flex-row-reverse' : ''}`}
+                                        >
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 1.905 6.456L.045 24l5.688-1.503A11.94 11.94 0 0 0 11.944 24C18.553 24 24 18.623 24 12S18.553 0 11.944 0zM12 21.844c-1.742 0-3.414-.46-4.88-1.328l-.35-.208-3.623.956.974-3.52-.229-.364A9.816 9.816 0 0 1 2.16 12c0-5.433 4.417-9.843 9.84-9.843S21.84 6.567 21.84 12c0 5.433-4.417 9.844-9.84 9.844zm5.395-7.36c-.296-.149-1.751-.864-2.023-.963-.271-.097-.47-.148-.667.148-.198.297-.768.963-.941 1.16-.173.197-.346.223-.642.074a8.216 8.216 0 0 1-4.008-2.484c-.309-.399-.17-.611-.02-.756.134-.13.296-.347.444-.52.149-.174.198-.298.297-.496.099-.198.05-.371-.025-.52-.074-.148-.667-1.609-.914-2.203-.242-.58-.487-.502-.667-.512-.173-.008-.37-.01-.568-.01a1.08 1.08 0 0 0-.791.371C6.012 8.63 5 9.596 5 11.602c0 2.006 1.359 3.945 1.545 4.193.185.248 2.859 4.364 6.923 6.12 2.657 1.147 3.5.992 4.143.834.787-.193 2.022-.826 2.318-1.626.297-.8.297-1.488.209-1.626-.088-.138-.344-.223-.64-.372z" /></svg>
+                                            {t.orderViaWhatsApp}
+                                        </a>
                                     </div>
                                 </div>
                             </div>

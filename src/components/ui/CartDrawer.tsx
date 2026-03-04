@@ -30,6 +30,7 @@ export const CartDrawer: React.FC = () => {
         total: isAR ? 'المجموع' : 'Total',
         checkout: isAR ? 'المتابعة للطلب' : 'PROCEED TO ORDER',
         color: isAR ? 'اللون' : 'Color',
+        orderViaWhatsApp: isAR ? 'هل تفضل الطلب عبر رسالة؟ اضغط هنا' : 'Prefer to order via message? Click here',
         // Arabic: use دعنا نقل عنصرين/عناصر for plural — simplified to عنصر/عناصر
         items: isAR
             ? count === 1 ? '١ عنصر' : `${count} عناصر`
@@ -166,6 +167,20 @@ export const CartDrawer: React.FC = () => {
                                         : <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                     }
                                 </button>
+
+                                <a
+                                    href={`https://wa.me/213556967562?text=${encodeURIComponent(
+                                        `Hello, I want to order the following items:\n\n` +
+                                        items.map(item => `- ${item.title} (x${item.quantity})${item.selectedColor ? ` [Color: ${item.selectedColor}]` : ''}`).join('\n') +
+                                        `\n\nTotal: DA ${total.toLocaleString()}`
+                                    )}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`w-full flex items-center justify-center gap-2 font-mono text-xs border border-silver/30 px-8 py-3 rounded-full text-silver hover:text-white hover:border-white/50 transition-all duration-300 tracking-[0.1em] ${isAR ? 'uppercase-none font-sans flex-row-reverse' : ''}`}
+                                >
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 1.905 6.456L.045 24l5.688-1.503A11.94 11.94 0 0 0 11.944 24C18.553 24 24 18.623 24 12S18.553 0 11.944 0zM12 21.844c-1.742 0-3.414-.46-4.88-1.328l-.35-.208-3.623.956.974-3.52-.229-.364A9.816 9.816 0 0 1 2.16 12c0-5.433 4.417-9.843 9.84-9.843S21.84 6.567 21.84 12c0 5.433-4.417 9.844-9.84 9.844zm5.395-7.36c-.296-.149-1.751-.864-2.023-.963-.271-.097-.47-.148-.667.148-.198.297-.768.963-.941 1.16-.173.197-.346.223-.642.074a8.216 8.216 0 0 1-4.008-2.484c-.309-.399-.17-.611-.02-.756.134-.13.296-.347.444-.52.149-.174.198-.298.297-.496.099-.198.05-.371-.025-.52-.074-.148-.667-1.609-.914-2.203-.242-.58-.487-.502-.667-.512-.173-.008-.37-.01-.568-.01a1.08 1.08 0 0 0-.791.371C6.012 8.63 5 9.596 5 11.602c0 2.006 1.359 3.945 1.545 4.193.185.248 2.859 4.364 6.923 6.12 2.657 1.147 3.5.992 4.143.834.787-.193 2.022-.826 2.318-1.626.297-.8.297-1.488.209-1.626-.088-.138-.344-.223-.64-.372z" /></svg>
+                                    {t.orderViaWhatsApp}
+                                </a>
                             </div>
                         )}
                     </motion.div>
