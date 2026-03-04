@@ -27,7 +27,7 @@ export const productsEN = [
             { name: 'Dark Blue', quantity: 11 },
             { name: 'Beige', quantity: 2 },
             { name: 'White', quantity: 3 },
-            { name: 'Brown', quantity: 2 },
+            { name: 'Brown', quantity: 3 },
             { name: 'Grey', quantity: 1 }
         ],
         description: 'Fashion And Hot Sale Cotton Fabric Washed Baseball Cap And Hat Manufacturer with Custom Embroidery on Visor \nOne size can fit most people.\nWith 100% cotton to ensure the baseball cap is lightweight.\nNew Technology of Embroidery.'
@@ -139,7 +139,7 @@ export const productsAR = [
             { name: 'أزرق غامق', quantity: 11 },
             { name: 'بيج', quantity: 2 },
             { name: 'أبيض', quantity: 3 },
-            { name: 'بني', quantity: 2 },
+            { name: 'بني', quantity: 3 },
             { name: 'رمادي', quantity: 1 }
         ],
         description: 'قبعة بيسبول قطنية مريحة بجودة عالية مع تطريز مميز.\nمقاس قابل للتعديل يناسب الجميع.\nخفيفة الوزن ومناسبة للاستعمال اليومي.'
