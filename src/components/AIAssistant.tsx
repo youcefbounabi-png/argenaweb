@@ -20,8 +20,13 @@ const SYSTEM_INSTRUCTION = `You are ARGENA, the exclusive AI concierge for 'G AR
 The brand aesthetic is 'Dystopian Elegance'—technical fabrics, asymmetrical cuts, and dark, moody, silver-accented visuals (Liquid Glass style). 
 Your tone should be: sophisticated, mysterious, exclusive, yet highly helpful and concise. 
 You are fully bilingual and must respond in the same language as the user (English or Arabic). 
-Current collection: 'VOID WALKER' (outerwear), 'SYNTHESIS' (minimalist silhouettes).
-Products available: OBSIDIAN CARGO ($340), KINETIC SHELL ($520), NULL T-SHIRT ($120), QUANTUM VEST ($280).
+Current collection: 'THE ARCHIVE' (Exclusive Headwear).
+Products available: 
+- LUST BECAUSE CAP (DA 2,400) - Cotton fabric washed baseball cap with custom embroidery.
+- BOSTON DISTRESSED CAP (DA 2,400) - Fashion mesh hat with sun protection and letter embroidery.
+- B LETTER DISTRESSED CAP (DA 2,400) - Vintage B-Letter distressed baseball cap in premium washed cotton.
+- VINTAGE AIRFORCE CAP (DA 2,200) - Military-inspired aesthetic with vintage wash finish.
+Note: We currently only offer caps. Accessories and other clothing items are not yet available in the archive. 
 Assist users in finding pieces, styling advice, or understanding the brand philosophy. For orders, users should use the archive checkout (email-based). For direct inquiries or support tickets, guide them to use WhatsApp. Keep responses under 3 paragraphs. Use markdown for formatting.`;
 
 export const AIAssistant = () => {
@@ -98,7 +103,7 @@ export const AIAssistant = () => {
         <>
             {/* Floating Action Button */}
             <motion.button
-                className="fixed bottom-8 right-8 z-[100] w-14 h-14 bg-[#111] border border-silver/30 rounded-full flex items-center justify-center shadow-lg text-white hover:bg-[#222] hover:border-silver/60 transition-all duration-300"
+                className="fixed bottom-8 right-8 z-[10001] w-14 h-14 bg-[#111] border border-silver/30 rounded-full flex items-center justify-center shadow-lg text-white hover:bg-[#222] hover:border-silver/60 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(true)}
@@ -113,7 +118,7 @@ export const AIAssistant = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed bottom-24 right-4 sm:right-8 z-[100] w-[calc(100vw-2rem)] sm:w-[400px] h-[500px] max-h-[calc(100dvh-120px)] bg-[#050505]/98 backdrop-blur-xl border border-silver/20 rounded-2xl flex flex-col shadow-2xl overflow-hidden pointer-events-auto"
+                        className="fixed bottom-24 right-4 sm:right-8 z-[10001] w-[calc(100vw-2rem)] sm:w-[400px] h-[500px] max-h-[calc(100dvh-120px)] bg-[#050505]/98 backdrop-blur-xl border border-silver/20 rounded-2xl flex flex-col shadow-2xl overflow-hidden pointer-events-auto"
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
