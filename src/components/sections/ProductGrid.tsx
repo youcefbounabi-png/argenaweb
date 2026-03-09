@@ -280,10 +280,10 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-6">
                 {products.map((product, index) => {
-                    const colSpans = ['md:col-span-7', 'md:col-span-5', 'md:col-span-5', 'md:col-span-7'];
-                    const margins = ['mt-0', 'md:mt-32', 'mt-0', 'md:-mt-32'];
+                    const colSpans = ['md:col-span-5 md:col-start-2', 'md:col-span-4 md:col-start-8', 'md:col-span-4 md:col-start-2', 'md:col-span-5 md:col-start-7'];
+                    const margins = ['mt-0', 'md:mt-12', 'mt-0', 'md:-mt-24'];
 
                     return (
                         <motion.div
@@ -295,33 +295,39 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                             className={`group cursor-pointer ${colSpans[index]} ${margins[index]}`}
                             onClick={() => handleProductClick(product)}
                         >
-                            <div className="relative aspect-[4/5] overflow-hidden bg-silver-dark/20 mb-6 font-mono flex items-center justify-center">
+                            {/* Image Container */}
+                            <div className="relative aspect-square md:aspect-[4/5] overflow-hidden bg-black/5 rounded-sm">
                                 <motion.img
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
                                     src={product.image}
                                     alt={product.title}
-                                    className={`w-full h-full object-cover art-image ${product.image.includes('blettermodel') ? 'object-top' : 'object-center'}`}
+                                    className={`w-full h-full object-cover transition-transform duration-[2s] ${product.image.includes('blettermodel') ? 'object-top' : ''}`}
                                 />
-                                <div className="absolute inset-0 hidden md:flex bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 items-center justify-center gap-4">
+                                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                {/* Quick Add Button (Desktop) */}
+                                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hidden md:block w-[80%]">
                                     <button
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             handleProductClick(product);
                                         }}
-                                        className={`font-mono text-[10px] uppercase tracking-widest border border-white px-6 py-3 rounded-full backdrop-blur-sm bg-black/30 text-white transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-white hover:text-black shadow-[0_4px_14px_0_rgba(0,0,0,0.39)] ${language === 'AR' ? 'uppercase-none font-sans font-bold text-sm' : ''}`}
+                                        className={`w-full font-mono text-xs uppercase tracking-widest border border-white/30 bg-black/50 backdrop-blur-md px-6 py-3 rounded-full text-white hover:bg-white hover:text-black transition-colors ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}
                                     >
                                         {product.available ? t.addToCart : t.comingSoon}
                                     </button>
                                 </div>
                             </div>
-                            <div className={`flex justify-between items-start font-mono text-xs uppercase tracking-widest border-t border-silver/20 pt-4 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
-                                <div className="flex-1 pr-2">
-                                    <p className="text-silver mb-2">({String(index + 1).padStart(3, '0')}) {product.category}</p>
-                                    <h3 className="text-sm font-bold group-hover:text-silver transition-colors break-words">{product.title}</h3>
+
+                            {/* Product Info */}
+                            <div className={`flex justify-between items-center font-mono text-xs uppercase tracking-widest border-t border-silver/20 pt-1 sm:pt-3 flex-col sm:flex-row gap-0.5 sm:gap-1.5 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
+                                <div className="flex-1 pr-2 w-full text-center sm:text-left mt-1">
+                                    <p className="text-silver mb-0 sm:mb-1 text-[8px] sm:text-xs tracking-tight sm:tracking-widest">({String(index + 1).padStart(3, '0')}) {product.category}</p>
+                                    <h3 className="text-[10px] sm:text-[13px] font-bold group-hover:text-silver transition-colors break-words leading-tight mt-0.5">{product.title}</h3>
                                 </div>
-                                <div className="flex flex-col md:flex-row items-end md:items-center gap-2 flex-shrink-0">
-                                    <div className="flex items-center gap-2 bg-white text-black px-3 py-1 rounded-full">
+                                <div className="flex flex-row items-center justify-center sm:justify-end gap-1 sm:gap-2 flex-shrink-0 w-full sm:w-auto mt-0.5">
+                                    <div className="flex items-center gap-1 sm:gap-2 bg-white text-black px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[11px] whitespace-nowrap">
                                         {product.available && product.originalPrice && (
                                             <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium hidden sm:inline">{product.originalPrice}</span>
                                         )}
@@ -329,12 +335,14 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Quick Add Button (Mobile) */}
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     handleProductClick(product);
                                 }}
-                                className={`w-full mt-4 md:hidden font-mono text-[10px] uppercase tracking-widest border border-silver/30 px-6 py-3 rounded-full text-white hover:bg-white hover:text-black transition-colors shadow-sm ${language === 'AR' ? 'uppercase-none font-sans font-bold text-sm' : ''}`}
+                                className={`w-full mt-2 md:hidden font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-widest border border-silver/30 px-2 sm:px-6 py-2 sm:py-3 rounded-full text-white hover:bg-white hover:text-black transition-colors shadow-sm ${language === 'AR' ? 'uppercase-none font-sans font-bold text-xs sm:text-sm' : ''}`}
                             >
                                 {product.available ? t.addToCart : t.comingSoon}
                             </button>
