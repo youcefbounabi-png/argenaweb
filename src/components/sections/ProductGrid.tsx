@@ -80,7 +80,7 @@ export const productsEN = [
         category: 'Headwear',
         available: true,
         colors: [
-            { name: 'Black', quantity: 7 },
+            { name: 'Black', quantity: 1 },
             { name: 'Burgundy', quantity: 2 },
             { name: 'Beige', quantity: 1 },
             { name: 'Brown', quantity: 2 },
@@ -192,7 +192,7 @@ export const productsAR = [
         category: 'أغطية الرأس',
         available: true,
         colors: [
-            { name: 'أسود', quantity: 7 },
+            { name: 'أسود', quantity: 1 },
             { name: 'خمري', quantity: 2 },
             { name: 'بيج', quantity: 1 },
             { name: 'بني', quantity: 2 },

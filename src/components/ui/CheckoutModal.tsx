@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { X, ArrowRight, ArrowLeft, CheckCircle2, ChevronDown } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useCart } from '../../contexts/CartContext';
 import { supabase } from '../../lib/supabase';
@@ -171,9 +172,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
 
     if (!isOpen) return null;
 
-    return (
+    const modalContent = (
         <AnimatePresence>
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-12" data-lenis-prevent>
+            <div className="fixed inset-0 z-[100000] flex items-center justify-center p-6 sm:p-12" data-lenis-prevent>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -249,39 +250,49 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                 <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-white mb-8`}>{t.where}</h2>
                                 <div>
                                     <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.stateLabel}</label>
-                                    <select
-                                        required
-                                        name="state"
-                                        value={formData.state}
-                                        onChange={handleInputChange}
-                                        className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
-                                    >
-                                        <option value="">{t.selectState}</option>
-                                        {WILAYAS.map(w => (
-                                            <option key={w.id} value={w.name.toLowerCase()}>
-                                                {language === 'EN' ? `${w.id.toString().padStart(2, '0')} - ${w.name}` : `${w.id.toString().padStart(2, '0')} - ${w.nameAr}`}
-                                            </option>
-                                        ))}
-                                    </select>
+                                    <div className="relative">
+                                        <select
+                                            required
+                                            name="state"
+                                            value={formData.state}
+                                            onChange={handleInputChange}
+                                            className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans pl-8 text-right' : 'pr-8'}`}
+                                        >
+                                            <option value="">{t.selectState}</option>
+                                            {WILAYAS.map(w => (
+                                                <option key={w.id} value={w.name.toLowerCase()}>
+                                                    {language === 'EN' ? `${w.id.toString().padStart(2, '0')} - ${w.name}` : `${w.id.toString().padStart(2, '0')} - ${w.nameAr}`}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${language === 'AR' ? 'left-2' : 'right-2'}`}>
+                                            <ChevronDown size={16} className="text-silver" />
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {formData.state && (
                                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
                                         <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.communeLabel}</label>
-                                        <select
-                                            required
-                                            name="commune"
-                                            value={formData.commune}
-                                            onChange={handleInputChange}
-                                            className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
-                                        >
-                                            <option value="">{t.selectCommune}</option>
-                                            {selectedWilaya && COMMUNES[selectedWilaya.id]?.map((c: any) => (
-                                                <option key={c.name} value={c.name.toLowerCase()}>
-                                                    {language === 'EN' ? c.name : c.nameAr}
-                                                </option>
-                                            ))}
-                                        </select>
+                                        <div className="relative">
+                                            <select
+                                                required
+                                                name="commune"
+                                                value={formData.commune}
+                                                onChange={handleInputChange}
+                                                className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans pl-8 text-right' : 'pr-8'}`}
+                                            >
+                                                <option value="">{t.selectCommune}</option>
+                                                {selectedWilaya && COMMUNES[selectedWilaya.id]?.map((c: any) => (
+                                                    <option key={c.name} value={c.name.toLowerCase()}>
+                                                        {language === 'EN' ? c.name : c.nameAr}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${language === 'AR' ? 'left-2' : 'right-2'}`}>
+                                                <ChevronDown size={16} className="text-silver" />
+                                            </div>
+                                        </div>
                                     </motion.div>
                                 )}
 
@@ -396,9 +407,11 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                         )}
                     </form>
                 </motion.div>
-            </div >
-        </AnimatePresence >
+            </div>
+        </AnimatePresence>
     );
+
+    return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 };
 
 export default CheckoutModal;

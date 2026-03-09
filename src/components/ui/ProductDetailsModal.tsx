@@ -181,7 +181,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
                             transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-                            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col pt-12 md:p-6"
+                            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col pt-12 md:p-6"
                             data-lenis-prevent
                         >
                             <div ref={modalCardRef} className="relative w-full h-full bg-bg border border-silver/20 rounded-t-2xl md:rounded-xl shadow-2xl overflow-hidden flex flex-col">
