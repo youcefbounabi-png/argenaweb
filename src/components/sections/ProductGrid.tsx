@@ -280,9 +280,9 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 md:gap-4 lg:gap-6">
                 {products.map((product, index) => {
-                    const colSpans = ['md:col-span-5 md:col-start-2', 'md:col-span-4 md:col-start-8', 'md:col-span-4 md:col-start-2', 'md:col-span-5 md:col-start-7'];
+                    const colSpans = ['md:col-span-7', 'md:col-span-5', 'md:col-span-5', 'md:col-span-7'];
                     const margins = ['mt-0', 'md:mt-12', 'mt-0', 'md:-mt-24'];
 
                     return (
@@ -329,7 +329,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                 <div className="flex flex-row items-center justify-center sm:justify-end gap-1 sm:gap-2 flex-shrink-0 w-full sm:w-auto mt-0.5">
                                     <div className="flex items-center gap-1 sm:gap-2 bg-white text-black px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[11px] whitespace-nowrap">
                                         {product.available && product.originalPrice && (
-                                            <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium hidden sm:inline">{product.originalPrice}</span>
+                                            <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium inline">{product.originalPrice}</span>
                                         )}
                                         <span className="font-bold">{product.available ? product.price : t.soonBadge}</span>
                                     </div>
