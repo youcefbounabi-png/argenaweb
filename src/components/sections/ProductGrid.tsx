@@ -9,7 +9,7 @@ export const productsEN = [
     {
         id: 1,
         title: 'lust because cap',
-        price: 'DA 2,400',
+        price: 'DA 2,200',
         originalPrice: 'DA 3,200',
         image: '/pictures/lust0 (1).png',
         gallery: [
@@ -35,7 +35,7 @@ export const productsEN = [
     {
         id: 2,
         title: 'boston disstressed cap',
-        price: 'DA 2,400',
+        price: 'DA 2,000',
         originalPrice: 'DA 3,200',
         image: '/pictures/bostoncaps.png',
         gallery: [
@@ -65,7 +65,7 @@ export const productsEN = [
     {
         id: 3,
         title: 'B letter distressed cap',
-        price: 'DA 2,400',
+        price: 'DA 2,000',
         originalPrice: 'DA 3,200',
         image: '/pictures/blettercaps.png',
         gallery: [
@@ -91,7 +91,7 @@ export const productsEN = [
     {
         id: 4,
         title: 'vintage airforce cap',
-        price: 'DA 2,200',
+        price: 'DA 1,800',
         originalPrice: 'DA 2,900',
         image: '/pictures/airforcelast.png',
         gallery: [
@@ -121,7 +121,7 @@ export const productsAR = [
     {
         id: 1,
         title: 'قبعة «لست بيكوز»',
-        price: '2,400 د.ج',
+        price: '2,200 د.ج',
         originalPrice: '3,200 د.ج',
         image: '/pictures/lust0 (1).png',
         gallery: [
@@ -147,7 +147,7 @@ export const productsAR = [
     {
         id: 2,
         title: 'قبعة بوسطن الممزقة',
-        price: '2,400 د.ج',
+        price: '2,000 د.ج',
         originalPrice: '3,200 د.ج',
         image: '/pictures/bostoncaps.png',
         gallery: [
@@ -177,7 +177,7 @@ export const productsAR = [
     {
         id: 3,
         title: 'قبعة حرف B الممزقة',
-        price: '2,400 د.ج',
+        price: '2,000 د.ج',
         originalPrice: '3,200 د.ج',
         image: '/pictures/blettercaps.png',
         gallery: [
@@ -203,7 +203,7 @@ export const productsAR = [
     {
         id: 4,
         title: 'قبعة إير فورس كلاسيكية',
-        price: '2,200 د.ج',
+        price: '1,800 د.ج',
         originalPrice: '2,900 د.ج',
         image: '/pictures/airforcelast.png',
         gallery: [
