@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ShoppingBag, Globe, Menu, X } from 'lucide-react';
+import { ShoppingBag, Globe, Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '../ui/Logo';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useCart } from '../../contexts/CartContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export const Header: React.FC = () => {
     const [time, setTime] = useState('');
@@ -13,6 +14,7 @@ export const Header: React.FC = () => {
     const location = useLocation();
     const { language, toggleLanguage } = useLanguage();
     const { count, openCart } = useCart();
+    const { theme, toggleTheme } = useTheme();
 
     const t = {
         nav: language === 'EN' ? '(Navigation)' : '(التنقل)',
@@ -60,14 +62,14 @@ export const Header: React.FC = () => {
                         right: 0,
                         bottom: 0,
                         zIndex: 9999,
-                        backgroundColor: '#050505',
+                        backgroundColor: 'var(--color-bg)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
                         mixBlendMode: 'normal',
                         isolation: 'isolate',
-                        color: 'white',
+                        color: 'var(--color-fg)',
                     }}
                 >
                     {/* Close button */}
@@ -78,7 +80,7 @@ export const Header: React.FC = () => {
                             top: '1.5rem',
                             right: '1.5rem',
                             padding: '0.75rem',
-                            color: 'white',
+                            color: 'var(--color-fg)',
                             background: 'none',
                             border: 'none',
                             cursor: 'pointer',
@@ -124,8 +126,8 @@ export const Header: React.FC = () => {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.5rem',
-                                color: 'white',
-                                border: '1px solid rgba(192,192,192,0.3)',
+                                color: 'var(--color-fg)',
+                                border: '1px solid var(--color-silver-dark)',
                                 padding: '0.4rem 1.25rem',
                                 borderRadius: '9999px',
                                 fontFamily: 'monospace',
@@ -138,6 +140,26 @@ export const Header: React.FC = () => {
                         >
                             <Globe size={13} />
                             <span>{language} / {language === 'EN' ? 'AR' : 'EN'}</span>
+                        </button>
+                        <button
+                            onClick={toggleTheme}
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                color: 'var(--color-fg)',
+                                border: '1px solid var(--color-silver-dark)',
+                                padding: '0.4rem 1.25rem',
+                                borderRadius: '9999px',
+                                fontFamily: 'monospace',
+                                fontSize: '0.7rem',
+                                textTransform: 'uppercase',
+                                background: 'none',
+                                cursor: 'pointer',
+                                letterSpacing: '0.1em',
+                            }}
+                        >
+                            {theme === 'light' ? <Moon size={13} /> : <Sun size={13} />}
                         </button>
                         <div
                             style={{
@@ -160,23 +182,23 @@ export const Header: React.FC = () => {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-50 p-6 mix-blend-difference text-white">
+            <header className="fixed top-0 left-0 w-full z-50 p-6 text-fg">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] md:text-xs font-mono uppercase tracking-widest items-start">
 
                     {/* Logo Section - Visible on all devices */}
                     <div className="flex flex-col">
-                        <Link to={`/${language.toLowerCase()}/`} className="hover:text-white transition-colors flex flex-wrap md:flex-nowrap items-center gap-2 md:gap-4 group">
-                            <div className="filter drop-shadow-[0_0_30px_rgba(255,255,255,1)] group-hover:drop-shadow-[0_0_50px_rgba(255,255,255,1)] transition-all duration-500 opacity-100 mix-blend-normal isolate">
-                                <Logo className="text-5xl h-12 md:text-7xl md:h-28 lg:h-32 w-auto text-white scale-125 origin-left" forceImageOnly={true} />
+                        <Link to={`/${language.toLowerCase()}/`} className="hover:text-silver transition-colors flex flex-wrap md:flex-nowrap items-center gap-2 md:gap-4 group">
+                            <div className="filter drop-shadow-[0_0_30px_rgba(var(--color-fg-rgb),0.1)] group-hover:drop-shadow-[0_0_50px_rgba(var(--color-fg-rgb),0.2)] transition-all duration-500 opacity-100 mix-blend-normal isolate">
+                                <Logo className="text-5xl h-12 md:text-7xl md:h-28 lg:h-32 w-auto text-fg scale-125 origin-left" forceImageOnly={true} />
                             </div>
-                            <span className={`font-sans ms-0 md:ms-4 text-white font-bold text-sm md:text-lg tracking-widest group-hover:text-silver transition-colors pt-1 md:pt-2 ${language === 'AR' ? 'font-bold md:text-2xl md:me-8' : ''}`}>{t.studio}</span>
+                            <span className={`font-sans ms-0 md:ms-4 text-fg font-bold text-sm md:text-lg tracking-widest group-hover:text-silver transition-colors pt-1 md:pt-2 ${language === 'AR' ? 'font-bold md:text-2xl md:me-8' : ''}`}>{t.studio}</span>
                         </Link>
                         <p className="mt-2 text-silver hidden md:block">{time}</p>
                     </div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                        <p className="text-white/50 mb-2">{t.nav}</p>
+                        <p className="text-fg/50 mb-2">{t.nav}</p>
                         <Link to={`/${language.toLowerCase()}/shop`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/shop') ? 'text-silver' : ''}`}>{t.shop}</Link>
                         <Link to={`/${language.toLowerCase()}/about`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/about') ? 'text-silver' : ''}`}>{t.about}</Link>
                         <Link to={`/${language.toLowerCase()}/custom-orders`} className={`block hover:text-silver transition-colors ${location.pathname.includes('/custom-orders') ? 'text-silver' : ''}`}>{t.customOrders}</Link>
@@ -186,12 +208,12 @@ export const Header: React.FC = () => {
 
                     {/* Desktop Socials */}
                     <div className="hidden md:block text-end md:text-start">
-                        <p className="text-white/50 mb-2">{t.socials}</p>
+                        <p className="text-fg/50 mb-2">{t.socials}</p>
                         <a href="https://www.instagram.com/argena.streetwear/" target="_blank" rel="noopener noreferrer" className="block hover:text-silver transition-colors">{t.instagram}</a>
                     </div>
 
                     {/* Utilities */}
-                    <div className="flex justify-end items-center md:items-start gap-4 md:gap-6 ml-auto">
+                    <div className="flex justify-end items-center md:items-center gap-4 md:gap-6 ml-auto">
                         <button
                             onClick={toggleLanguage}
                             className="hidden md:flex items-center gap-2 hover:text-silver transition-colors"
@@ -199,11 +221,18 @@ export const Header: React.FC = () => {
                             <Globe size={14} />
                             <span>{language} / {language === 'EN' ? 'AR' : 'EN'}</span>
                         </button>
+                        <button
+                            onClick={toggleTheme}
+                            className="hidden md:flex items-center justify-center hover:text-silver transition-colors"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+                        </button>
                         <button onClick={openCart} className="relative flex items-center gap-2 hover:text-silver transition-colors">
                             <span className="hidden md:inline">{t.cart} ({count})</span>
                             <ShoppingBag size={18} className="md:w-[14px] md:h-[14px]" />
                             {count > 0 && (
-                                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-white text-black text-[9px] font-bold rounded-full flex items-center justify-center font-mono md:hidden">
+                                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-fg text-bg text-[9px] font-bold rounded-full flex items-center justify-center font-mono md:hidden">
                                     {count}
                                 </span>
                             )}

@@ -1,6 +1,7 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MathUtils, Vector2, Color } from 'three';
+import { useTheme } from '../../contexts/ThemeContext';
 
 // Vertex shader creates the "liquid" distortion using sine waves based on the cursor position
 const vertexShader = `
@@ -36,8 +37,8 @@ const vertexShader = `
 // Fragment shader handles the "Argana" dark/silver color blending
 const fragmentShader = `
   uniform float uTime;
-  uniform vec3 uColor1; // Dark (#050505)
-  uniform vec3 uColor2; // Silver (#888888)
+  uniform vec3 uColor1; // Background
+  uniform vec3 uColor2; // Depth/Silver
   
   varying vec2 vUv;
   varying float vElevation;
@@ -56,14 +57,24 @@ const fragmentShader = `
 const LiquidPlane = ({ mousePosition }: { mousePosition: React.MutableRefObject<Vector2> }) => {
     const meshRef = useRef<any>(null);
     const materialRef = useRef<any>(null);
+    const { theme } = useTheme();
 
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
         uMouse: { value: new Vector2(0.5, 0.5) },
         uHover: { value: 0 },
-        uColor1: { value: new Color('#050505') }, // Argana Background
-        uColor2: { value: new Color('#222222') }  // Silver/Dark grey for depth
+        uColor1: { value: new Color(theme === 'light' ? '#ffffff' : '#050505') },
+        uColor2: { value: new Color(theme === 'light' ? '#f0f0f0' : '#444444') }
     }), []);
+
+    useEffect(() => {
+        if (materialRef.current) {
+            const color1 = theme === 'light' ? '#ffffff' : '#050505';
+            const color2 = theme === 'light' ? '#f0f0f0' : '#444444';
+            materialRef.current.uniforms.uColor1.value.set(color1);
+            materialRef.current.uniforms.uColor2.value.set(color2);
+        }
+    }, [theme]);
 
     useFrame((state) => {
         if (materialRef.current) {

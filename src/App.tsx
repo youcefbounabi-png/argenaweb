@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import MainLayout from './components/layout/MainLayout';
 import Footer from './components/layout/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { CartProvider, useCart } from './contexts/CartContext';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -74,15 +75,17 @@ const AppInner = () => {
 
 function App() {
   return (
-    <LanguageProvider>
-      <HelmetProvider>
-        <CartProvider>
-          <Router>
-            <AppInner />
-          </Router>
-        </CartProvider>
-      </HelmetProvider>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <HelmetProvider>
+          <CartProvider>
+            <Router>
+              <AppInner />
+            </Router>
+          </CartProvider>
+        </HelmetProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

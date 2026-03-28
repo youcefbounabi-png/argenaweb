@@ -53,7 +53,7 @@ export const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            <div className={`relative z-10 w-full max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8 text-white ${language === 'AR' ? 'text-right' : ''}`}>
+            <div className={`relative z-10 w-full max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8 text-fg ${language === 'AR' ? 'text-right' : ''}`}>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 2.8 }}
                 >
-                    <Link to={`/${language.toLowerCase()}/shop`} className={`group flex items-center gap-3 font-mono text-[10px] md:text-xs uppercase tracking-widest border border-silver/30 px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-500 ${language === 'AR' ? 'uppercase-none font-sans font-medium flex-row-reverse' : ''}`}>
+                    <Link to={`/${language.toLowerCase()}/shop`} className={`group flex items-center gap-3 font-mono text-[10px] md:text-xs uppercase tracking-widest border border-silver/30 px-6 py-3 rounded-full hover:bg-fg hover:text-bg transition-all duration-500 ${language === 'AR' ? 'uppercase-none font-sans font-medium flex-row-reverse' : ''}`}>
                         {language === 'EN' ? 'Explore Collection' : 'اكتشف المجموعة'}
                         <ArrowRight size={14} className={`transition-transform duration-300 ${language === 'AR' ? 'rotate-180 group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`} />
                     </Link>

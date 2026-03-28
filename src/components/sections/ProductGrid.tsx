@@ -313,7 +313,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                             e.stopPropagation();
                                             handleProductClick(product);
                                         }}
-                                        className={`w-full font-mono text-xs uppercase tracking-widest border border-white/30 bg-black/50 backdrop-blur-md px-6 py-3 rounded-full text-white hover:bg-white hover:text-black transition-colors ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}
+                                        className={`w-full font-mono text-xs uppercase tracking-widest border border-fg/30 bg-fg/80 backdrop-blur-md px-6 py-3 rounded-full text-bg hover:bg-bg hover:text-fg transition-colors ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}
                                     >
                                         {product.available ? t.addToCart : t.comingSoon}
                                     </button>
@@ -327,7 +327,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                     <h3 className="text-[10px] sm:text-[13px] font-bold group-hover:text-silver transition-colors break-words leading-tight mt-0.5">{product.title}</h3>
                                 </div>
                                 <div className="flex flex-row items-center justify-center sm:justify-end gap-1 sm:gap-2 flex-shrink-0 w-full sm:w-auto mt-0.5">
-                                    <div className="flex items-center gap-1 sm:gap-2 bg-white text-black px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[11px] whitespace-nowrap">
+                                    <div className="flex items-center gap-1 sm:gap-2 bg-fg text-bg px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[11px] whitespace-nowrap">
                                         {product.available && product.originalPrice && (
                                             <span className="text-xs text-black/70 line-through decoration-black/70 decoration-[1.5px] font-medium inline">{product.originalPrice}</span>
                                         )}
@@ -342,7 +342,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                     e.stopPropagation();
                                     handleProductClick(product);
                                 }}
-                                className={`w-full mt-2 md:hidden font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-widest border border-silver/30 px-2 sm:px-6 py-2 sm:py-3 rounded-full text-white hover:bg-white hover:text-black transition-colors shadow-sm ${language === 'AR' ? 'uppercase-none font-sans font-bold text-xs sm:text-sm' : ''}`}
+                                className={`w-full mt-2 md:hidden font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-widest border border-silver/30 px-2 sm:px-6 py-2 sm:py-3 rounded-full text-fg hover:bg-fg hover:text-bg transition-all duration-300 shadow-sm ${language === 'AR' ? 'uppercase-none font-sans font-bold text-xs sm:text-sm' : ''}`}
                             >
                                 {product.available ? t.addToCart : t.comingSoon}
                             </button>

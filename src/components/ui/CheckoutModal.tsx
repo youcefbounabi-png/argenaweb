@@ -180,7 +180,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={onClose}
-                    className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+                    className="absolute inset-0 bg-fg/10 backdrop-blur-xl"
                 />
 
                 <motion.div
@@ -191,7 +191,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                 >
                     <div className="absolute top-0 left-0 w-full h-1 bg-silver/10">
                         <motion.div
-                            className="h-full bg-white"
+                            className="h-full bg-fg"
                             initial={{ width: '0%' }}
                             animate={{ width: `${(step / 4) * 100}%` }}
                         />
@@ -205,7 +205,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                         {step === 1 && (
                             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                                 <p className={`font-mono text-[10px] text-silver tracking-widest mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>{t.step1}</p>
-                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-white mb-8`}>{t.who}</h2>
+                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-fg mb-8`}>{t.who}</h2>
                                 <div className="space-y-6">
                                     <div>
                                         <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.fullName}</label>
@@ -216,7 +216,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                             value={formData.fullName}
                                             onChange={handleInputChange}
                                             placeholder={t.enterFullName}
-                                            className={`w-full bg-transparent border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
+                                            className={`w-full bg-transparent border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-fg transition-colors uppercase ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
                                         />
                                     </div>
                                     <div>
@@ -228,7 +228,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder={t.enterPhone}
-                                            className={`w-full bg-transparent border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
+                                            className={`w-full bg-transparent border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-fg transition-colors uppercase ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
                                         />
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                     type="button"
                                     onClick={nextStep}
                                     disabled={!formData.fullName || !formData.phone}
-                                    className={`mt-12 w-full group flex items-center justify-between font-mono text-xs tracking-[0.3em] border border-silver/30 px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-30 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
+                                    className={`mt-12 w-full group flex items-center justify-between font-mono text-xs tracking-[0.3em] border border-silver/30 px-8 py-4 rounded-full hover:bg-fg hover:text-bg transition-all duration-500 disabled:opacity-30 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                 >
                                     {t.continue1}
                                     {language === 'EN' ? <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" /> : <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" />}
@@ -247,7 +247,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                         {step === 2 && (
                             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                                 <p className={`font-mono text-[10px] text-silver tracking-widest mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>{t.step2}</p>
-                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-white mb-8`}>{t.where}</h2>
+                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-fg mb-8`}>{t.where}</h2>
                                 <div>
                                     <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.stateLabel}</label>
                                     <div className="relative">
@@ -256,7 +256,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                             name="state"
                                             value={formData.state}
                                             onChange={handleInputChange}
-                                            className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans pl-8 text-right' : 'pr-8'}`}
+                                            className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-fg transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans pl-8 text-right' : 'pr-8'}`}
                                         >
                                             <option value="">{t.selectState}</option>
                                             {WILAYAS.map(w => (
@@ -280,7 +280,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                                 name="commune"
                                                 value={formData.commune}
                                                 onChange={handleInputChange}
-                                                className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-white transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans pl-8 text-right' : 'pr-8'}`}
+                                                className={`w-full bg-bg border-b border-silver/30 py-3 font-mono text-sm outline-none focus:border-fg transition-colors uppercase appearance-none ${language === 'AR' ? 'uppercase-none font-sans pl-8 text-right' : 'pr-8'}`}
                                             >
                                                 <option value="">{t.selectCommune}</option>
                                                 {selectedWilaya && COMMUNES[selectedWilaya.id]?.map((c: any) => (
@@ -303,34 +303,34 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                             <button
                                                 type="button"
                                                 onClick={() => setFormData(p => ({ ...p, deliveryType: 'home' }))}
-                                                className={`p-4 border font-mono text-[10px] tracking-widest transition-all ${formData.deliveryType === 'home' ? 'border-white bg-white text-black' : 'border-silver/20 text-silver hover:border-silver'}`}
+                                                className={`p-4 border font-mono text-[10px] tracking-widest transition-all ${formData.deliveryType === 'home' ? 'border-fg bg-fg text-bg' : 'border-silver/20 text-silver hover:border-silver'}`}
                                             >
                                                 {t.homeDelivery.toUpperCase()}
                                             </button>
                                             <button
                                                 type="button"
                                                 onClick={() => setFormData(p => ({ ...p, deliveryType: 'desk' }))}
-                                                className={`p-4 border font-mono text-[10px] tracking-widest transition-all ${formData.deliveryType === 'desk' ? 'border-white bg-white text-black' : 'border-silver/20 text-silver hover:border-silver'}`}
+                                                className={`p-4 border font-mono text-[10px] tracking-widest transition-all ${formData.deliveryType === 'desk' ? 'border-fg bg-fg text-bg' : 'border-silver/20 text-silver hover:border-silver'}`}
                                             >
                                                 {t.deskDelivery.toUpperCase()}
                                             </button>
                                         </div>
                                         <div className="flex justify-between items-center py-4 border-t border-silver/10 mt-4">
                                             <span className="font-mono text-[10px] text-silver tracking-widest uppercase">{t.deliveryFeeLabel}</span>
-                                            <span className="font-mono text-sm text-white">DA {deliveryFee.toLocaleString()}</span>
+                                            <span className="font-mono text-sm text-fg">DA {deliveryFee.toLocaleString()}</span>
                                         </div>
                                     </motion.div>
                                 )}
 
                                 <div className={`flex gap-4 mt-12 ${language === 'AR' ? 'flex-row-reverse' : ''}`}>
-                                    <button type="button" onClick={prevStep} className={`flex-1 font-mono text-[10px] border border-silver/30 px-4 py-4 rounded-full hover:bg-white/10 transition-colors tracking-widest ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>
+                                    <button type="button" onClick={prevStep} className={`flex-1 font-mono text-[10px] border border-silver/30 px-4 py-4 rounded-full hover:bg-fg hover:text-bg transition-all duration-300 tracking-widest ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>
                                         {t.back}
                                     </button>
                                     <button
                                         type="button"
                                         onClick={nextStep}
                                         disabled={!formData.state || !formData.commune}
-                                        className={`flex-[2] group flex items-center justify-between font-mono text-xs border border-silver/30 px-8 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-30 tracking-[0.2em] ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
+                                        className={`flex-[2] group flex items-center justify-between font-mono text-xs border border-silver/30 px-8 py-4 rounded-full hover:bg-fg hover:text-bg transition-all duration-500 disabled:opacity-30 tracking-[0.2em] ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                     >
                                         {t.finalStep}
                                         {language === 'EN' ? <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" /> : <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" />}
@@ -342,7 +342,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                         {step === 3 && (
                             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                                 <p className={`font-mono text-[10px] text-silver tracking-widest mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>{t.step3}</p>
-                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-white mb-8`}>{t.leaveReview}</h2>
+                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl md:text-5xl text-fg mb-8`}>{t.leaveReview}</h2>
                                 <div>
                                     <label className={`block font-mono text-[10px] text-silver mb-2 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>{t.howFind}</label>
                                     <textarea
@@ -350,7 +350,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                         value={formData.review}
                                         onChange={handleInputChange}
                                         placeholder={t.tellUs}
-                                        className={`w-full bg-transparent border border-silver/30 p-6 font-mono text-xs outline-none focus:border-white transition-colors uppercase min-h-[120px] resize-none ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
+                                        className={`w-full bg-transparent border border-silver/30 p-6 font-mono text-xs outline-none focus:border-fg transition-colors uppercase min-h-[120px] resize-none ${language === 'AR' ? 'uppercase-none font-sans text-right' : ''}`}
                                     />
                                 </div>
 
@@ -366,7 +366,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                         <span>{t.deliveryFeeLabel}</span>
                                         <span>DA {deliveryFee.toLocaleString()}</span>
                                     </div>
-                                    <div className="flex justify-between items-center text-white font-mono text-sm border-t border-silver/10 pt-3 mt-3">
+                                    <div className="flex justify-between items-center text-fg font-mono text-sm border-t border-silver/10 pt-3 mt-3">
                                         <span>TOTAL</span>
                                         <span className="metallic-text font-bold">DA {(items.reduce((sum, item) => {
                                             const raw = item.price.replace(/[^\d,]/g, '').replace(',', '');
@@ -376,12 +376,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                                 </div>
 
                                 <div className={`flex gap-4 mt-12 ${language === 'AR' ? 'flex-row-reverse' : ''}`}>
-                                    <button type="button" onClick={prevStep} className={`flex-1 font-mono text-[10px] border border-silver/30 px-4 py-4 rounded-full hover:bg-white/10 transition-colors tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>
+                                    <button type="button" onClick={prevStep} className={`flex-1 font-mono text-[10px] border border-silver/30 px-4 py-4 rounded-full hover:bg-fg hover:text-bg transition-all duration-300 tracking-widest uppercase ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}>
                                         {t.back}
                                     </button>
                                     <button
                                         type="submit"
-                                        className={`flex-[2] group flex items-center justify-between font-mono text-xs border border-white px-8 py-4 rounded-full bg-white text-black hover:bg-silver transition-all duration-500 tracking-[0.2em] ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
+                                        className={`flex-[2] group flex items-center justify-between font-mono text-xs border border-fg px-8 py-4 rounded-full bg-fg text-bg hover:bg-silver transition-all duration-500 tracking-[0.2em] ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                     >
                                         {t.placeOrder}
                                         {language === 'EN' ? <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" /> : <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" />}
@@ -393,13 +393,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, p
                         {step === 4 && (
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
                                 <CheckCircle2 size={64} className="mx-auto text-silver mb-8 mb-6" strokeWidth={1} />
-                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-5xl text-white mb-6`}>{t.step4Title}</h2>
+                                <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-5xl text-fg mb-6`}>{t.step4Title}</h2>
                                 <p className={`font-mono text-xs text-silver tracking-widest uppercase mb-12 ${language === 'AR' ? 'uppercase-none font-sans font-medium' : ''}`}>
                                     {t.step4Desc}
                                 </p>
                                 <button
                                     onClick={onClose}
-                                    className={`font-mono text-xs border border-silver/30 px-12 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-500 tracking-widest ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}
+                                    className={`font-mono text-xs border border-silver/30 px-12 py-4 rounded-full hover:bg-fg hover:text-bg transition-all duration-500 tracking-widest ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}
                                 >
                                     {t.close}
                                 </button>

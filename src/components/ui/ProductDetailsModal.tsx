@@ -132,7 +132,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={onClose}
-                            className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+                            className="absolute inset-0 bg-fg/10 backdrop-blur-xl"
                         />
 
                         {/* X button — rendered via portal into document.body so it is completely
@@ -194,13 +194,13 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                         <div className="flex items-center gap-2 font-mono text-[10px] tracking-widest">
                                             <button
                                                 onClick={() => setViewMode('2d')}
-                                                className={`flex items-center gap-1.5 px-3 py-1.5 border transition-all ${viewMode === '2d' ? 'border-white text-white' : 'border-silver/20 text-silver hover:border-silver'}`}
+                                                className={`flex items-center gap-1.5 px-3 py-1.5 border transition-all ${viewMode === '2d' ? 'border-fg text-fg' : 'border-silver/20 text-silver hover:border-silver'}`}
                                             >
                                                 <Image size={10} /> {t.view2D}
                                             </button>
                                             <button
                                                 onClick={() => setViewMode('3d')}
-                                                className={`flex items-center gap-1.5 px-3 py-1.5 border transition-all ${viewMode === '3d' ? 'border-white text-white' : 'border-silver/20 text-silver hover:border-silver'}`}
+                                                className={`flex items-center gap-1.5 px-3 py-1.5 border transition-all ${viewMode === '3d' ? 'border-fg text-fg' : 'border-silver/20 text-silver hover:border-silver'}`}
                                             >
                                                 <Layers size={10} /> {t.view3D}
                                             </button>
@@ -239,14 +239,14 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                         <>
                                                             <button
                                                                 onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                                                                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 border border-white/20 text-white opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 hover:bg-black/80"
+                                                                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-fg/80 border border-bg/20 text-bg opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 hover:bg-fg"
                                                                 aria-label="Previous image"
                                                             >
                                                                 <ChevronLeft size={18} />
                                                             </button>
                                                             <button
                                                                 onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                                                                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 border border-white/20 text-white opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 hover:bg-black/80"
+                                                                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-fg/80 border border-bg/20 text-bg opacity-0 group-hover/img-container:opacity-100 transition-opacity duration-300 hover:bg-fg"
                                                                 aria-label="Next image"
                                                             >
                                                                 <ChevronRight size={18} />
@@ -257,7 +257,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                                     <button
                                                                         key={idx}
                                                                         onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
-                                                                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/40'
+                                                                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-fg w-4' : 'bg-fg/40'
                                                                             }`}
                                                                     />
                                                                 ))}
@@ -289,8 +289,8 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                         key={idx}
                                                         onClick={() => setCurrentImageIndex(idx)}
                                                         className={`relative w-16 h-16 flex-shrink-0 border-2 transition-all duration-300 overflow-hidden ${currentImageIndex === idx
-                                                            ? 'border-white opacity-100'
-                                                            : 'border-transparent opacity-40 hover:opacity-80 hover:border-white/40'
+                                                            ? 'border-fg opacity-100'
+                                                            : 'border-transparent opacity-40 hover:opacity-80 hover:border-fg/40'
                                                             }`}
                                                     >
                                                         <img src={img} alt={`${product.title} view ${idx + 1}`} className="w-full h-full object-cover" />
@@ -304,9 +304,9 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                     <div className={`md:w-1/2 w-full flex-shrink-0 flex flex-col justify-between ${language === 'AR' ? 'text-right' : ''}`}>
                                         <div>
                                             <p className="font-mono text-xs uppercase tracking-widest text-silver mb-4">({String(product.id).padStart(3, '0')}) {product.category}</p>
-                                            <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl text-white mb-6`}>{product.title}</h2>
+                                            <h2 className={`${language === 'EN' ? 'font-[UnifrakturMaguntia] italic' : 'font-sans font-bold'} text-4xl text-fg mb-6`}>{product.title}</h2>
                                             <div className="flex items-baseline gap-4 mb-4">
-                                                <p className="font-mono text-2xl text-white font-bold">{product.price}</p>
+                                                <p className="font-mono text-2xl text-fg font-bold">{product.price}</p>
                                                 {product.originalPrice && (
                                                     <p className="font-mono text-lg text-silver/70 line-through decoration-silver/70 decoration-2">{product.originalPrice}</p>
                                                 )}
@@ -338,7 +338,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                                                 key={colorObj.name}
                                                                 onClick={() => setSelectedColor(colorObj.name)}
                                                                 disabled={colorObj.quantity === 0}
-                                                                className={`px-6 py-3 border font-mono text-xs uppercase tracking-widest transition-all ${selectedColor === colorObj.name ? 'border-white bg-white text-black' : 'border-silver/30 text-silver hover:border-white hover:text-white'} ${colorObj.quantity === 0 ? 'opacity-30 cursor-not-allowed grayscale' : ''}`}
+                                                                className={`px-6 py-3 border font-mono text-xs uppercase tracking-widest transition-all ${selectedColor === colorObj.name ? 'border-fg bg-fg text-bg' : 'border-silver/30 text-silver hover:border-fg hover:text-fg'} ${colorObj.quantity === 0 ? 'opacity-30 cursor-not-allowed grayscale' : ''}`}
                                                             >
                                                                 {colorObj.name} ({colorObj.quantity})
                                                             </button>
@@ -366,7 +366,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                         <button
                                             onClick={handleAddToCart}
                                             disabled={t.colors.length > 0 && !selectedColor}
-                                            className={`w-full group flex items-center justify-between font-mono text-xs border border-white px-8 py-4 rounded-full bg-white text-black hover:bg-silver transition-all duration-500 tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
+                                            className={`w-full group flex items-center justify-between font-mono text-xs border border-fg px-8 py-4 rounded-full bg-fg text-bg hover:bg-silver transition-all duration-500 tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed mb-4 ${language === 'AR' ? 'uppercase-none font-sans font-bold flex-row-reverse' : ''}`}
                                         >
                                             {t.colors.length > 0 && !selectedColor ? t.colorRequired : t.addToCart}
                                             {t.colors.length > 0 && !selectedColor ? null :
@@ -380,7 +380,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                                             href={`https://wa.me/213556967562?text=${encodeURIComponent(`Hello, I want to order ${product.title} ${selectedColor ? `(Color: ${selectedColor})` : ''} - Price: ${product.price}`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`w-full flex items-center justify-center gap-2 font-mono text-xs border border-silver/30 px-8 py-3 rounded-full text-silver hover:text-white hover:border-white/50 transition-all duration-300 tracking-[0.1em] ${language === 'AR' ? 'uppercase-none font-sans flex-row-reverse' : ''}`}
+                                            className={`w-full flex items-center justify-center gap-2 font-mono text-xs border border-silver/30 px-8 py-3 rounded-full text-silver hover:text-fg hover:border-fg/50 transition-all duration-300 tracking-[0.1em] ${language === 'AR' ? 'uppercase-none font-sans flex-row-reverse' : ''}`}
                                         >
                                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 1.905 6.456L.045 24l5.688-1.503A11.94 11.94 0 0 0 11.944 24C18.553 24 24 18.623 24 12S18.553 0 11.944 0zM12 21.844c-1.742 0-3.414-.46-4.88-1.328l-.35-.208-3.623.956.974-3.52-.229-.364A9.816 9.816 0 0 1 2.16 12c0-5.433 4.417-9.843 9.84-9.843S21.84 6.567 21.84 12c0 5.433-4.417 9.844-9.84 9.844zm5.395-7.36c-.296-.149-1.751-.864-2.023-.963-.271-.097-.47-.148-.667.148-.198.297-.768.963-.941 1.16-.173.197-.346.223-.642.074a8.216 8.216 0 0 1-4.008-2.484c-.309-.399-.17-.611-.02-.756.134-.13.296-.347.444-.52.149-.174.198-.298.297-.496.099-.198.05-.371-.025-.52-.074-.148-.667-1.609-.914-2.203-.242-.58-.487-.502-.667-.512-.173-.008-.37-.01-.568-.01a1.08 1.08 0 0 0-.791.371C6.012 8.63 5 9.596 5 11.602c0 2.006 1.359 3.945 1.545 4.193.185.248 2.859 4.364 6.923 6.12 2.657 1.147 3.5.992 4.143.834.787-.193 2.022-.826 2.318-1.626.297-.8.297-1.488.209-1.626-.088-.138-.344-.223-.64-.372z" /></svg>
                                             {t.orderViaWhatsApp}
@@ -402,14 +402,14 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsImageExpanded(false)}
-                            className="absolute inset-0 bg-black/95 backdrop-blur-2xl cursor-zoom-out"
+                            className="absolute inset-0 bg-bg/95 backdrop-blur-2xl cursor-zoom-out"
                         />
                         <motion.button
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
                             onClick={() => setIsImageExpanded(false)}
-                            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[20001]"
+                            className="absolute top-8 right-8 text-fg/50 hover:text-fg transition-colors z-[20001]"
                         >
                             <X size={32} />
                         </motion.button>

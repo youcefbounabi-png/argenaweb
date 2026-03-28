@@ -88,11 +88,11 @@ export const Footer: React.FC = () => {
                     <div>
                         <p className="text-silver mb-4">{t.navHeading}</p>
                         <div className="flex flex-col gap-4 text-xs font-mono uppercase tracking-widest text-silver">
-                            <Link to={`/${language.toLowerCase()}/`} className="hover:text-white transition-colors block">{t.home}</Link>
-                            <Link to={`/${language.toLowerCase()}/shop`} className="hover:text-white transition-colors block">{t.shopAll}</Link>
-                            <Link to={`/${language.toLowerCase()}/about`} className="hover:text-white transition-colors block">{t.about}</Link>
-                            <Link to={`/${language.toLowerCase()}/testimonials`} className="hover:text-white transition-colors block">{t.testim}</Link>
-                            <Link to={`/${language.toLowerCase()}/custom-orders`} className="hover:text-white transition-colors block">{t.customOrder}</Link>
+                            <Link to={`/${language.toLowerCase()}/`} className="hover:text-fg transition-colors block">{t.home}</Link>
+                            <Link to={`/${language.toLowerCase()}/shop`} className="hover:text-fg transition-colors block">{t.shopAll}</Link>
+                            <Link to={`/${language.toLowerCase()}/about`} className="hover:text-fg transition-colors block">{t.about}</Link>
+                            <Link to={`/${language.toLowerCase()}/testimonials`} className="hover:text-fg transition-colors block">{t.testim}</Link>
+                            <Link to={`/${language.toLowerCase()}/custom-orders`} className="hover:text-fg transition-colors block">{t.customOrder}</Link>
                         </div>
                     </div>
                     <div>
@@ -110,12 +110,12 @@ export const Footer: React.FC = () => {
                     <Logo className="text-4xl md:text-6xl border-e border-silver/20 pe-6" forceImageOnly={true} />
                     <div className="flex flex-col gap-1">
                         <p>{t.rights}</p>
-                        <a href="https://www.instagram.com/argena.streetwear/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">@argena.streetwear</a>
+                        <a href="https://www.instagram.com/argena.streetwear/" target="_blank" rel="noopener noreferrer" className="hover:text-fg transition-colors">@argena.streetwear</a>
                     </div>
                 </div>
                 <p className="mt-4 md:mt-0">
                     {t.designed}
-                    <a href="https://www.instagram.com/youcef.dev_/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-silver transition-colors underline underline-offset-4 decoration-silver/30">youcef.dev_</a>
+                    <a href="https://www.instagram.com/youcef.dev_/" target="_blank" rel="noopener noreferrer" className="text-fg hover:text-silver transition-colors underline underline-offset-4 decoration-silver/30">youcef.dev_</a>
                 </p>
             </div>
         </footer>

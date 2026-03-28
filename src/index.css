@@ -1,16 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=UnifrakturMaguntia&display=swap');
 @import "tailwindcss";
 
+:root {
+  --color-bg: #ffffff;
+  --color-bg-rgb: 255, 255, 255;
+  --color-fg: #050505;
+  --color-fg-rgb: 5, 5, 5;
+  --color-silver: #666666;
+  --color-silver-light: #8e8e8e;
+  --color-silver-dark: #2d2d2d;
+}
+
+[data-theme='dark'] {
+  --color-bg: #050505;
+  --color-bg-rgb: 5, 5, 5;
+  --color-fg: #ffffff;
+  --color-fg-rgb: 255, 255, 255;
+  --color-silver: #888888;
+  --color-silver-light: #b0b0b0;
+  --color-silver-dark: #444444;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-gothic: "UnifrakturMaguntia", cursive;
 
-  --color-bg: #050505;
-  --color-fg: #e7e7e7;
-  --color-silver: #888888;
-  --color-silver-light: #b0b0b0;
-  --color-silver-dark: #444444;
+  --color-bg: var(--color-bg);
+  --color-fg: var(--color-fg);
+  --color-silver: var(--color-silver);
+  --color-silver-light: var(--color-silver-light);
+  --color-silver-dark: var(--color-silver-dark);
 }
 
 @layer base {
@@ -42,15 +62,15 @@
 
   .metallic-text {
     background: linear-gradient(to bottom,
-        #ffffff 0%,
-        #888888 30%,
-        #222222 50%,
-        #888888 70%,
-        #ffffff 100%);
+        var(--color-silver-dark) 0%,
+        var(--color-silver) 30%,
+        var(--color-fg) 50%,
+        var(--color-silver) 70%,
+        var(--color-silver-dark) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 4px 12px rgba(255, 255, 255, 0.15));
+    filter: drop-shadow(0px 4px 12px rgba(var(--color-fg-rgb), 0.1));
   }
 }
 
@@ -64,8 +84,8 @@
   bottom: 0;
   right: 0;
   background: linear-gradient(to bottom,
-      rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.25) 50%);
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.05) 50%);
   background-size: 100% 4px;
   z-index: 9998;
   pointer-events: none;
@@ -81,8 +101,8 @@
   bottom: 0;
   right: 0;
   background: radial-gradient(circle,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.5) 100%);
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.1) 100%);
   z-index: 9998;
   pointer-events: none;
   animation: flicker 0.15s infinite;
@@ -111,7 +131,7 @@
   height: 100vh;
   pointer-events: none;
   z-index: 9997;
-  opacity: 0.04;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -173,15 +193,15 @@
   padding: 1px;
   --border-angle: 0deg;
   background: conic-gradient(from var(--border-angle),
-      #1f1f1f 0deg,
-      #1f1f1f 250deg,
-      rgba(255, 255, 255, 0.0) 265deg,
-      rgba(255, 255, 255, 0.5) 285deg,
-      rgba(255, 255, 255, 1.0) 300deg,
-      rgba(255, 255, 255, 0.5) 315deg,
-      rgba(255, 255, 255, 0.0) 335deg,
-      #1f1f1f 350deg,
-      #1f1f1f 360deg);
+      var(--color-silver-light) 0deg,
+      var(--color-silver-light) 250deg,
+      rgba(var(--color-fg-rgb), 0.0) 265deg,
+      rgba(var(--color-fg-rgb), 0.3) 285deg,
+      rgba(var(--color-fg-rgb), 0.6) 300deg,
+      rgba(var(--color-fg-rgb), 0.3) 315deg,
+      rgba(var(--color-fg-rgb), 0.0) 335deg,
+      var(--color-silver-light) 350deg,
+      var(--color-silver-light) 360deg);
   animation: testimonial-border-spin 6s linear infinite;
 }
 
