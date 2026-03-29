@@ -17,7 +17,7 @@ export const FeaturedCollections: React.FC = () => {
         {
             title: "Core Collection",
             desc: "Essential pieces for the modern wardrobe.",
-            image: "/pictures/gemini.png"
+            image: "/pictures/core_collection.jpg"
         },
         {
             title: "Archival Packaging",
@@ -27,13 +27,13 @@ export const FeaturedCollections: React.FC = () => {
         {
             title: "Headwear",
             desc: "Structured and distressed caps.",
-            image: "/pictures/e89573dfa0c1da28e6fc73bc3df96c7f.webp"
+            image: "/pictures/headwear.jpg"
         }
     ] : [
         {
             title: "المجموعة الأساسية",
             desc: "قطع أساسية لا غنى عنها.",
-            image: "/pictures/gemini.png"
+            image: "/pictures/core_collection.jpg"
         },
         {
             title: "تغليف خاص",
@@ -43,7 +43,7 @@ export const FeaturedCollections: React.FC = () => {
         {
             title: "القبعات",
             desc: "قبعات بتصاميم عصرية ومميزة.",
-            image: "/pictures/e89573dfa0c1da28e6fc73bc3df96c7f.webp"
+            image: "/pictures/headwear.jpg"
         }
     ];
 

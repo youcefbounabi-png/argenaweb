@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
         <section className="relative h-[100svh] w-full flex flex-col justify-between overflow-hidden pt-32 pb-12 px-6 md:px-12">
             <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
                 <img
-                    src="/pictures/Gemini_Generated_Image_dznecydznecydzne.webp"
+                    src="/pictures/hero_v3.png"
                     alt="Hero Background"
                     className="w-full h-full object-cover art-image opacity-30"
                 />
