@@ -84,10 +84,8 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ isOpen
 
     // GLB model map — add new entries here when more models are ready
     const MODEL_MAP: Record<number, string> = {
-        1: '/3djustbecause.glb',   // Lust Because cap
-        2: '/3dboston.glb',        // Boston distressed cap
-        3: '/3dboston.glb',        // B letter distressed cap
-        4: '/3dairforce.glb',      // Vintage Airforce cap
+        1: '/3dboston.glb',   // B letter distressed cap
+        2: '/3dboston.glb',   // A distressed cap
     };
 
     const t = {

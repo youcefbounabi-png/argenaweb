@@ -8,224 +8,66 @@ import ProductDetailsModal from '../ui/ProductDetailsModal';
 export const productsEN = [
     {
         id: 1,
-        title: 'lust because cap',
-        price: 'DA 2,200',
-        originalPrice: 'DA 3,200',
-        image: '/pictures/lust0 (1).png',
-        gallery: [
-            '/pictures/gemini01.png',
-            '/pictures/lustbecausecaps (1).png',
-            '/pictures/lust0 (1).jpeg',
-            '/pictures/lust0 (2).jpeg',
-            '/pictures/lust0 (3).jpeg',
-            '/pictures/lust0 (4).jpeg',
-            '/pictures/lustlastpic.jpeg'
-        ],
-        category: 'Headwear',
-        available: true,
-        colors: [
-            { name: 'Dark Blue', quantity: 11 },
-            { name: 'Beige', quantity: 2 },
-            { name: 'White', quantity: 3 },
-            { name: 'Brown', quantity: 3 },
-            { name: 'Grey', quantity: 1 }
-        ],
-        description: 'Fashion And Hot Sale Cotton Fabric Washed Baseball Cap And Hat Manufacturer with Custom Embroidery on Visor \nOne size can fit most people.\nWith 100% cotton to ensure the baseball cap is lightweight.\nNew Technology of Embroidery.'
-    },
-    {
-        id: 2,
-        title: 'boston disstressed cap',
-        price: 'DA 2,000',
-        originalPrice: 'DA 3,200',
-        image: '/pictures/bostoncaps.png',
-        gallery: [
-            '/pictures/boston0.png',
-            '/pictures/bostoncaps.png',
-            '/pictures/bost1.jpeg',
-            '/pictures/bost2.jpeg',
-            '/pictures/bost3.jpeg',
-            '/pictures/bost4.jpeg',
-            '/pictures/bost5.jpeg',
-            '/pictures/bost6.jpeg'
-        ],
-        category: 'Headwear',
-        available: true,
-        colors: [
-            { name: 'Black', quantity: 0 },
-            { name: 'Grey', quantity: 1 },
-            { name: 'Burgundy', quantity: 0 },
-            { name: 'Beige', quantity: 2 },
-            { name: 'Brown', quantity: 3 },
-            { name: 'Light Pink', quantity: 1 },
-            { name: 'Light Blue', quantity: 1 },
-            { name: 'Red', quantity: 1 }
-        ],
-        description: 'Baseball Cap Men Women Fashion Mesh Hat Sun Protection Spring Summer Stylish Casual\n\nPeculiarities:\nEnjoy stylish sun protection during your outdoor activities\nEnjoy versatile fashion with unisex designs\nAccentuate your look with fashionable letter embroidery\nEffortless wind and sun protection\nIdeal for everyday wear and street style'
-    },
-    {
-        id: 3,
         title: 'B letter distressed cap',
         price: 'DA 2,000',
         originalPrice: 'DA 3,200',
-        image: '/pictures/blettercaps.png',
+        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
         gallery: [
-            '/pictures/blettermodel.png',
-            '/pictures/blettercaps.png',
-            '/pictures/bletter (1).jpeg',
-            '/pictures/bletter (2).jpeg',
-            '/pictures/bletter (3).jpeg',
-            '/pictures/bletter (4).jpeg',
-            '/pictures/blettergrey.jpeg'
+            '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
+            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM.jpeg'
         ],
         category: 'Headwear',
         available: true,
-        colors: [
-            { name: 'Black', quantity: 1 },
-            { name: 'Burgundy', quantity: 2 },
-            { name: 'Beige', quantity: 1 },
-            { name: 'Brown', quantity: 2 },
-            { name: 'Grey', quantity: 1 }
-        ],
+        colors: [],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
-        id: 4,
-        title: 'vintage airforce cap',
-        price: 'DA 1,800',
-        originalPrice: 'DA 2,900',
-        image: '/pictures/airforcelast.png',
+        id: 2,
+        title: 'A distressed cap',
+        price: 'DA 2,000',
+        originalPrice: 'DA 3,200',
+        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
         gallery: [
-            '/pictures/airforce.png',
-            '/pictures/airfor0 (1).jpeg',
-            '/pictures/airfor0 (2).jpeg',
-            '/pictures/airfor0 (3).jpeg',
-            '/pictures/airfor0 (4).jpeg',
-            '/pictures/airfor0 (5).jpeg',
-            '/pictures/airfor0 (6).jpeg'
+            '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
+            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM (1).jpeg'
         ],
         category: 'Headwear',
         available: true,
-        colors: [
-            { name: 'Burgundy', quantity: 2 },
-            { name: 'Beige', quantity: 2 },
-            { name: 'Yellow', quantity: 2 },
-            { name: 'Grey', quantity: 2 },
-            { name: 'Dark Blue', quantity: 2 },
-            { name: 'Light Blue', quantity: 2 }
-        ],
-        description: 'Unisex Vintage Airforce Inspiration Cap. \n\nFeatures:\nClassic military-inspired aesthetic perfect for any casual look.\nLightweight and durable fabric for all-day comfort.\nSubtle embroidery and vintage wash finish.\nVersatile accessory for sun protection and everyday streetwear.'
+        colors: [],
+        description: 'Unisex Vintage A-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     }
 ];
 
 export const productsAR = [
     {
         id: 1,
-        title: 'قبعة «لست بيكوز»',
-        price: '2,200 د.ج',
-        originalPrice: '3,200 د.ج',
-        image: '/pictures/lust0 (1).png',
-        gallery: [
-            '/pictures/gemini01.png',
-            '/pictures/lustbecausecaps (1).png',
-            '/pictures/lust0 (1).jpeg',
-            '/pictures/lust0 (2).jpeg',
-            '/pictures/lust0 (3).jpeg',
-            '/pictures/lust0 (4).jpeg',
-            '/pictures/lustlastpic.jpeg'
-        ],
-        category: 'أغطية الرأس',
-        available: true,
-        colors: [
-            { name: 'أزرق غامق', quantity: 11 },
-            { name: 'بيج', quantity: 2 },
-            { name: 'أبيض', quantity: 3 },
-            { name: 'بني', quantity: 3 },
-            { name: 'رمادي', quantity: 1 }
-        ],
-        description: 'قبعة بيسبول قطنية مريحة بجودة عالية مع تطريز مميز.\nمقاس قابل للتعديل يناسب الجميع.\nخفيفة الوزن ومناسبة للاستعمال اليومي.'
-    },
-    {
-        id: 2,
-        title: 'قبعة بوسطن الممزقة',
-        price: '2,000 د.ج',
-        originalPrice: '3,200 د.ج',
-        image: '/pictures/bostoncaps.png',
-        gallery: [
-            '/pictures/boston0.png',
-            '/pictures/bostoncaps.png',
-            '/pictures/bost1.jpeg',
-            '/pictures/bost2.jpeg',
-            '/pictures/bost3.jpeg',
-            '/pictures/bost4.jpeg',
-            '/pictures/bost5.jpeg',
-            '/pictures/bost6.jpeg'
-        ],
-        category: 'أغطية الرأس',
-        available: true,
-        colors: [
-            { name: 'أسود', quantity: 0 },
-            { name: 'رمادي', quantity: 1 },
-            { name: 'عنابي', quantity: 0 },
-            { name: 'بيج', quantity: 2 },
-            { name: 'بني', quantity: 3 },
-            { name: 'وردي فاتح', quantity: 1 },
-            { name: 'أزرق فاتح', quantity: 1 },
-            { name: 'أحمر', quantity: 1 }
-        ],
-        description: 'قبعة ممزقة عصرية للرجال والنساء.\nتوفر حماية من الشمس ومناسبة لفصلي الربيع والصيف.\nتصميم مميز يلائم إطلالتك اليومية.'
-    },
-    {
-        id: 3,
         title: 'قبعة حرف B الممزقة',
         price: '2,000 د.ج',
         originalPrice: '3,200 د.ج',
-        image: '/pictures/blettercaps.png',
+        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
         gallery: [
-            '/pictures/blettermodel.png',
-            '/pictures/blettercaps.png',
-            '/pictures/bletter (1).jpeg',
-            '/pictures/bletter (2).jpeg',
-            '/pictures/bletter (3).jpeg',
-            '/pictures/bletter (4).jpeg',
-            '/pictures/blettergrey.jpeg'
+            '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
+            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM.jpeg'
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: [
-            { name: 'أسود', quantity: 1 },
-            { name: 'خمري', quantity: 2 },
-            { name: 'بيج', quantity: 1 },
-            { name: 'بني', quantity: 2 },
-            { name: 'رمادي داكن', quantity: 1 }
-        ],
+        colors: [],
         description: 'قبعة ممزقة بحرف B للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     },
     {
-        id: 4,
-        title: 'قبعة إير فورس كلاسيكية',
-        price: '1,800 د.ج',
-        originalPrice: '2,900 د.ج',
-        image: '/pictures/airforcelast.png',
+        id: 2,
+        title: 'قبعة حرف A الممزقة',
+        price: '2,000 د.ج',
+        originalPrice: '3,200 د.ج',
+        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
         gallery: [
-            '/pictures/airforce.png',
-            '/pictures/airfor0 (1).jpeg',
-            '/pictures/airfor0 (2).jpeg',
-            '/pictures/airfor0 (3).jpeg',
-            '/pictures/airfor0 (4).jpeg',
-            '/pictures/airfor0 (5).jpeg',
-            '/pictures/airfor0 (6).jpeg'
+            '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
+            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM (1).jpeg'
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: [
-            { name: 'خمري', quantity: 2 },
-            { name: 'بيج', quantity: 2 },
-            { name: 'أصفر', quantity: 2 },
-            { name: 'رمادي', quantity: 2 },
-            { name: 'أزرق غامق', quantity: 2 },
-            { name: 'أزرق فاتح', quantity: 2 }
-        ],
-        description: 'قبعة إير فورس بستايل عسكري كلاسيكي.\nقماش خفيف ومريح للاستعمال اليومي.\nتصميم بسيط وعملي يناسب الجميع.'
+        colors: [],
+        description: 'قبعة ممزقة بحرف A للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     }
 ];
 
@@ -248,7 +90,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
         desc: language === 'EN'
             ? 'This space holds projects, tests, and visual systems. A record of decisions.'
             : 'اكتشف جميع تشكيلاتنا، تصاميم حصرية بجودة عالية.',
-        itemsCount: language === 'EN' ? '(004) Items' : '(004) منتجات',
+        itemsCount: language === 'EN' ? '(002) Items' : '(002) منتجات',
         addToCart: language === 'EN' ? 'Add to Cart' : 'أضف إلى السلة',
         comingSoon: language === 'EN' ? 'Coming Soon' : 'قريباً',
         soonBadge: language === 'EN' ? 'SOON' : 'قريباً'
