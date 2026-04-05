@@ -9,8 +9,8 @@ export const productsEN = [
     {
         id: 1,
         title: 'B letter distressed cap',
-        price: 'DA 2,000',
-        originalPrice: 'DA 3,200',
+        price: '2000da',
+        originalPrice: '3200da',
         image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
         gallery: [
             '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
@@ -24,8 +24,8 @@ export const productsEN = [
     {
         id: 2,
         title: 'A distressed cap',
-        price: 'DA 2,000',
-        originalPrice: 'DA 3,200',
+        price: '2000da',
+        originalPrice: '3200da',
         image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
         gallery: [
             '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
@@ -42,8 +42,8 @@ export const productsAR = [
     {
         id: 1,
         title: 'قبعة حرف B الممزقة',
-        price: '2,000 د.ج',
-        originalPrice: '3,200 د.ج',
+        price: '2000 د.ج',
+        originalPrice: '3200 د.ج',
         image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
         gallery: [
             '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
@@ -57,8 +57,8 @@ export const productsAR = [
     {
         id: 2,
         title: 'قبعة حرف A الممزقة',
-        price: '2,000 د.ج',
-        originalPrice: '3,200 د.ج',
+        price: '2000 د.ج',
+        originalPrice: '3200 د.ج',
         image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
         gallery: [
             '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
