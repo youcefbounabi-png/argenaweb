@@ -1,14 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
-import { GoogleGenAI } from '@google/genai';
 import MarkdownIt from 'markdown-it';
+import { supabase } from '../../lib/supabase';
 
 const md = new MarkdownIt({ breaks: true });
-
-// Note: In production, the API call should be routed through a secure backend
-// to protect the API key. For this demo, we'll use an environment variable.
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 
 type Message = {
     id: string;
@@ -49,7 +45,7 @@ export const AIAssistant = () => {
     }, [messages]);
 
     const handleSend = async () => {
-        if (!input.trim() || !apiKey) return;
+        if (!input.trim()) return;
 
         const userMessage: Message = {
             id: Date.now().toString(),
@@ -62,26 +58,27 @@ export const AIAssistant = () => {
         setIsLoading(true);
 
         try {
-            // Format chat history for Gemini
-            const history = messages.map(m => ({
+            // Format chat history for the edge function
+            const history = messages.slice(1).map(m => ({
                 role: m.role === 'assistant' ? 'model' : 'user',
-                parts: [{ text: m.content }]
+                text: m.content
             }));
-
-            const ai = new GoogleGenAI({ apiKey });
-            const response = await ai.models.generateContent({
-                model: 'gemini-2.5-flash',
-                contents: [
-                    { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION }] },
-                    ...history,
-                    { role: 'user', parts: [{ text: userMessage.content }] }
-                ],
+            
+            const { data, error } = await supabase.functions.invoke('gemini-chat', {
+                body: {
+                    systemPrompt: SYSTEM_INSTRUCTION,
+                    userMessage: userMessage.content,
+                    history: history
+                }
             });
+
+            if (error) throw error;
+            if (data?.error) throw new Error(data.error);
 
             const assistantMessage: Message = {
                 id: (Date.now() + 1).toString(),
                 role: 'assistant',
-                content: response.text || "I apologize, the connection to the archive was disrupted. Please try again."
+                content: data?.text || "I apologize, the connection to the archive was disrupted. Please try again."
             };
 
             setMessages(prev => [...prev, assistantMessage]);
@@ -146,11 +143,6 @@ export const AIAssistant = () => {
                             className="flex-1 overflow-y-auto p-4 space-y-4 font-mono text-sm scrollbar-thin scrollbar-thumb-[#333] scrollbar-track-transparent overscroll-behavior-contain touch-pan-y pointer-events-auto"
                             data-lenis-prevent
                         >
-                            {!apiKey && (
-                                <div className="p-3 bg-red-900/20 border border-red-900/50 rounded-lg text-red-200 text-xs mb-4">
-                                    API Key missing. Please set VITE_GEMINI_API_KEY in your .env file.
-                                </div>
-                            )}
 
                             {messages.map((msg) => (
                                 <motion.div
