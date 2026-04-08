@@ -72,8 +72,32 @@ export const AIAssistant = () => {
                 }
             });
 
-            if (error) throw error;
-            if (data?.error) throw new Error(data.error);
+            // The Supabase SDK throws for non-2xx. Since our function always returns 200,
+            // this only fires on a true network/infrastructure failure.
+            if (error) {
+                throw new Error('NETWORK_ERROR');
+            }
+
+            // Handle error states returned in the JSON body (status: 'error')
+            if (data?.status === 'error') {
+                const code = data.code || '';
+                let friendlyMessage: string;
+
+                if (code === 'RATE_LIMITED' || code === 'OVERLOADED') {
+                    friendlyMessage = `✦ ${data.message}\n\n*Please wait a moment, then send your message again.*`;
+                } else if (code === 'CONFIG_ERROR') {
+                    friendlyMessage = "The archive is currently offline for maintenance. Please check back shortly.";
+                } else {
+                    friendlyMessage = data.message || "Something went wrong. Please try again.";
+                }
+
+                setMessages(prev => [...prev, {
+                    id: (Date.now() + 1).toString(),
+                    role: 'assistant',
+                    content: friendlyMessage
+                }]);
+                return;
+            }
 
             const assistantMessage: Message = {
                 id: (Date.now() + 1).toString(),
@@ -85,14 +109,10 @@ export const AIAssistant = () => {
         } catch (error: any) {
             console.error("Gemini Assistant Error:", error);
             
-            let errorMessage = "Error: The neural link is currently unstable. Please verify your connection or API configuration.";
+            let errorMessage = "The neural link is currently unstable. Please check your connection and try again.";
             
-            if (error.message?.includes('RATE_LIMITED')) {
-                errorMessage = "The Archive concierge is currently processing high traffic. ARGENA will be with you in a moment. [Retry sync]";
-            } else if (error.message?.includes('fetch') || error.message?.includes('Network')) {
-                errorMessage = "Connection disruption detected. Please check your network stability.";
-            } else if (error.message) {
-                errorMessage = `Archive sync failed: ${error.message}`;
+            if (error.message?.includes('fetch') || error.message?.includes('Network') || error.message === 'NETWORK_ERROR') {
+                errorMessage = "Connection disruption detected. Please check your network stability and try again.";
             }
 
             setMessages(prev => [...prev, {

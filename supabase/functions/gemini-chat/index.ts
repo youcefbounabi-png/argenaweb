@@ -1,7 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY') ?? '';
-// Using 'gemini-2.0-flash-lite' which has better free-tier quotas
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_API_KEY}`;
 
 Deno.serve(async (req: Request) => {
@@ -14,27 +13,29 @@ Deno.serve(async (req: Request) => {
     return new Response('ok', { headers: corsHeaders });
   }
 
+  // ALWAYS return 200 so the Supabase client can read our JSON body
+  // Use `status` field in the body to signal errors to the frontend
+  const ok = (body: object) => new Response(JSON.stringify(body), {
+    status: 200,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  });
+
   try {
     const { systemPrompt, userMessage, history } = await req.json();
 
     if (!GEMINI_API_KEY) {
-      return new Response(JSON.stringify({ error: 'CONFIG_ERROR', details: 'API Key missing' }), {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return ok({ status: 'error', code: 'CONFIG_ERROR', message: 'API key not configured on server.' });
     }
 
     const contents: any[] = [];
-    
-    // Inject system instruction at the beginning of content history for compatibility
+
     if (systemPrompt) {
       contents.push({ role: 'user', parts: [{ text: `INSTRUCTION: ${systemPrompt}` }] });
-      contents.push({ role: 'model', parts: [{ text: "Understood. I am ARGENA." }] });
+      contents.push({ role: 'model', parts: [{ text: 'Understood. I am ARGENA.' }] });
     }
 
-    // Limit history to last 6 messages to stay within quota and tokens
     const recentHistory = (history || []).slice(-6);
-    recentHistory.forEach(msg => {
+    recentHistory.forEach((msg: any) => {
       contents.push({
         role: msg.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: msg.text }]
@@ -50,34 +51,31 @@ Deno.serve(async (req: Request) => {
     });
 
     if (geminiRes.status === 429) {
-      return new Response(JSON.stringify({ error: 'RATE_LIMITED', message: 'The Archive concierge is currently busy.' }), {
-        status: 429,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return ok({ status: 'error', code: 'RATE_LIMITED', message: 'ARGENA is processing high demand. Please wait a moment and try again.' });
+    }
+
+    if (geminiRes.status === 503) {
+      return ok({ status: 'error', code: 'OVERLOADED', message: 'The AI model is temporarily overloaded. Please try again in a few seconds.' });
     }
 
     const resBody = await geminiRes.text();
 
     if (!geminiRes.ok) {
-        console.error(`[gemini-chat] Gemini API failed with status ${geminiRes.status}:`, resBody);
-        return new Response(JSON.stringify({ error: 'UPSTREAM_ERROR', status: geminiRes.status }), {
-            status: 500,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        });
+      console.error(`[gemini-chat] Gemini error ${geminiRes.status}:`, resBody);
+      return ok({ status: 'error', code: `UPSTREAM_${geminiRes.status}`, message: 'The archive encountered an issue. Please try again.' });
     }
 
     const data = JSON.parse(resBody);
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "NO_RESPONSE";
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
-    return new Response(JSON.stringify({ text }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    if (!text) {
+      return ok({ status: 'error', code: 'NO_RESPONSE', message: 'No response generated. Please try again.' });
+    }
+
+    return ok({ status: 'ok', text });
 
   } catch (err: any) {
     console.error('[gemini-chat] Crash:', err);
-    return new Response(JSON.stringify({ error: 'SERVER_CRASH', details: err.message }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return ok({ status: 'error', code: 'SERVER_CRASH', message: err.message || 'An unexpected error occurred.' });
   }
 });
