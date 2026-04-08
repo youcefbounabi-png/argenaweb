@@ -39,17 +39,17 @@ const fragmentShader = `
   uniform float uTime;
   uniform vec3 uColor1; // Background
   uniform vec3 uColor2; // Depth/Silver
-  
+
   varying vec2 vUv;
   varying float vElevation;
 
   void main() {
     vec3 color = mix(uColor1, uColor2, vElevation * 2.5 + 0.2);
-    
+
     // Add subtle shimmering
     float shimmer = sin(vUv.x * 20.0 + uTime) * sin(vUv.y * 20.0 + uTime) * 0.05;
     color += shimmer;
-    
+
     gl_FragColor = vec4(color, 1.0);
   }
 `;
@@ -94,7 +94,7 @@ const LiquidPlane = ({ mousePosition }: { mousePosition: React.MutableRefObject<
 
     return (
         <mesh ref={meshRef}>
-            <planeGeometry args={[10, 10, 128, 128]} />
+            <planeGeometry args={[10, 10, 32, 32]} />
             <shaderMaterial
                 ref={materialRef}
                 vertexShader={vertexShader}

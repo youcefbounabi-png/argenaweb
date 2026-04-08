@@ -213,10 +213,10 @@ export const CustomCursor = () => {
                     backgroundColor: isMagnetic
                         ? 'rgba(255,255,255,0.06)'
                         : isSticky
-                            ? 'transparent'
+                            ? 'rgba(0,0,0,0)'
                             : isHovering
                                 ? 'rgba(255, 255, 255, 0.05)'
-                                : 'transparent',
+                                : 'rgba(0,0,0,0)',
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 28, mass: 0.8 }}
             />

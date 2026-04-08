@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { useCart } from '../../contexts/CartContext';
 import ProductDetailsModal from '../ui/ProductDetailsModal';
 
 export const productsEN = [
@@ -11,14 +10,21 @@ export const productsEN = [
         title: 'B letter distressed cap',
         price: '2000da',
         originalPrice: '3200da',
-        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
+        image: '/pictures/bletter (2).jpeg',
         gallery: [
-            '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
-            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM.jpeg'
+            '/pictures/bletter (2).jpeg',
+            '/pictures/bletter (1).jpeg',
+            '/pictures/bletter (3).jpeg',
+            '/pictures/bletter (4).jpeg'
         ],
         category: 'Headwear',
         available: true,
-        colors: [],
+        colors: [
+            { name: 'Black', quantity: 5, image: '/pictures/bletter (2).jpeg' },
+            { name: 'Beige', quantity: 5, image: '/pictures/bletter (1).jpeg' },
+            { name: 'Sand', quantity: 5, image: '/pictures/bletter (3).jpeg' },
+            { name: 'Pink', quantity: 3, image: '/pictures/bletter (4).jpeg' }
+        ],
         description: 'Unisex Vintage B-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     },
     {
@@ -26,14 +32,25 @@ export const productsEN = [
         title: 'A distressed cap',
         price: '2000da',
         originalPrice: '3200da',
-        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
+        image: '/pictures/BlackA.jpeg',
         gallery: [
-            '/pictures/WhatsApp Image 2026-04-05 at 6.40.31 PM.jpeg',
-            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM (1).jpeg'
+            '/pictures/BlackA.jpeg',
+            '/pictures/BeigeA.png',
+            '/pictures/RedA.png',
+            '/pictures/PinkA.png',
+            '/pictures/LightblueA.png',
+            '/pictures/GreyA.png'
         ],
         category: 'Headwear',
         available: true,
-        colors: [],
+        colors: [
+            { name: 'Black', quantity: 5, image: '/pictures/BlackA.jpeg' },
+            { name: 'Beige', quantity: 5, image: '/pictures/BeigeA.png' },
+            { name: 'Red', quantity: 4, image: '/pictures/RedA.png' },
+            { name: 'Pink', quantity: 4, image: '/pictures/PinkA.png' },
+            { name: 'Lightblue', quantity: 4, image: '/pictures/LightblueA.png' },
+            { name: 'Grey', quantity: 4, image: '/pictures/GreyA.png' }
+        ],
         description: 'Unisex Vintage A-Letter Distressed Baseball Cap. \n\nFeatures:\nPremium washed cotton for a comfortable, worn-in feel.\nAdjustable strap back fitting most head sizes seamlessly.\nClassic distressed detailing for an authentic streetwear edge.\nPerfect for daily casual wear, sun protection, and effortless style.'
     }
 ];
@@ -44,14 +61,21 @@ export const productsAR = [
         title: 'قبعة حرف B الممزقة',
         price: '2000 د.ج',
         originalPrice: '3200 د.ج',
-        image: '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
+        image: '/pictures/bletter (2).jpeg',
         gallery: [
-            '/pictures/WhatsApp Image 2026-04-05 at 6.40.15 PM.jpeg',
-            '/pictures/WhatsApp Image 2026-04-05 at 6.42.23 PM.jpeg'
+            '/pictures/bletter (2).jpeg',
+            '/pictures/bletter (1).jpeg',
+            '/pictures/bletter (3).jpeg',
+            '/pictures/bletter (4).jpeg'
         ],
         category: 'أغطية الرأس',
         available: true,
-        colors: [],
+        colors: [
+            { name: 'أسود', quantity: 5, image: '/pictures/bletter (2).jpeg' },
+            { name: 'بيج', quantity: 5, image: '/pictures/bletter (1).jpeg' },
+            { name: 'بيج فاتح', quantity: 5, image: '/pictures/bletter (3).jpeg' },
+            { name: 'زهري', quantity: 3, image: '/pictures/bletter (4).jpeg' }
+        ],
         description: 'قبعة ممزقة بحرف B للرجال والنساء.\nقطن عالي الجودة وحزام قابل للتعديل.\nتصميم كلاسيكي ممزق يمنحك ستايلات الشارع العصرية.'
     },
     {
@@ -71,14 +95,11 @@ export const productsAR = [
     }
 ];
 
-interface ProductGridProps {
-    onAddToCart?: (product: any) => void;
-}
+interface ProductGridProps {}
 
-export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
+export const ProductGrid: React.FC<ProductGridProps> = () => {
     const navigate = useNavigate();
     const { language } = useLanguage();
-    const { addItem } = useCart();
     const [selectedProduct, setSelectedProduct] = React.useState<any>(null);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
 
@@ -91,7 +112,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
             ? 'This space holds projects, tests, and visual systems. A record of decisions.'
             : 'اكتشف جميع تشكيلاتنا، تصاميم حصرية بجودة عالية.',
         itemsCount: language === 'EN' ? '(002) Items' : '(002) منتجات',
-        addToCart: language === 'EN' ? 'Add to Cart' : 'أضف إلى السلة',
+        viewDetails: language === 'EN' ? 'Order Now' : 'اطلب الآن',
         comingSoon: language === 'EN' ? 'Coming Soon' : 'قريباً',
         soonBadge: language === 'EN' ? 'SOON' : 'قريباً'
     };
@@ -157,7 +178,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                         }}
                                         className={`w-full font-mono text-xs uppercase tracking-widest border border-fg/30 bg-fg/80 backdrop-blur-md px-6 py-3 rounded-full text-bg hover:bg-bg hover:text-fg transition-colors ${language === 'AR' ? 'uppercase-none font-sans font-bold' : ''}`}
                                     >
-                                        {product.available ? t.addToCart : t.comingSoon}
+                                        {product.available ? t.viewDetails : t.comingSoon}
                                     </button>
                                 </div>
                             </div>
@@ -186,7 +207,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                                 }}
                                 className={`w-full mt-2 md:hidden font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-widest border border-silver/30 px-2 sm:px-6 py-2 sm:py-3 rounded-full text-fg hover:bg-fg hover:text-bg transition-all duration-300 shadow-sm ${language === 'AR' ? 'uppercase-none font-sans font-bold text-xs sm:text-sm' : ''}`}
                             >
-                                {product.available ? t.addToCart : t.comingSoon}
+                                {product.available ? t.viewDetails : t.comingSoon}
                             </button>
                         </motion.div>
                     );
@@ -197,9 +218,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart }) => {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 product={selectedProduct}
-                onAddToCart={(p) => {
-                    addItem(p);
-                }}
             />
         </section>
     );

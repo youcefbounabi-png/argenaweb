@@ -5,11 +5,7 @@ import FeaturedCollections from '../components/sections/FeaturedCollections';
 import ProductGrid from '../components/sections/ProductGrid';
 import SEO from '../components/ui/SEO';
 
-interface HomePageProps {
-    onAddToCart?: (product: any) => void;
-}
-
-export const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
+export const HomePage: React.FC = () => {
     return (
         <>
             <SEO
@@ -19,7 +15,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
             <Hero />
             <Marquee />
             <FeaturedCollections />
-            <ProductGrid onAddToCart={onAddToCart} />
+            <ProductGrid />
         </>
     );
 };

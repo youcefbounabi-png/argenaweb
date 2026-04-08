@@ -5,7 +5,6 @@ import MainLayout from './components/layout/MainLayout';
 import Footer from './components/layout/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { CartProvider, useCart } from './contexts/CartContext';
 import { HelmetProvider } from 'react-helmet-async';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -30,11 +29,10 @@ const PageLoader = () => (
 
 // Extract internal routes into a separate component so they can be nested under /:lang or /
 const AppRoutes = () => {
-  const { addItem } = useCart();
   return (
     <Routes>
-      <Route path="/" element={<HomePage onAddToCart={addItem} />} />
-      <Route path="/shop" element={<ShopPage onAddToCart={addItem} />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/shop" element={<ShopPage />} />
       <Route path="/available-soon" element={<AvailableSoonPage />} />
       <Route path="/testimonials" element={<TestimonialsPage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -46,7 +44,6 @@ const AppRoutes = () => {
 };
 
 const AppInner = () => {
-  const { addItem } = useCart();
   const location = useLocation();
 
   return (
@@ -78,11 +75,9 @@ function App() {
     <ThemeProvider>
       <LanguageProvider>
         <HelmetProvider>
-          <CartProvider>
-            <Router>
-              <AppInner />
-            </Router>
-          </CartProvider>
+          <Router>
+            <AppInner />
+          </Router>
         </HelmetProvider>
       </LanguageProvider>
     </ThemeProvider>

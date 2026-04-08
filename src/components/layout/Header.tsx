@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ShoppingBag, Globe, Menu, X, Sun, Moon } from 'lucide-react';
+import { Globe, Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '../ui/Logo';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { useCart } from '../../contexts/CartContext';
 import { useTheme } from '../../contexts/ThemeContext';
 
 export const Header: React.FC = () => {
@@ -13,7 +12,6 @@ export const Header: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
     const { language, toggleLanguage } = useLanguage();
-    const { count, openCart } = useCart();
     const { theme, toggleTheme } = useTheme();
 
     const t = {
@@ -227,15 +225,6 @@ export const Header: React.FC = () => {
                             aria-label="Toggle theme"
                         >
                             {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
-                        </button>
-                        <button onClick={openCart} className="relative flex items-center gap-2 hover:text-silver transition-colors">
-                            <span className="hidden md:inline">{t.cart} ({count})</span>
-                            <ShoppingBag size={18} className="md:w-[14px] md:h-[14px]" />
-                            {count > 0 && (
-                                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-fg text-bg text-[9px] font-bold rounded-full flex items-center justify-center font-mono md:hidden">
-                                    {count}
-                                </span>
-                            )}
                         </button>
 
                         {/* Mobile Hamburger — only visible on mobile */}
