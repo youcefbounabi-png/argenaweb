@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
 import MarkdownIt from 'markdown-it';
-import { supabase } from '../../lib/supabase';
+import { supabase } from '../lib/supabase';
 
 const md = new MarkdownIt({ breaks: true });
 
