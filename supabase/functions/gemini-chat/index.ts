@@ -1,7 +1,8 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY') ?? '';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+// Using v1 and gemini-2.5-flash which we verified works with this key
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 Deno.serve(async (req: Request) => {
   // CORS pre-flight
@@ -17,8 +18,8 @@ Deno.serve(async (req: Request) => {
   try {
     const { systemPrompt, userMessage, history } = await req.json();
 
-    if (!systemPrompt || !userMessage) {
-      return new Response(JSON.stringify({ error: 'Missing systemPrompt or userMessage' }), {
+    if (!userMessage) {
+      return new Response(JSON.stringify({ error: 'Missing userMessage' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
       });
@@ -32,53 +33,57 @@ Deno.serve(async (req: Request) => {
     }
 
     // Build conversation history
-    const rawContents: any[] = [];
-    for (const msg of (history || [])) {
-      rawContents.push({ role: msg.role, parts: [{ text: msg.text }] });
-    }
-    rawContents.push({ role: 'user', parts: [{ text: userMessage }] });
-
-    // Merge consecutive same-role messages (Gemini requirement)
     const contents: any[] = [];
-    for (const msg of rawContents) {
-      if (contents.length > 0 && contents[contents.length - 1].role === msg.role) {
-        contents[contents.length - 1].parts[0].text += `\n\n${msg.parts[0].text}`;
-      } else {
-        contents.push({ role: msg.role, parts: [...msg.parts] });
+    
+    // Add history if present
+    if (history && Array.isArray(history)) {
+      for (const msg of history) {
+        contents.push({
+          role: msg.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: msg.text }]
+        });
       }
     }
+    
+    // Add the current user message
+    contents.push({
+      role: 'user',
+      parts: [{ text: userMessage }]
+    });
 
-    // Ensure first turn is 'user'
-    if (contents.length > 0 && contents[0].role === 'model') {
-      contents.unshift({ role: 'user', parts: [{ text: '(conversation started)' }] });
+    const payload: any = {
+      contents,
+      generationConfig: {
+        temperature: 0.7,
+        topP: 0.95,
+        maxOutputTokens: 1024,
+      }
+    };
+
+    // Add system instruction if provided
+    if (systemPrompt) {
+      payload.system_instruction = {
+        parts: [{ text: systemPrompt }]
+      };
     }
 
     const geminiRes = await fetch(GEMINI_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system_instruction: { parts: [{ text: systemPrompt }] },
-        contents,
-        generationConfig: { temperature: 0.9, topP: 0.95 },
-        safetySettings: [
-          { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
-          { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_ONLY_HIGH' },
-        ],
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!geminiRes.ok) {
       const errText = await geminiRes.text();
       console.error('[gemini-chat] Gemini error:', geminiRes.status, errText);
-      return new Response(JSON.stringify({ error: `Gemini API error: ${geminiRes.status}` }), {
+      return new Response(JSON.stringify({ error: `Gemini API error: ${geminiRes.status}`, details: errText }), {
         status: 500,
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
       });
     }
 
     const data = await geminiRes.json();
-    let text = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? null;
-    if (text) text = text.replace(/^["']|["']$/g, '').trim();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "I'm sorry, I couldn't generate a response.";
 
     return new Response(JSON.stringify({ text }), {
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
