@@ -1,7 +1,8 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
-const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY') ?? '';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_API_KEY}`;
+const GROQ_API_KEY = Deno.env.get('GROQ_API_KEY') ?? '';
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const MODEL = 'llama-3.3-70b-versatile';
 
 Deno.serve(async (req: Request) => {
   const corsHeaders = {
@@ -13,8 +14,6 @@ Deno.serve(async (req: Request) => {
     return new Response('ok', { headers: corsHeaders });
   }
 
-  // ALWAYS return 200 so the Supabase client can read our JSON body
-  // Use `status` field in the body to signal errors to the frontend
   const ok = (body: object) => new Response(JSON.stringify(body), {
     status: 200,
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -23,50 +22,55 @@ Deno.serve(async (req: Request) => {
   try {
     const { systemPrompt, userMessage, history } = await req.json();
 
-    if (!GEMINI_API_KEY) {
+    if (!GROQ_API_KEY) {
       return ok({ status: 'error', code: 'CONFIG_ERROR', message: 'API key not configured on server.' });
     }
 
-    const contents: any[] = [];
+    // Build messages array (OpenAI-compatible format that Groq uses)
+    const messages: any[] = [];
 
     if (systemPrompt) {
-      contents.push({ role: 'user', parts: [{ text: `INSTRUCTION: ${systemPrompt}` }] });
-      contents.push({ role: 'model', parts: [{ text: 'Understood. I am ARGENA.' }] });
+      messages.push({ role: 'system', content: systemPrompt });
     }
 
-    const recentHistory = (history || []).slice(-6);
+    // Add history (last 10 messages)
+    const recentHistory = (history || []).slice(-10);
     recentHistory.forEach((msg: any) => {
-      contents.push({
-        role: msg.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: msg.text }]
+      messages.push({
+        role: msg.role === 'assistant' ? 'assistant' : 'user',
+        content: msg.text
       });
     });
 
-    contents.push({ role: 'user', parts: [{ text: userMessage || 'Hello' }] });
+    messages.push({ role: 'user', content: userMessage || 'Hello' });
 
-    const geminiRes = await fetch(GEMINI_URL, {
+    const groqRes = await fetch(GROQ_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        messages,
+        max_tokens: 1024,
+        temperature: 0.7,
+      }),
     });
 
-    if (geminiRes.status === 429) {
+    if (groqRes.status === 429) {
       return ok({ status: 'error', code: 'RATE_LIMITED', message: 'ARGENA is processing high demand. Please wait a moment and try again.' });
     }
 
-    if (geminiRes.status === 503) {
-      return ok({ status: 'error', code: 'OVERLOADED', message: 'The AI model is temporarily overloaded. Please try again in a few seconds.' });
-    }
+    const resBody = await groqRes.text();
 
-    const resBody = await geminiRes.text();
-
-    if (!geminiRes.ok) {
-      console.error(`[gemini-chat] Gemini error ${geminiRes.status}:`, resBody);
-      return ok({ status: 'error', code: `UPSTREAM_${geminiRes.status}`, message: 'The archive encountered an issue. Please try again.' });
+    if (!groqRes.ok) {
+      console.error(`[gemini-chat] Groq error ${groqRes.status}:`, resBody);
+      return ok({ status: 'error', code: `UPSTREAM_${groqRes.status}`, message: 'The archive encountered an issue. Please try again.' });
     }
 
     const data = JSON.parse(resBody);
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    const text = data?.choices?.[0]?.message?.content;
 
     if (!text) {
       return ok({ status: 'error', code: 'NO_RESPONSE', message: 'No response generated. Please try again.' });
