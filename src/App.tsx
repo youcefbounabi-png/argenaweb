@@ -15,6 +15,10 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CustomOrdersPage = lazy(() => import('./pages/CustomOrdersPage'));
 
+// Admin Pages
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
+
 const PageLoader = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg">
     <motion.div
@@ -76,7 +80,16 @@ function App() {
       <LanguageProvider>
         <HelmetProvider>
           <Router>
-            <AppInner />
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                {/* Admin Area */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin/*" element={<AdminDashboard />} />
+                
+                {/* Storefront Area */}
+                <Route path="/*" element={<AppInner />} />
+              </Routes>
+            </Suspense>
           </Router>
         </HelmetProvider>
       </LanguageProvider>
