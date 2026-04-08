@@ -87,7 +87,9 @@ export const AIAssistant = () => {
             
             let errorMessage = "Error: The neural link is currently unstable. Please verify your connection or API configuration.";
             
-            if (error.message?.includes('fetch') || error.message?.includes('Network')) {
+            if (error.message?.includes('RATE_LIMITED')) {
+                errorMessage = "The Archive concierge is currently processing high traffic. ARGENA will be with you in a moment. [Retry sync]";
+            } else if (error.message?.includes('fetch') || error.message?.includes('Network')) {
                 errorMessage = "Connection disruption detected. Please check your network stability.";
             } else if (error.message) {
                 errorMessage = `Archive sync failed: ${error.message}`;
