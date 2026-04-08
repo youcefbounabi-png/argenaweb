@@ -82,12 +82,21 @@ export const AIAssistant = () => {
             };
 
             setMessages(prev => [...prev, assistantMessage]);
-        } catch (error) {
-            console.error("Gemini API Error:", error);
+        } catch (error: any) {
+            console.error("Gemini Assistant Error:", error);
+            
+            let errorMessage = "Error: The neural link is currently unstable. Please verify your connection or API configuration.";
+            
+            if (error.message?.includes('fetch') || error.message?.includes('Network')) {
+                errorMessage = "Connection disruption detected. Please check your network stability.";
+            } else if (error.message) {
+                errorMessage = `Archive sync failed: ${error.message}`;
+            }
+
             setMessages(prev => [...prev, {
                 id: (Date.now() + 1).toString(),
                 role: 'assistant',
-                content: "Error: The neural link is currently unstable. Please verify your connection or API configuration."
+                content: errorMessage
             }]);
         } finally {
             setIsLoading(false);
