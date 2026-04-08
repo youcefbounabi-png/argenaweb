@@ -1,7 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY') ?? '';
-// Using v1 and gemini-2.5-flash which we verified works with this key
+// Using v1 which we verified works with this key and gemini-2.5-flash
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 Deno.serve(async (req: Request) => {
@@ -33,9 +33,23 @@ Deno.serve(async (req: Request) => {
     }
 
     // Build conversation history
+    // We avoid using the 'system_instruction' field as it was causing 400 errors for this model.
+    // Instead, we inject the system prompt as the very first message in the conversation.
     const contents: any[] = [];
     
-    // Add history if present
+    // Inject system prompt as the very first turn
+    if (systemPrompt) {
+      contents.push({
+        role: 'user',
+        parts: [{ text: `SYSTEM INSTRUCTION: ${systemPrompt}` }]
+      });
+      contents.push({
+        role: 'model',
+        parts: [{ text: "Understood. I will act as ARGENA, the exclusive AI concierge for G ARGINIA." }]
+      });
+    }
+
+    // Add chat history
     if (history && Array.isArray(history)) {
       for (const msg of history) {
         contents.push({
@@ -59,13 +73,6 @@ Deno.serve(async (req: Request) => {
         maxOutputTokens: 1024,
       }
     };
-
-    // Add system instruction if provided
-    if (systemPrompt) {
-      payload.system_instruction = {
-        parts: [{ text: systemPrompt }]
-      };
-    }
 
     const geminiRes = await fetch(GEMINI_URL, {
       method: 'POST',
